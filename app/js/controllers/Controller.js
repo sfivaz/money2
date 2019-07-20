@@ -1,7 +1,5 @@
 import {PageView} from "../views/PageView";
-import {myJQuery} from "../helpers/myJQuery";
-
-const $$ = myJQuery.$$;
+import {$$} from "../helpers/myJQuery";
 
 export class Controller {
 

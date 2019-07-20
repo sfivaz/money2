@@ -1,7 +1,5 @@
 import {View} from "./View";
-import {myJQuery} from "../helpers/myJQuery";
-
-const $$ = myJQuery.$$;
+import {$$} from "../helpers/myJQuery";
 
 export class PageView extends View {
 

@@ -1,4 +1,5 @@
 import {View} from "./View";
+import {$$} from "../helpers/myJQuery";
 
 export class RowView extends View {
 

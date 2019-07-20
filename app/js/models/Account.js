@@ -1,4 +1,5 @@
 import {Parent} from "./Parent";
+import {API} from "../helpers/API";
 
 export class Account extends Parent {
 
@@ -10,6 +11,10 @@ export class Account extends Parent {
         this._balance = args[3] || null;
         this._transactions = [];
         this._budget = 0;
+    }
+
+    getAPI() {
+        return API + "accounts";
     }
 
     get id() {

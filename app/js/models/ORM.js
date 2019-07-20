@@ -3,27 +3,31 @@ import {DataSync} from "../services/DataSync";
 
 export class ORM extends EventEmitter {
 
+    getAPI() {
+        return "";
+    }
+
     toString() {
         return JSON.stringify(this);
     }
 
     save() {
-        DataSync.update(this.constructor.name, this.toString())
+        DataSync.update(this.getAPI(), this.toString())
             .then(() => this.emit("model edited"));
     }
 
     create() {
-        return DataSync.insert(this.constructor.name, this.toString());
+        return DataSync.insert(this.getAPI(), this.toString());
     }
 
     delete() {
-        DataSync.dellete(this.constructor.name, this.toString())
+        DataSync.dellete(this.getAPI(), this.toString())
             .then(() => this.emit("remove model"));
     }
 
     findAll(whereClause = null) {
         return new Promise(resolve => {
-            DataSync.select(this.constructor.name, JSON.stringify(whereClause))
+            DataSync.select(this.getAPI(), JSON.stringify(whereClause))
                 .then(objects => {
                     const models = objects.map(object =>
                         Object.assign(new this.constructor(), object));

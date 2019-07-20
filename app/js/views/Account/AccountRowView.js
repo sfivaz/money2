@@ -1,7 +1,5 @@
 import {RowView} from "../RowView";
-import {myJQuery} from "../../helpers/myJQuery";
-
-const $$ = myJQuery.$$;
+import {$$} from "../../helpers/myJQuery";
 
 export class AccountRowView extends RowView {
 

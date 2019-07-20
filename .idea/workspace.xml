@@ -5,35 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36f91680-c828-4c29-94b9-f5ea54401422" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/js/builders/AccountPageBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/builders/AccountPageBuilder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/js/builders/HomePageBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/builders/HomePageBuilder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/js/builders/PageBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/builders/PageBuilder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/js/controllers/AccountController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/controllers/AccountController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/js/controllers/Controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/controllers/Controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/js/controllers/HomeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/controllers/HomeController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/js/helpers/myJQuery.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/helpers/myJQuery.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/js/models/Account.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/models/Account.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/js/models/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/models/Home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/js/models/ORM.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/models/ORM.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/js/models/Parent.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/models/Parent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/js/models/Transaction.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/models/Transaction.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/js/services/DataSync.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/services/DataSync.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/js/services/EventEmitter.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/services/EventEmitter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/js/views/Account/AccountPageView.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/views/Account/AccountPageView.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/js/views/Account/AccountRowView.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/views/Account/AccountRowView.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/js/views/HomePageView.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/views/HomePageView.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/js/views/PageView.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/views/PageView.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/js/views/RowView.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/views/RowView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/js/views/View.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/views/View.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/php/views/accounts.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/php/views/footer.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/php/views/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/views/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/php/views/navbar.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -68,17 +50,38 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/js/models/Account.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-527">
-              <caret line="77" column="61" selection-start-line="77" selection-start-column="61" selection-end-line="77" selection-end-column="61" />
+            <state relative-caret-position="315">
+              <caret line="15" selection-start-line="15" selection-end-line="17" selection-end-column="5" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/js/models/Category.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="63">
+              <caret line="3" column="16" lean-forward="true" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/js/views/Account/AccountRowView.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="35" lean-forward="true" selection-start-column="35" selection-end-line="1" selection-end-column="42" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/js/services/DataSync.js">
+        <entry file="file://$PROJECT_DIR$/app/js/views/RowView.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="57" selection-start-line="13" selection-start-column="57" selection-end-line="13" selection-end-column="57" />
+            <state relative-caret-position="21">
+              <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -86,11 +89,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/js/models/ORM.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="14" lean-forward="true" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+            <state relative-caret-position="105">
+              <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
               <folding>
                 <element signature="e#0#54#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/js/services/DataSync.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="42">
+              <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/js/services/EventEmitter.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="42">
+              <caret line="2" column="19" lean-forward="true" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -107,7 +128,11 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>Data</find>
+      <find>this.constructor.name</find>
     </findStrings>
+    <replaceStrings>
+      <replace>this.getAPI()</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -129,20 +154,23 @@
         <option value="$PROJECT_DIR$/app/js/models/Parent.js" />
         <option value="$PROJECT_DIR$/app/js/models/Home.js" />
         <option value="$PROJECT_DIR$/app/js/builders/HomePageBuilder.js" />
-        <option value="$PROJECT_DIR$/app/js/models/Account.js" />
         <option value="$PROJECT_DIR$/app/js/views/Account/AccountPageView.js" />
         <option value="$PROJECT_DIR$/app/js/builders/AccountPageBuilder.js" />
         <option value="$PROJECT_DIR$/app/js/models/Transaction.js" />
         <option value="$PROJECT_DIR$/app/js/controllers/AccountController.js" />
-        <option value="$PROJECT_DIR$/app/js/views/RowView.js" />
         <option value="$PROJECT_DIR$/app/js/controllers/HomeController.js" />
         <option value="$PROJECT_DIR$/app/js/helpers/myJQuery.js" />
         <option value="$PROJECT_DIR$/app/js/views/HomePageView.js" />
-        <option value="$PROJECT_DIR$/app/js/views/Account/AccountRowView.js" />
         <option value="$PROJECT_DIR$/app/js/controllers/Controller.js" />
         <option value="$PROJECT_DIR$/app/js/views/PageView.js" />
-        <option value="$PROJECT_DIR$/app/js/models/ORM.js" />
+        <option value="$PROJECT_DIR$/app/js/views/Account/AccountRowView.js" />
+        <option value="$PROJECT_DIR$/app/js/services/HttpService.js" />
         <option value="$PROJECT_DIR$/app/js/services/DataSync.js" />
+        <option value="$PROJECT_DIR$/app/js/models/ORM.js" />
+        <option value="$PROJECT_DIR$/app/js/models/Account.js" />
+        <option value="$PROJECT_DIR$/app/js/models/Category.js" />
+        <option value="$PROJECT_DIR$/app/js/helpers/API.js" />
+        <option value="$PROJECT_DIR$/app/js/views/RowView.js" />
       </list>
     </option>
   </component>
@@ -160,7 +188,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -177,25 +204,34 @@
               <item name="money5" type="b2602c69:ProjectViewProjectNode" />
               <item name="money5" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="money5" type="b2602c69:ProjectViewProjectNode" />
               <item name="money5" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="php" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="helpers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="money5" type="b2602c69:ProjectViewProjectNode" />
               <item name="money5" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="php" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="money5" type="b2602c69:ProjectViewProjectNode" />
+              <item name="money5" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -252,12 +288,36 @@
       <option name="presentableId" value="Default" />
       <updated>1563658320871</updated>
       <workItem from="1563658322326" duration="1363000" />
-      <workItem from="1563659754332" duration="1040000" />
+      <workItem from="1563659754332" duration="1553000" />
+      <workItem from="1563661376776" duration="7000" />
+      <workItem from="1563661389928" duration="706000" />
     </task>
+    <task id="LOCAL-00001" summary="ref - bootstrap added / fontawesome imported / other css added">
+      <created>1563660957350</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1563660957350</updated>
+    </task>
+    <task id="LOCAL-00002" summary="ref - index.html completed and accounts/footer/header and navbar deleted">
+      <created>1563661011374</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1563661011374</updated>
+    </task>
+    <task id="LOCAL-00003" summary="ref - all class related to HomePageBuilder converted to module pattern">
+      <created>1563661057384</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1563661057384</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2403000" />
+    <option name="totallyTimeSpent" value="3629000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -272,12 +332,11 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="npm" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25302014" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="DB Browser" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Database Changes" />
+      <window_info id="npm" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.6175637" />
@@ -290,15 +349,49 @@
       <window_info anchor="bottom" id="DB Execution Console" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.39943343" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Mongo Explorer" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25302014" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="DB Browser" order="2" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="npm" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.6175637" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3286119" />
+      <window_info anchor="bottom" id="DB Execution Console" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.39943343" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" order="12" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Mongo Explorer" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="ref - bootstrap added / fontawesome imported / other css added" />
+    <MESSAGE value="ref - index.html completed and accounts/footer/header and navbar deleted" />
+    <MESSAGE value="ref - all class related to HomePageBuilder converted to module pattern" />
+    <option name="LAST_COMMIT_MESSAGE" value="ref - all class related to HomePageBuilder converted to module pattern" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.babelrc">
@@ -339,30 +432,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/php/views/navbar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/php/views/footer.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/php/views/accounts.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/php/views/navbar.php" />
+    <entry file="file://$PROJECT_DIR$/app/php/views/footer.php" />
+    <entry file="file://$PROJECT_DIR$/app/php/views/accounts.php" />
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="403">
@@ -381,13 +453,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="31" lean-forward="true" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/services/EventEmitter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="27" lean-forward="true" selection-start-column="27" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -443,13 +508,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/views/RowView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="2" column="32" lean-forward="true" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/js/builders/AccountPageBuilder.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -470,39 +528,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/helpers/myJQuery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="69" column="7" selection-start-line="69" selection-start-column="7" selection-end-line="69" selection-end-column="7" />
-          <folding>
-            <element signature="n#!!block;n#$$#0" />
-            <element signature="e#370#701#0" />
-            <element signature="e#430#638#0" />
-            <element signature="n#!!block;n#get#0" />
-            <element signature="e#769#1438#0" />
-            <element signature="e#1017#1328#0" />
-            <element signature="e#1035#1208#0" />
-            <element signature="e#1223#1281#0" />
-            <element signature="n#!!block;n#post#0" />
-            <element signature="e#1515#2258#0" />
-            <element signature="e#1763#2077#0" />
-            <element signature="e#1781#1957#0" />
-            <element signature="e#1799#1832#0" />
-            <element signature="e#1972#2030#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/views/Account/AccountRowView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/js/controllers/HomeController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -513,10 +538,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/js/controllers/Controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="23" lean-forward="true" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+        <state relative-caret-position="21">
+          <caret line="1" column="39" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
           </folding>
@@ -525,45 +557,94 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/js/views/HomePageView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="37" lean-forward="true" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="21">
+          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/js/views/PageView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+        <state relative-caret-position="21">
+          <caret line="1" column="39" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/models/Account.js">
+    <entry file="file://$PROJECT_DIR$/app/js/services/HttpService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-527">
-          <caret line="77" column="61" selection-start-line="77" selection-start-column="61" selection-end-line="77" selection-end-column="61" />
+        <state relative-caret-position="63">
+          <caret line="3" column="21" lean-forward="true" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/services/DataSync.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/js/models/ORM.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="14" lean-forward="true" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+        <state relative-caret-position="105">
+          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
           <folding>
             <element signature="e#0#54#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/services/DataSync.js">
+    <entry file="file://$PROJECT_DIR$/app/js/services/EventEmitter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="57" selection-start-line="13" selection-start-column="57" selection-end-line="13" selection-end-column="57" />
+        <state relative-caret-position="42">
+          <caret line="2" column="19" lean-forward="true" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/models/Account.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="15" selection-start-line="15" selection-end-line="17" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/helpers/API.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="44" lean-forward="true" selection-start-column="44" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/helpers/myJQuery.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="29" lean-forward="true" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/models/Category.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="16" lean-forward="true" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/views/Account/AccountRowView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="35" lean-forward="true" selection-start-column="35" selection-end-line="1" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/views/RowView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
         </state>
       </provider>
     </entry>
