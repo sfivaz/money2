@@ -24,8 +24,14 @@ export class HttpService {
             .then(res => res.json());
     }
 
-    static put() {
-
+    static put(url, data) {
+        return fetch(url, {
+            headers: {'Content-type': 'application/json'},
+            method: 'put',
+            body: JSON.stringify(data)
+        })
+            .then(res => HttpService._handleErrors(res))
+            .then(res => res.status);
     }
 
     static delete(url) {

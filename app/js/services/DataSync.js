@@ -26,6 +26,7 @@ export class DataSync {
     }
 
     static update(api, data) {
+        data = DataSync._convertModel(data);
         return HttpService.put(api, data);
     }
 

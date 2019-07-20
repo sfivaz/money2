@@ -1,5 +1,6 @@
 import {RowView} from "../RowView";
 import {$$} from "../../helpers/myJQuery";
+import {AccountForm} from "./AccountForm";
 
 export class AccountRowView extends RowView {
 
