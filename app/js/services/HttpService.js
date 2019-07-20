@@ -23,4 +23,13 @@ export class HttpService {
             .then(res => HttpService._handleErrors(res))
             .then(res => res.json());
     }
+
+    static delete(url) {
+        return fetch(url, {
+            headers: {'Content-type': 'application/json'},
+            method: 'delete'
+        })
+            .then(res => HttpService._handleErrors(res))
+            .then(res => res.status);
+    }
 }

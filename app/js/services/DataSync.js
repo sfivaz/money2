@@ -29,7 +29,7 @@ export class DataSync {
         return HttpService.post("server/" + model + "/update", json);
     }
 
-    static dellete(model, json) {
-        return HttpService.post("server/" + model + "/delete", json);
+    static delete(api) {
+        return HttpService.delete(api);
     }
 }
