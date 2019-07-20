@@ -25,8 +25,8 @@ export class DataSync {
         return HttpService.post(api, data);
     }
 
-    static update(model, json) {
-        return HttpService.post("server/" + model + "/update", json);
+    static update(api, data) {
+        return HttpService.put(api, data);
     }
 
     static delete(api) {

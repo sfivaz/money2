@@ -24,6 +24,10 @@ export class HttpService {
             .then(res => res.json());
     }
 
+    static put() {
+
+    }
+
     static delete(url) {
         return fetch(url, {
             headers: {'Content-type': 'application/json'},
