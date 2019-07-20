@@ -12,12 +12,12 @@ export class ORM extends EventEmitter {
     }
 
     save() {
-        DataSync.update(this.getAPI(), this.toString())
+        DataSync.update(this.getAPI(), this)
             .then(() => this.emit("model edited"));
     }
 
     create() {
-        return DataSync.insert(this.getAPI(), this.toString());
+        return DataSync.insert(this.getAPI(), this);
     }
 
     delete() {

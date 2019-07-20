@@ -1,4 +1,7 @@
-class AccountForm extends View {
+import {View} from "../View";
+import {$$} from "../../helpers/myJQuery";
+
+export class AccountForm extends View {
 
     static template() {
         const template = {

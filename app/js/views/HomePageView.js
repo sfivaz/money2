@@ -1,5 +1,6 @@
 import {PageView} from "./PageView";
 import {$$} from "../helpers/myJQuery";
+import {AccountForm} from "./Account/AccountForm";
 
 export class HomePageView extends PageView {
 
