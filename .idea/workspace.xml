@@ -1,15 +1,307 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="36f91680-c828-4c29-94b9-f5ea54401422" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/css/account.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/css/account.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/css/all.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/css/all.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/css/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/css/row.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/css/row.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/css/transaction.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/css/transaction.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/db-config.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/db-config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/global.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/global.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/builders/AccountPageBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/builders/AccountPageBuilder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/builders/CategoriesPageBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/builders/CategoriesPageBuilder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/builders/HomePageBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/builders/HomePageBuilder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/builders/PageBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/builders/PageBuilder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/controllers/AccountController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/controllers/AccountController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/controllers/CategoriesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/controllers/CategoriesController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/controllers/CategoryController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/controllers/CategoryController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/controllers/Controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/controllers/Controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/controllers/HomeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/controllers/HomeController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/controllers/TransactionController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/controllers/TransactionController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/helpers/accountHelper.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/helpers/accountHelper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/helpers/categoriesHelper.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/helpers/categoriesHelper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/helpers/myJQuery.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/helpers/myJQuery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/helpers/myMoment.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/helpers/myMoment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/models/Account.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/models/Account.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/models/Categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/models/Categories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/models/Category.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/models/Category.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/models/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/models/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/models/ORM.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/models/ORM.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/models/Parent.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/models/Parent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/models/Transaction.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/models/Transaction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/models/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/services/DataSync.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/services/DataSync.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/services/EventEmitter.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/services/EventEmitter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/services/loginPerformer.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/services/loginPerformer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/services/registerPerformer.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/services/registerPerformer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/views/Account/AccountForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/views/Account/AccountForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/views/Account/AccountPageView.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/views/Account/AccountPageView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/views/Account/AccountRowView.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/views/Account/AccountRowView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/views/CategoriesPageView.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/views/CategoriesPageView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/views/Category/CategoryForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/views/Category/CategoryForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/views/Category/CategoryRowView.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/views/Category/CategoryRowView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/views/HomePageView.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/views/HomePageView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/views/PageView.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/views/PageView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/views/RowView.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/views/RowView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/views/Transaction/TransactionForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/views/Transaction/TransactionForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/views/Transaction/TransactionView.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/views/Transaction/TransactionView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/views/View.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/views/View.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/php/controllers/AccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/controllers/AccountController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/php/controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/controllers/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/php/controllers/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/controllers/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/php/controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/php/helpers/ArrayHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/helpers/ArrayHelper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/php/helpers/Auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/helpers/Auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/php/helpers/SQLHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/helpers/SQLHelper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/php/models/Account.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/models/Account.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/php/models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/models/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/php/models/ORM.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/models/ORM.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/php/models/Transaction.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/models/Transaction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/php/models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/php/proxies/AccountProxy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/proxies/AccountProxy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/php/proxies/CategoryProxy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/proxies/CategoryProxy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/php/proxies/Proxy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/proxies/Proxy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/php/proxies/TransactionProxy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/proxies/TransactionProxy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/php/proxies/UserProxy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/proxies/UserProxy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/php/services/DBConnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/services/DBConnection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/php/services/Router.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/services/Router.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/php/views/account.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/views/account.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/php/views/accounts.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/views/accounts.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/php/views/categories.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/views/categories.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/php/views/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/views/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/php/views/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/views/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/php/views/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/views/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/php/views/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/views/navbar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/php/views/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/views/register.php" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="11" lean-forward="true" selection-start-column="11" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="63">
+              <caret line="3" column="12" lean-forward="true" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/.babelrc" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/app/app.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+      </list>
+    </option>
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="85" />
     <option name="y" value="25" />
     <option name="width" value="1750" />
     <option name="height" value="980" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="money5" type="b2602c69:ProjectViewProjectNode" />
+              <item name="money5" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="10.15.3" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\projects\money5" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="36f91680-c828-4c29-94b9-f5ea54401422" name="Default Changelist" comment="" />
+      <created>1563658320871</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1563658320871</updated>
+      <workItem from="1563658322326" duration="1117000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1117000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="DB Browser" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24966443" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="DB Execution Console" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" weight="0.3286119" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.39943343" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.6175637" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
+      <window_info anchor="right" id="Mongo Explorer" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/.babelrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" column="23" lean-forward="true" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/.bin/webpack-dev-server">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="17" lean-forward="true" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="19" lean-forward="true" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="11" lean-forward="true" selection-start-column="11" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="12" lean-forward="true" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

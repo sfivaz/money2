@@ -1,2 +1,4 @@
 site/.idea/dataSources.local.xml
 site/.idea/workspace.xml
+
+node_modules
