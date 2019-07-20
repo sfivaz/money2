@@ -1,4 +1,6 @@
-class Transaction extends ORM {
+import {ORM} from "./ORM";
+
+export class Transaction extends ORM {
 
     constructor(...args) {
         super();

@@ -1,4 +1,9 @@
-class HomePageView extends PageView {
+import {PageView} from "./PageView";
+import {myJQuery} from "../helpers/myJQuery";
+
+const $$ = myJQuery.$$;
+
+export class HomePageView extends PageView {
 
     template() {
 

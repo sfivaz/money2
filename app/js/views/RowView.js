@@ -1,4 +1,6 @@
-class RowView extends View {
+import {View} from "./View";
+
+export class RowView extends View {
 
     templateRow() {
 

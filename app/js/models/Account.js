@@ -1,4 +1,6 @@
-class Account extends Parent {
+import {Parent} from "./Parent";
+
+export class Account extends Parent {
 
     constructor(...args) {
         super();

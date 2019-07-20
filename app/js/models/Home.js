@@ -1,4 +1,6 @@
-class Home extends Parent {
+import {Parent} from "./Parent";
+
+export class Home extends Parent {
 
     constructor() {
         super();

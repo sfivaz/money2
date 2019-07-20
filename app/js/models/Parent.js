@@ -1,4 +1,6 @@
-class Parent extends ORM {
+import {ORM} from "./ORM";
+
+export class Parent extends ORM {
 
     constructor() {
         super();

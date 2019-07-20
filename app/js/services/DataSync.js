@@ -1,4 +1,8 @@
-class DataSync {
+import {myJQuery} from "../helpers/myJQuery";
+
+const post = myJQuery.post;
+
+export class DataSync {
     /**
      * This methods sends a ajax post request sending 2 other parameters as path params and sending
      * a Javascript Object as JSON

@@ -1,4 +1,7 @@
-class AccountController extends Controller {
+import {Controller} from "./Controller";
+import {Transaction} from "../models/Transaction";
+
+export class AccountController extends Controller {
 
     constructor(model = null, view = null) {
         super(model, view);

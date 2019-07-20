@@ -1,4 +1,9 @@
-class AccountRowView extends RowView {
+import {RowView} from "../RowView";
+import {myJQuery} from "../../helpers/myJQuery";
+
+const $$ = myJQuery.$$;
+
+export class AccountRowView extends RowView {
 
     template() {
 

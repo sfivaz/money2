@@ -1,4 +1,6 @@
-class View extends EventEmitter{
+import {EventEmitter} from "../services/EventEmitter";
+
+export class View extends EventEmitter{
 
     constructor(model) {
         super();

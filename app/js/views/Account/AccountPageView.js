@@ -1,4 +1,6 @@
-class AccountPageView extends PageView {
+import {PageView} from "../PageView";
+
+export class AccountPageView extends PageView {
 
     constructor(model) {
         super(model);

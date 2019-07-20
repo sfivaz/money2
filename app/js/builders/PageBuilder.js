@@ -1,4 +1,4 @@
-class PageBuilder {
+export class PageBuilder {
 
     static build(object, Model, View, Controller) {
         document.addEventListener("DOMContentLoaded", () => {

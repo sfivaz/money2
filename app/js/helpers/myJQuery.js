@@ -66,3 +66,9 @@ function post(url, json) {
         xhr.send(json);
     });
 }
+
+export const myJQuery = {
+    $$,
+    get,
+    post
+};

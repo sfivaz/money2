@@ -1,4 +1,7 @@
-class ORM extends EventEmitter {
+import {EventEmitter} from "../services/EventEmitter";
+import {DataSync} from "../services/DataSync";
+
+export class ORM extends EventEmitter {
 
     toString() {
         return JSON.stringify(this);

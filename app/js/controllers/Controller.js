@@ -1,4 +1,9 @@
-class Controller {
+import {PageView} from "../views/PageView";
+import {myJQuery} from "../helpers/myJQuery";
+
+const $$ = myJQuery.$$;
+
+export class Controller {
 
     constructor(model = null, view = null) {
         this._model = model;
@@ -34,13 +39,13 @@ class Controller {
             this.model.children = children);
     }
 
-    onCreateChildren(){
+    onCreateChildren() {
         this.view.update();
         this.showChildren();
         this.model.children.forEach((child) => this.mapChildEvents(child));
     }
 
-    onCreateChild(child){
+    onCreateChild(child) {
         this.onUpdateChildren();
         this.mapChildEvents(child);
     }
@@ -51,7 +56,7 @@ class Controller {
         child.on("model moved", () => this.model.removeChild(child));
     }
 
-    onUpdateChildren(){
+    onUpdateChildren() {
         this.view.update();
         this.view.clearAll();
         this.showChildren();
@@ -68,7 +73,7 @@ class Controller {
 
         return view;
     }
-    
+
     createChild(args) {
         const oldChild = new this.constructor.childClass(...args);
         oldChild.create().then(childObj => {

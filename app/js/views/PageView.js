@@ -1,10 +1,15 @@
-class PageView extends View {
+import {View} from "./View";
+import {myJQuery} from "../helpers/myJQuery";
+
+const $$ = myJQuery.$$;
+
+export class PageView extends View {
 
     showChild(childView) {
         this.elements.main.appendChild(childView.template());
     }
 
-    clearAll(){
+    clearAll() {
         this.elements.main.innerHTML = "";
     }
 
