@@ -58,7 +58,7 @@ export class AccountController extends Controller {
     }
 
     load() {
-        super.load({account_id: this.model.id});
+        super.load(this.model.id);
     }
 
     filterMonths(month, year) {

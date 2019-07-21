@@ -115,7 +115,7 @@ export class Transaction extends ORM {
     async getCategory() {
         return new Promise(resolve => {
             const category = new Category();
-            category.findAll(categories => {
+            category.findAll().then(categories => {
                 for (const category of categories) {
                     if (category.id === this._category_id)
                         resolve(category.name);

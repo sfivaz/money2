@@ -32,8 +32,8 @@ export class Controller {
         $$(".container").appendChild(this.view.template());
     }
 
-    load(whereClause = null) {
-        new this.constructor.childClass().findAll(whereClause).then(children =>
+    load(parentId = null) {
+        new this.constructor.childClass().findAll(parentId).then(children =>
             this.model.children = children);
     }
 

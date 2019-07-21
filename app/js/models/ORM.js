@@ -36,9 +36,16 @@ export class ORM extends EventEmitter {
         });
     }
 
-    findAll() {
+    findAll(parentId = null) {
         return new Promise(resolve => {
-            DataSync.select(this.getAPI())
+
+            // let url = this.getAPI();
+            // if (parentId)
+            //     url += '/' + parentId;
+
+            const url = this.getAPI() + (parentId ? '/' + parentId : '');
+            // console.log(url);
+            DataSync.select(url)
                 .then(objects => {
                     const models = objects.map(object =>
                         Object.assign(new this.constructor(), object));
