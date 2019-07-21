@@ -1,6 +1,7 @@
 import {Parent} from "./Parent";
 import {API} from "../helpers/API";
 import {Transaction} from "./Transaction";
+import {MyMoment} from "../helpers/myMoment";
 
 export class Account extends Parent {
 
@@ -97,8 +98,8 @@ export class Account extends Parent {
     }
 
     filterMonths(month, year) {
-        const firstDate = getFirstDate(year, month).getTime();
-        const lastDate = getLastDate(year, month).getTime();
+        const firstDate = MyMoment.getFirstDate(year, month).getTime();
+        const lastDate = MyMoment.getLastDate(year, month).getTime();
 
         for (const transaction of this._transactions) {
             if (transaction.dateLong < firstDate || transaction.dateLong > lastDate)
