@@ -96,8 +96,8 @@ export class Transaction extends ORM {
     }
 
     set sourceAccountId(value) {
-        if (this._sourceAccountId && this._sourceAccountId !== value) {
-            console.log("emit model moved");
+        //TODO make value be converted to number
+        if (this._sourceAccountId && this._sourceAccountId != value) {
             this.emit("model moved");
         }
         this._sourceAccountId = value;

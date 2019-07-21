@@ -93,13 +93,6 @@ export class Account extends Parent {
 
     getFullBalance() {
         const reducer = (total, transaction) => total + this.getValue(transaction);
-
-        this._transactions.forEach(transaction => {
-            console.log(transaction.value);
-            // console.log(transaction.);
-            console.log(this.getValue(transaction));
-        });
-
         return this._transactions.reduce(reducer, 0).toFixed(2);
     }
 
