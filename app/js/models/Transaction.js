@@ -84,7 +84,7 @@ export class Transaction extends ORM {
     }
 
     get destinationAccountId() {
-        return this._destinationAccountId;
+        return Number(this._destinationAccountId);
     }
 
     set destinationAccountId(value) {
@@ -92,12 +92,11 @@ export class Transaction extends ORM {
     }
 
     get sourceAccountId() {
-        return this._sourceAccountId;
+        return Number(this._sourceAccountId);
     }
 
     set sourceAccountId(value) {
-        //TODO make value be converted to number
-        if (this._sourceAccountId && this._sourceAccountId != value) {
+        if (this._sourceAccountId && this.sourceAccountId !== Number(value)) {
             this.emit("model moved");
         }
         this._sourceAccountId = value;
