@@ -1,4 +1,7 @@
-class Category extends ORM{
+import {ORM} from "./ORM";
+import {API} from "../helpers/API";
+
+export class Category extends ORM{
 
     constructor(...args) {
         super();
@@ -6,6 +9,10 @@ class Category extends ORM{
         this._budget = args[1];
         this._user_id = args[2];
         this._id = args[3];
+    }
+
+    getAPI() {
+        return API + "categories";
     }
 
     get id() {

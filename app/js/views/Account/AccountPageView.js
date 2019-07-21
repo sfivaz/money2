@@ -1,4 +1,6 @@
 import {PageView} from "../PageView";
+import {$$} from "../../helpers/myJQuery";
+import {Category} from "../../models/Category";
 
 export class AccountPageView extends PageView {
 
@@ -120,26 +122,29 @@ export class AccountPageView extends PageView {
         this.elements.lblCategoryFilter.className = "filter__label";
         this.elements.slcCategoryFilter.className = "filter__select custom-select custom-select-sm";
 
-        [{name: "select an option", id: ""}].concat(categories).forEach((category, key) =>
-            this.elements.slcCategoryFilter[key] = new Option(category.name, category.id));
+        new Category().findAll()
+            .then(categories => {
+                [{name: "select an option", id: ""}].concat(categories).forEach((category, key) =>
+                    this.elements.slcCategoryFilter[key] = new Option(category.name, category.id));
 
-        this.elements.slcCategoryFilter.addEventListener("change",
-            () => {
-                this.filterByCategory(this.elements.slcCategoryFilter.value, this.elements.cbxBudget.checked);
+                this.elements.slcCategoryFilter.addEventListener("change",
+                    () => {
+                        this.filterByCategory(this.elements.slcCategoryFilter.value, this.elements.cbxBudget.checked);
+                        this.elements.cbxBudget.disabled = (this.elements.slcCategoryFilter.value === "");
+                    });
+
                 this.elements.cbxBudget.disabled = (this.elements.slcCategoryFilter.value === "");
+
+                this.elements.cbxBudget.addEventListener("change",
+                    () => this.toggleBudget(this.elements.cbxBudget.checked, this.elements.slcCategoryFilter.value));
+
+
+                this.elements.filterBar.appendChild(this.elements.categoryFilter);
+                this.elements.categoryFilter.appendChild(this.elements.lblCategoryFilter);
+                this.elements.categoryFilter.appendChild(this.elements.slcCategoryFilter);
+                this.elements.categoryFilter.appendChild(this.elements.lblBudget);
+                this.elements.categoryFilter.appendChild(this.elements.cbxBudget);
             });
-
-        this.elements.cbxBudget.disabled = (this.elements.slcCategoryFilter.value === "");
-
-        this.elements.cbxBudget.addEventListener("change",
-            () => this.toggleBudget(this.elements.cbxBudget.checked, this.elements.slcCategoryFilter.value));
-
-
-        this.elements.filterBar.appendChild(this.elements.categoryFilter);
-        this.elements.categoryFilter.appendChild(this.elements.lblCategoryFilter);
-        this.elements.categoryFilter.appendChild(this.elements.slcCategoryFilter);
-        this.elements.categoryFilter.appendChild(this.elements.lblBudget);
-        this.elements.categoryFilter.appendChild(this.elements.cbxBudget);
     }
 
     clearFilter(filter = null) {

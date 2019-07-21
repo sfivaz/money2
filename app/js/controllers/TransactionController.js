@@ -1,4 +1,6 @@
-class TransactionController extends Controller {
+import {Controller} from "./Controller";
+
+export class TransactionController extends Controller {
 
     edit(elements) {
         this.model.type = elements[0];

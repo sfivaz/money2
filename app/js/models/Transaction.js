@@ -1,4 +1,7 @@
 import {ORM} from "./ORM";
+import {API} from "../helpers/API";
+import {MyMoment} from "../helpers/myMoment";
+import {Category} from "./Category";
 
 export class Transaction extends ORM {
 
@@ -14,6 +17,10 @@ export class Transaction extends ORM {
         this._id = args[7] || null;
         this._category = args[8] || null;
         this._filteredBy = [];
+    }
+
+    getAPI() {
+        return API + "transactions";
     }
 
     get id() {
@@ -61,11 +68,11 @@ export class Transaction extends ORM {
     }
 
     get dateFormattedFR() {
-        return formatDateFR(this._date);
+        return MyMoment.formatDateFR(this._date);
     }
 
     get dateFormattedEN() {
-        return formatDateEN(this._date);
+        return MyMoment.formatDateEN(this._date);
     }
 
     get dateLong() {
@@ -104,13 +111,17 @@ export class Transaction extends ORM {
         this._category_id = value;
     }
 
-    //TODO ref
-    getCategory() {
-        //categories are declared globally
-        for (const category of categories) {
-            if (category.id === this._category_id)
-                return category.name;
-        }
+    //TODO ref - maybe using browser database
+    async getCategory() {
+        return new Promise(resolve => {
+            const category = new Category();
+            category.findAll(categories => {
+                for (const category of categories) {
+                    if (category.id === this._category_id)
+                        resolve(category.name);
+                }
+            });
+        });
     }
 
     get filteredBy() {

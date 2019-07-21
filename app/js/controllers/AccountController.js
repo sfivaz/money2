@@ -1,5 +1,9 @@
 import {Controller} from "./Controller";
 import {Transaction} from "../models/Transaction";
+import {$$} from "../helpers/myJQuery";
+import {MyMoment} from "../helpers/myMoment";
+import {TransactionView} from "../views/Transaction/TransactionView";
+import {TransactionController} from "./TransactionController";
 
 export class AccountController extends Controller {
 
@@ -38,7 +42,7 @@ export class AccountController extends Controller {
                     const monthContainer = $$("<div>");
                     const monthText = $$("<span>");
 
-                    monthText.textContent = getMonthTxt(previousMonth);
+                    monthText.textContent = MyMoment.getMonthTxt(previousMonth);
 
                     monthContainer.appendChild(monthText);
                     this.view.elements.main.appendChild(monthContainer);

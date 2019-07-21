@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Money</title>
+
+    <!--TODO import them later-->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="app/css/all.css" type="text/css">
+    <link rel="stylesheet" href="app/css/row.css" type="text/css">
+    <link rel="stylesheet" href="app/css/home.css" type="text/css">
+    <link rel="stylesheet" href="app/css/account.css" type="text/css">
+    <link rel="stylesheet" href="app/css/transaction.css" type="text/css">
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="">Money</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-nav mr-auto">
+                <a class="nav-item nav-link" href="">Accounts</a>
+                <a class="nav-item nav-link" href="categories">Categories</a>
+            </div>
+        </div>
+        <form class="form-inline my-2 my-lg-0" action="logout">
+            <div class="px-3"><?= Auth::name() ?></div>
+            <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">
+                logout <i class="fa fa-sign-out" aria-hidden="true"></i>
+            </button>
+        </form>
+    </nav>
+</header>
+
+<main class="container"></main>
+
+<!--TODO import them later-->
+<script src="node_modules/jquery/jquery.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script src="dist/bundle-account.js"></script>
+
+</body>
+</html>

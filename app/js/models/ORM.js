@@ -25,10 +25,22 @@ export class ORM extends EventEmitter {
             .then(() => this.emit("remove model"));
     }
 
-    findAll(whereClause = null) {
+    find(id) {
         return new Promise(resolve => {
-            DataSync.select(this.getAPI(), JSON.stringify(whereClause))
+            DataSync.select(this.getAPI() + '/' + id)
+                .then(object => {
+                    //TODO put Object.assign as one of the constructors of a object
+                    object = Object.assign(new this.constructor(), object);
+                    resolve(object);
+                });
+        });
+    }
+
+    findAll() {
+        return new Promise(resolve => {
+            DataSync.select(this.getAPI())
                 .then(objects => {
+                    console.log(objects);
                     const models = objects.map(object =>
                         Object.assign(new this.constructor(), object));
                     resolve(models);

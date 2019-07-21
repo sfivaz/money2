@@ -1,7 +1,7 @@
 export class PageBuilder {
 
     static build(object, Model, View, Controller) {
-        document.addEventListener("DOMContentLoaded", () => {
+        // document.addEventListener("DOMContentLoaded", () => {
 
             const model = Object.assign(new Model(), object);
 
@@ -10,6 +10,6 @@ export class PageBuilder {
             const controller = new Controller(model, view);
 
             controller.start();
-        });
+        // });
     }
 }

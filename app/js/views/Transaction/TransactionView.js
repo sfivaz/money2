@@ -1,4 +1,7 @@
-class TransactionView extends RowView {
+import {RowView} from "../RowView";
+import {$$} from "../../helpers/myJQuery";
+
+export class TransactionView extends RowView {
 
     templateRow() {
 
@@ -57,10 +60,12 @@ class TransactionView extends RowView {
             else
                 this.elements.row.className += " clr-transfer-destiny";
         } else
-            this.elements.row.className += " clr-" + this.model.type;
+            this.elements.row.className += " clr-" + this.model.type.toLowerCase();
 
         this.elements.date.textContent = this.model.dateFormattedFR;
-        this.elements.category.textContent = this.model.getCategory();
+        this.model.getCategory().then(categoryName => {
+            this.elements.category.textContent = categoryName;
+        });
         this.elements.description.textContent = this.model.description;
         this.elements.value.textContent = this.model.value.toFixed(2);
     }
