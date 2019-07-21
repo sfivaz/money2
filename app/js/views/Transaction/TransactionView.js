@@ -1,5 +1,8 @@
 import {RowView} from "../RowView";
 import {$$} from "../../helpers/myJQuery";
+import {TransactionForm} from "./TransactionForm";
+import {Category} from "../../models/Category";
+import {Account} from "../../models/Account";
 
 export class TransactionView extends RowView {
 
@@ -88,18 +91,22 @@ export class TransactionView extends RowView {
         /**
          * @var accounts Array
          */
-        accounts.forEach((account, key) => {
-            template.slcAccountOrigin[key] = new Option(account.name, account.id, false,
-                account.id === this.model.account_origin_id);
-            template.slcAccountDestiny[key] = new Option(account.name, account.id, false,
-                account.id === this.model.account_destiny_id);
+        new Account().findAll().then(accounts => {
+            accounts.forEach((account, key) => {
+                template.slcAccountOrigin[key] = new Option(account.name, account.id, false,
+                    account.id === this.model.account_origin_id);
+                template.slcAccountDestiny[key] = new Option(account.name, account.id, false,
+                    account.id === this.model.account_destiny_id);
+            });
         });
         /**
          * @var categories Array
          */
-        categories.forEach((category, key) => {
-            template.slcCategory[key] = new Option(category.name, category.id, false,
-                category.id === this.model.category_id);
+        new Category().findAll().then(categories => {
+            categories.forEach((category, key) => {
+                template.slcCategory[key] = new Option(category.name, category.id, false,
+                    category.id === this.model.category_id);
+            });
         });
 
         template.btnSubmit.addEventListener("click", () => {
