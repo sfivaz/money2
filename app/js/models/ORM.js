@@ -40,7 +40,6 @@ export class ORM extends EventEmitter {
         return new Promise(resolve => {
             DataSync.select(this.getAPI())
                 .then(objects => {
-                    console.log(objects);
                     const models = objects.map(object =>
                         Object.assign(new this.constructor(), object));
                     resolve(models);

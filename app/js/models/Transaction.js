@@ -11,8 +11,8 @@ export class Transaction extends ORM {
         this._description = args[1] || null;
         this._value = args[2] || null;
         this._date = new Date(args[3]) || null;
-        this._account_origin_id = args[4] || null;
-        this._account_destiny_id = args[5] || null;
+        this._sourceAccountId = args[4] || null;
+        this._destinationAccountId = args[5] || null;
         this._category_id = args[6] || null;
         this._id = args[7] || null;
         this._category = args[8] || null;
@@ -83,24 +83,24 @@ export class Transaction extends ORM {
         this._date = new Date(value);
     }
 
-    get account_destiny_id() {
-        return this._account_destiny_id;
+    get destinationAccountId() {
+        return this._destinationAccountId;
     }
 
-    set account_destiny_id(value) {
-        this._account_destiny_id = value;
+    set destinationAccountId(value) {
+        this._destinationAccountId = value;
     }
 
-    get account_origin_id() {
-        return this._account_origin_id;
+    get sourceAccountId() {
+        return this._sourceAccountId;
     }
 
-    set account_origin_id(value) {
-        if (this._account_origin_id && this._account_origin_id !== value) {
+    set sourceAccountId(value) {
+        if (this._sourceAccountId && this._sourceAccountId !== value) {
             console.log("emit model moved");
             this.emit("model moved");
         }
-        this._account_origin_id = value;
+        this._sourceAccountId = value;
     }
 
     get category_id() {

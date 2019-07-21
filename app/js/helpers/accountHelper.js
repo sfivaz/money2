@@ -2,7 +2,7 @@
  * Get the id of the current account
  * @returns {string} the id of the current account
  */
-function getCurrentAccount() {
+export function getCurrentAccount() {
     const url = window.location.pathname;
     //will get sourceDirectory/account/999
     const pathParams = url.split("/");

@@ -1,5 +1,6 @@
 import {Parent} from "./Parent";
 import {API} from "../helpers/API";
+import {Transaction} from "./Transaction";
 
 export class Account extends Parent {
 
@@ -66,6 +67,19 @@ export class Account extends Parent {
         this.emit("children added");
     }
 
+    get transactions() {
+        return this.children;
+    }
+
+    set transactions(transactions) {
+        let transactionsObject = [];
+        transactions.forEach(transaction => {
+            const transactionObject = Object.assign(new Transaction(), transaction);
+            transactionsObject.push(transactionObject);
+        });
+        this.children = transactionsObject;
+    }
+
     getBalanceFiltered() {
         const reducer = (total, transaction) => {
             if (transaction.filteredBy.length > 0)
@@ -79,6 +93,12 @@ export class Account extends Parent {
 
     getFullBalance() {
         const reducer = (total, transaction) => total + this.getValue(transaction);
+
+        this._transactions.forEach(transaction => {
+            console.log(transaction.value);
+            // console.log(transaction.);
+            console.log(this.getValue(transaction));
+        });
 
         return this._transactions.reduce(reducer, 0).toFixed(2);
     }
@@ -138,9 +158,9 @@ export class Account extends Parent {
             case "spending":
                 return -1 * transaction.value;
             case "transfer":
-                if (this.id === transaction.account_destiny_id)
+                if (this.id === transaction.destinationAccountId)
                     return transaction.value;
-                if (this.id === transaction.account_origin_id)
+                if (this.id === transaction.sourceAccountId)
                     return -1 * transaction.value;
         }
     }

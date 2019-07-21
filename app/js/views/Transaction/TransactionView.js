@@ -3,6 +3,7 @@ import {$$} from "../../helpers/myJQuery";
 import {TransactionForm} from "./TransactionForm";
 import {Category} from "../../models/Category";
 import {Account} from "../../models/Account";
+import {getCurrentAccount} from "../../helpers/accountHelper";
 
 export class TransactionView extends RowView {
 
@@ -58,7 +59,7 @@ export class TransactionView extends RowView {
 
     update() {
         if (this.model.type === "transfer") {
-            if (this.model.account_origin_id === getCurrentAccount())
+            if (this.model.sourceAccountId === getCurrentAccount())
                 this.elements.row.className += " clr-transfer-source";
             else
                 this.elements.row.className += " clr-transfer-destiny";
@@ -94,9 +95,9 @@ export class TransactionView extends RowView {
         new Account().findAll().then(accounts => {
             accounts.forEach((account, key) => {
                 template.slcAccountOrigin[key] = new Option(account.name, account.id, false,
-                    account.id === this.model.account_origin_id);
+                    account.id === this.model.sourceAccountId);
                 template.slcAccountDestiny[key] = new Option(account.name, account.id, false,
-                    account.id === this.model.account_destiny_id);
+                    account.id === this.model.destinationAccountId);
             });
         });
         /**
