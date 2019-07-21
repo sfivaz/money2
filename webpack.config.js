@@ -8,9 +8,12 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 module.exports = {
-    entry: './app/app.js',
+    entry: {
+        'bundle-home': './app/home.js',
+        'bundle-account': './app/account.js'
+    },
     output: {
-        filename: "bundle.js",
+        filename: "[name].js",
         path: path.resolve(__dirname, 'dist'),
         publicPath: 'dist'
     },
