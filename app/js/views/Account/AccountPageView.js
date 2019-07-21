@@ -1,6 +1,9 @@
 import {PageView} from "../PageView";
 import {$$} from "../../helpers/myJQuery";
 import {Category} from "../../models/Category";
+import {TransactionForm} from "../Transaction/TransactionForm";
+import {MyMoment} from "../../helpers/myMoment";
+import {Account} from "../../models/Account";
 
 export class AccountPageView extends PageView {
 
@@ -224,17 +227,21 @@ export class AccountPageView extends PageView {
         template.title.textContent = "create transaction";
         template.btnSubmit.textContent = "create";
 
-        template.iptDate.value = now();
+        template.iptDate.value = MyMoment.now();
 
-        accounts.forEach((account, key) => {
-            template.slcAccountOrigin[key] = new Option(account.name, account.id, false,
-                account.id === this.model.id);
+        new Account().findAll().then(accounts => {
+            accounts.forEach((account, key) => {
+                template.slcAccountOrigin[key] = new Option(account.name, account.id, false,
+                    account.id === this.model.id);
 
-            template.slcAccountDestiny[key] = new Option(account.name, account.id);
+                template.slcAccountDestiny[key] = new Option(account.name, account.id);
+            });
         });
 
-        categories.forEach((category, key) => {
-            template.slcCategory[key] = new Option(category.name, category.id);
+        new Category().findAll().then(categories => {
+            categories.forEach((category, key) => {
+                template.slcCategory[key] = new Option(category.name, category.id);
+            });
         });
 
         template.btnSubmit.addEventListener("click", () => {

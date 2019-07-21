@@ -1,4 +1,7 @@
-class TransactionForm extends View {
+import {View} from "../View";
+import {$$} from "../../helpers/myJQuery";
+
+export class TransactionForm extends View {
 
     static template() {
 
