@@ -9,7 +9,7 @@ export class TransactionController extends Controller {
         this.model.date = elements[3];
         this.model.sourceAccountId = elements[4];
         this.model.destinationAccountId = elements[5];
-        this.model.category_id = elements[6];
+        this.model.categoryId = elements[6];
 
         this.model.save();
     }

@@ -13,7 +13,7 @@ export class Transaction extends ORM {
         this._date = new Date(args[3]) || null;
         this._sourceAccountId = args[4] || null;
         this._destinationAccountId = args[5] || null;
-        this._category_id = args[6] || null;
+        this._categoryId = args[6] || null;
         this._id = args[7] || null;
         this._category = args[8] || null;
         this._filteredBy = [];
@@ -102,12 +102,12 @@ export class Transaction extends ORM {
         this._sourceAccountId = value;
     }
 
-    get category_id() {
-        return this._category_id;
+    get categoryId() {
+        return Number(this._categoryId);
     }
 
-    set category_id(value) {
-        this._category_id = value;
+    set categoryId(value) {
+        this._categoryId = value;
     }
 
     //TODO ref - maybe using browser database
@@ -116,7 +116,7 @@ export class Transaction extends ORM {
             const category = new Category();
             category.findAll().then(categories => {
                 for (const category of categories) {
-                    if (category.id === this._category_id)
+                    if (category.id === Number(this._categoryId))
                         resolve(category.name);
                 }
             });

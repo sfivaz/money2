@@ -4,6 +4,8 @@ import {TransactionForm} from "./TransactionForm";
 import {Category} from "../../models/Category";
 import {Account} from "../../models/Account";
 import {getCurrentAccount} from "../../helpers/accountHelper";
+import {getCategory} from "../../helpers/categoriesHelper";
+import {categoriesPromise} from "../../helpers/globals";
 
 export class TransactionView extends RowView {
 
@@ -35,6 +37,7 @@ export class TransactionView extends RowView {
     }
 
     template() {
+        console.log("building template row of Transaction");
         this.elements = this.templateRow();
 
         this.elements.date = $$("<span>");
@@ -95,18 +98,18 @@ export class TransactionView extends RowView {
         new Account().findAll().then(accounts => {
             accounts.forEach((account, key) => {
                 template.slcAccountOrigin[key] = new Option(account.name, account.id, false,
-                    account.id === this.model.sourceAccountId);
+                    account.id == this.model.sourceAccountId);
                 template.slcAccountDestiny[key] = new Option(account.name, account.id, false,
-                    account.id === this.model.destinationAccountId);
+                    account.id == this.model.destinationAccountId);
             });
         });
         /**
          * @var categories Array
          */
-        new Category().findAll().then(categories => {
+        categoriesPromise.then(categories => {
             categories.forEach((category, key) => {
                 template.slcCategory[key] = new Option(category.name, category.id, false,
-                    category.id === this.model.category_id);
+                    category.id == this.model.categoryId);
             });
         });
 

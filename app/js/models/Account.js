@@ -2,6 +2,7 @@ import {Parent} from "./Parent";
 import {API} from "../helpers/API";
 import {Transaction} from "./Transaction";
 import {MyMoment} from "../helpers/myMoment";
+import {getCategory} from "../helpers/categoriesHelper";
 
 export class Account extends Parent {
 
@@ -120,7 +121,7 @@ export class Account extends Parent {
 
     filterCategory(category_id, useBudget) {
         for (const transaction of this._transactions) {
-            if (transaction.category_id !== category_id)
+            if (transaction.categoryId !== Number(category_id))
                 transaction.addFilter("category");
             else if (transaction.filteredBy.includes("category"))
                 transaction.removeFilter("category");
