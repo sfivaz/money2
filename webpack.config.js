@@ -1,18 +1,50 @@
 const path = require('path');
-const babiliPlugin = require('babili-webpack-plugin');
-
-let plugins = [];
-
-if (process.env.NODE_ENV === 'production') {
-    plugins.push(new babiliPlugin());
-}
 
 module.exports = {
-    entry: './app/home.js',
-    output: {
-        filename: "[name].js",
-        path: path.resolve(__dirname, 'dist'),
-        publicPath: 'dist'
+    mode: 'development',
+    devServer: {
+        // contentBase: path.join(__dirname, 'public'),
+        port: 8080,
+        host: `localhost`,
     },
-    plugins
+    entry: {
+        app: ['./app/home.js']
+    },
+    output: {
+        path: path.join(__dirname, 'dist'),
+        publicPath: '/bundles/',
+        filename: `[name].js`,
+    },
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: [
+                                [
+                                    '@babel/preset-env',
+                                    {
+                                        'modules': 'false',//commonjs,amd,umd,systemjs,auto
+                                        'useBuiltIns': 'usage',
+                                        'targets': '> 0.25%, not dead',
+                                        'corejs': 3
+                                    }
+                                ]
+                            ]
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    resolve: {
+        alias: {}
+    },
+    plugins: [],
+
 };
+   
