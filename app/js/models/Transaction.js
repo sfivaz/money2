@@ -84,11 +84,19 @@ export class Transaction extends ORM {
     }
 
     get destinationAccountId() {
-        return Number(this._destinationAccountId);
+        return Number(this._destinationAccountId) || null;
     }
 
     set destinationAccountId(value) {
         this._destinationAccountId = value;
+    }
+
+    get destination_account_id() {
+        return this.destinationAccountId;
+    }
+
+    set destination_account_id(value) {
+        this.destinationAccountId = value;
     }
 
     get sourceAccountId() {
@@ -100,6 +108,14 @@ export class Transaction extends ORM {
             this.emit("model moved");
         }
         this._sourceAccountId = value;
+    }
+
+    get source_account_id() {
+        return this.sourceAccountId;
+    }
+
+    set source_account_id(value) {
+        this.sourceAccountId = value;
     }
 
     get categoryId() {

@@ -37,7 +37,6 @@ export class TransactionView extends RowView {
     }
 
     template() {
-        console.log("building template row of Transaction");
         this.elements = this.templateRow();
 
         this.elements.date = $$("<span>");
