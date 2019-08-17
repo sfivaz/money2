@@ -36,7 +36,7 @@ const root = path.resolve(__dirname, '../');
 app.use(cors());
 app.use(express.json());
 
-// app.use('/styles', express.static(root + '/app/styles'));
+app.use('/styles', express.static(root + '/app/styles'));
 // app.use('/bundles', express.static(root + '/app/bundles'));
 app.use(express.static('./views'));
 
