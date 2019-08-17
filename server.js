@@ -1,4 +1,4 @@
-const app = require('./config/custom-express');
+const app = require('./routing/config/custom-express');
 
-app.listen(3000, () =>
-    console.log("Server running in the port 3000"));
+app.listen(8080, () =>
+    console.log("Server running in the port 8080"));
