@@ -13,7 +13,8 @@ export class ORM extends EventEmitter {
 
     save() {
         DataSync.update(this.getAPI() + '/' + this._id, this)
-            .then(() => this.emit("model edited"));
+            .then(() => this.emit("model edited"))
+            .catch(console.log);
     }
 
     create() {
@@ -22,7 +23,8 @@ export class ORM extends EventEmitter {
 
     delete() {
         DataSync.delete(this.getAPI() + '/' + this._id)
-            .then(() => this.emit("remove model"));
+            .then(() => this.emit("remove model"))
+            .catch(console.log);
     }
 
     find(id) {
@@ -32,19 +34,14 @@ export class ORM extends EventEmitter {
                     //TODO put Object.assign as one of the constructors of a object
                     object = Object.assign(new this.constructor(), object);
                     resolve(object);
-                });
+                })
+                .catch(console.log);
         });
     }
 
     findAll(parentId = null) {
         return new Promise(resolve => {
-
-            // let url = this.getAPI();
-            // if (parentId)
-            //     url += '/' + parentId;
-
             const url = this.getAPI() + (parentId ? '/' + parentId : '');
-            // console.log(url);
             DataSync.select(url)
                 .then(objects => {
                     const models = objects.map(object =>
