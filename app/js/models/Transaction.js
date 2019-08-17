@@ -111,7 +111,7 @@ export class Transaction extends ORM {
     }
 
     //TODO ref - maybe using browser database
-    async getCategory() {
+    getCategory() {
         return new Promise(resolve => {
             const category = new Category();
             category.findAll().then(categories => {
