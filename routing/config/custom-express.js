@@ -9,7 +9,7 @@ const root = path.join(__dirname + '../../../');
 app.use(cors());
 app.use(express.json());
 
-app.use('/css', express.static(root + '/node_modules/bootstrap/dist/css'));
+app.use('/styles', express.static(root + '/app/styles'));
 
 app.set('views', path.join(root + '/app/views'));
 app.engine('html', ejs);
