@@ -8,7 +8,7 @@ module.exports = {
         host: `localhost`,
     },
     entry: {
-        app: ['./app/home.js']
+        home: ['./app/home.js'],
     },
     output: {
         path: path.join(__dirname, 'dist'),
