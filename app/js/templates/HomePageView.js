@@ -7,7 +7,7 @@ export class HomePageView extends ModelPageView {
     constructor(home) {
         super(home);
         this.childForm = new AccountForm(account => this.updateChildren(account));
-        this._childName = 'account';
+        this.childName = 'account';
     }
 
     template(home) {
@@ -20,9 +20,9 @@ export class HomePageView extends ModelPageView {
     }
 
     listTemplate(accounts) {
-        return accounts.map(account => {
-            return AccountRowView.template(account);
-        }).join('');
+        return accounts.map(account =>
+            AccountRowView.template(account))
+            .join('');
     }
 
     updateTemplate(home) {

@@ -1,50 +1,17 @@
-import {RowView} from "../RowView";
-import {$$} from "../../helpers/myJQuery";
-import {CategoryForm} from "./CategoryForm";
+export class CategoryRowView {
 
-export class CategoryRowView extends RowView {
-
-    template() {
-
-        this.elements = this.templateRow();
-
-        this.elements.name = $$("<span>");
-        this.elements.budget = $$("<span>");
-
-        this.elements.row.className += " clr-account";
-        this.elements.name.className = "name f-9";
-        this.elements.name.className = "budget f-1";
-
-        this.update();
-
-        this.elements.main.appendChild(this.elements.name);
-        this.elements.main.appendChild(this.elements.budget);
-
-        return this.elements.row;
-    }
-
-    update() {
-        this.elements.name.textContent = this.model.name;
-        this.elements.budget.textContent = this.model.budget;
-    }
-
-    editTemplate() {
-
-        const template = CategoryForm.template();
-
-        template.title.textContent = "edit category";
-        template.btnSubmit.textContent = "edit";
-
-        template.iptName.value = this.model.name;
-        template.iptBudget.value = this.model.budget;
-
-        template.btnSubmit.addEventListener("click", () => {
-            this.emit("edit model", template.iptName.value, template.iptBudget.value);
-            template.form.parentElement.removeChild(template.form);
-        });
-    }
-
-    confirmDelete() {
-        this.confirmTemplateDelete("category");
+    static template(category) {
+        return `
+            <div class="template-row align-items-center clr-account" data-id="${category.id}">
+                <div class="row-main">
+                    <span class="name f-9">${category.name}</span>
+                    <span class="balance f-1">${category.budget}</span>
+                </div>
+                <aside class="row-aside">
+                    <button class="btn-edit-row btn btn-primary mr-3"><i class="fa fa-pencil-square-o"></i></button>
+                    <button class="btn-delete-row btn btn-danger mr-3"><i class="fa fa-trash-o"></i></button>
+                </aside>
+            </div>
+        `;
     }
 }

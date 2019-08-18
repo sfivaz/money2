@@ -1,3 +1,9 @@
-import {CategoriesPageBuilder} from "./js/builders/CategoriesPageBuilder";
+import {Categories} from "./js/models/Categories";
+import {CategoriesPageView} from "./js/templates/CategoriesPageView";
+import {Category} from "./js/models/Category";
 
-CategoriesPageBuilder.build();
+new Category().findAll()
+    .then(categories => {
+        const categoriesInstance = new Categories(categories);
+        $(() => new CategoriesPageView(categoriesInstance));
+    });

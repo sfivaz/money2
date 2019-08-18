@@ -9,7 +9,7 @@ export class ModelPageView {
         this.childForm = null;
         this._confirmModal = new ConfirmDeleteModal(id => this._deleteChild(id));
         this.init();
-        this._childName = null;
+        this.childName = null;
     }
 
     init() {
@@ -58,7 +58,7 @@ export class ModelPageView {
 
     _openDeleteModal(event) {
         const rowId = this._getRowId(event);
-        this._confirmModal._openConfirm(this._childName, rowId);
+        this._confirmModal._openConfirm(this.childName, rowId);
     }
 
     updateChildren(child) {

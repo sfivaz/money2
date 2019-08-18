@@ -3,12 +3,12 @@ import {API} from "../helpers/API";
 
 export class Category extends ORM {
 
-    constructor(id, name, budget) {
+    constructor(id, name, budget, userId) {
         super();
         this._id = Number(id);
         this._name = name;
         this._budget = Number(budget);
-        this._user_id = null;
+        this._user_id = Number(userId);
     }
 
     getAPI() {
@@ -18,6 +18,7 @@ export class Category extends ORM {
     get id() {
         return this._id;
     }
+
     set id(value) {
         this._id = Number(value);
     }

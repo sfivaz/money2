@@ -1,57 +1,38 @@
-import {View} from "../View";
-import {$$} from "../../helpers/myJQuery";
+import {ModelForm} from "../../helpers/ModelForm";
+import {Category} from "../../models/Category";
 
-export class CategoryForm extends View{
+export class CategoryForm extends ModelForm {
 
-    static template() {
+    template(category) {
+        let action = 'Create';
+        if (category.id)
+            action = 'Edit';
+        return `
+            <div class="my-modal">
+                <div class="d-flex align-items-center">
+                    <h2 class="f-1">${action}</h2>
+                    <button id="btn-close-modal" class="btn btn-outline-dark">X</button>
+                </div>
+                <form>
+                    <input id="category-id" type="hidden" value="${category.id || ''}">
+                    <input id="category-budget" type="hidden" value="${category.budget || 0}">
+                    <div class="form-group">
+                        <label>name</label>
+                        <input id="category-name" class="form-control" placeholder="name" value="${category.name || ''}" 
+                            required>
+                    </div>
+                    <div>
+                        <button id="btn-submit" type="submit" class="btn-lg btn-block btn-success d-block m-auto">${action}</button>
+                    </div>
+                </form>
+            </div>
+        `;
+    }
 
-        const template = {
-            form: $$("<div>"),
-            header: $$("<header>"),
-            title: $$("<h2>"),
-            btnClose: $$("<button>"),
-            main: $$("<main>"),
-            lblName: $$("<label>"),
-            iptName: $$("<input>"),
-            lblBudget: $$("<label>"),
-            iptBudget: $$("<input>"),
-            footer: $$("<footer>"),
-            btnSubmit: $$("<button>")
-        };
-
-        template.form.className = "my-modal";
-
-        template.header.className = "d-flex align-items-start";
-        template.title.className = "f-1";
-        template.btnClose.className = "btn btn-outline-dark";
-
-        template.iptName.className = "form-control form-group";
-        template.iptBudget.className = "form-control form-group";
-
-        template.btnSubmit.className = "btn-submit btn-lg btn-block btn-success d-block m-auto";
-
-        template.iptName.placeholder = "name";
-        template.iptBudget.placeholder = "budget";
-
-        template.lblName.textContent = "name";
-        template.lblBudget.textContent = "budget";
-        template.btnClose.textContent = "X";
-
-        template.btnClose.addEventListener("click", () =>
-            template.form.parentElement.removeChild(template.form));
-
-        document.body.appendChild(template.form);
-        template.form.appendChild(template.header);
-        template.form.appendChild(template.main);
-        template.form.appendChild(template.footer);
-        template.header.appendChild(template.title);
-        template.header.appendChild(template.btnClose);
-        template.main.appendChild(template.lblName);
-        template.main.appendChild(template.iptName);
-        template.main.appendChild(template.lblBudget);
-        template.main.appendChild(template.iptBudget);
-        template.footer.appendChild(template.btnSubmit);
-
-        return template;
+    buildModel() {
+        const id = $("#category-id").val();
+        const name = $("#category-name").val();
+        const budget = $("#category-budget").val();
+        return new Category(id, name, budget);
     }
 }

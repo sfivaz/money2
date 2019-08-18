@@ -1,31 +1,26 @@
-import {PageView} from "./PageView";
 import {CategoryForm} from "./Category/CategoryForm";
-import {$$} from "../helpers/myJQuery";
+import {ModelPageView} from "../../shared/ModelPageView";
+import {CategoryRowView} from "./Category/CategoryRowView";
 
-export class CategoriesPageView extends PageView {
+export class CategoriesPageView extends ModelPageView {
 
-    template() {
-
-        this.elements = PageView.pageTemplate("New Category");
-
-        this.elements.title = $$("<h2>");
-        this.elements.title.textContent = "Categories";
-
-        this.elements.header.append(this.elements.title);
-
-        return this.elements.template;
+    constructor(categories) {
+        super(categories);
+        this.childForm = new CategoryForm(account => this.updateChildren(account));
+        this.childName = 'category';
     }
 
-    createChildTemplate() {
+    template(categories) {
+        return this.listTemplate(categories.children);
+    }
 
-        const template = CategoryForm.template();
+    listTemplate(categories) {
+        return categories.map(category =>
+            CategoryRowView.template(category))
+            .join('');
+    }
 
-        template.title.textContent = "create category";
-        template.btnSubmit.textContent = "create";
-
-        template.btnSubmit.addEventListener("click", () => {
-            this.emit("create child", template.iptName.value, template.iptBudget.value);
-            template.form.parentElement.removeChild(template.form);
-        });
+    updateTemplate(categories) {
+        this._list.html(this.template(categories));
     }
 }

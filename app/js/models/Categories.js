@@ -2,9 +2,9 @@ import {Parent} from "./Parent";
 
 export class Categories extends Parent {
 
-    constructor() {
+    constructor(categories) {
         super();
-        this._categories = [];
+        this._categories = categories || [];
     }
 
     get children() {
