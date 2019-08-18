@@ -172,14 +172,20 @@ export class AccountPageView {
     }
 
     _clearFilter(filter = null) {
-        if (filter === "type")
-            AccountPageView.cleanFilterType();
-        else if (filter === "month")
-            AccountPageView.cleanFilterDate();
-        else if (!filter) {
-            AccountPageView.cleanFilterDate();
-            AccountPageView.cleanFilterType();
-            AccountPageView.cleanFilterCategory();
+        switch (filter) {
+            case "type":
+                AccountPageView.cleanFilterType();
+                break;
+            case "month":
+                AccountPageView.cleanFilterDate();
+                break;
+            case "category":
+                AccountPageView.cleanFilterCategory();
+                break;
+            default:
+                AccountPageView.cleanFilterDate();
+                AccountPageView.cleanFilterType();
+                AccountPageView.cleanFilterCategory();
         }
         this.model.clearFilter(filter);
     }
