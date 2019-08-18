@@ -126,14 +126,13 @@ export class TransactionForm {
     }
 
     buildSources(transaction) {
-        const accountId = getCurrentAccount();
-        let check = (account) => account.id == accountId;
+        let accountId = getCurrentAccount();
 
         if (transaction.id)
-            check = account => transaction.sourceAccountId == account.id;
+            accountId = transaction.sourceAccountId;
 
         return this.accounts.map(account =>
-            `<option ${check(account) ? 'selected' : ''} 
+            `<option ${account.id == accountId ? 'selected' : ''} 
                 value="${account.id}">${account.name}</option>`)
             .join('');
     }
