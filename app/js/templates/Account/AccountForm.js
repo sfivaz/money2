@@ -1,31 +1,12 @@
 import {Account} from "../../models/Account";
+import {ModelForm} from "../../helpers/ModelForm";
 
-export class AccountForm {
+export class AccountForm extends ModelForm {
 
-    constructor(cb) {
-        this._container = $("#form");
-        this._cb = cb;
-        this.eventHandlers();
-    }
-
-    eventHandlers() {
-        this._container.click(event => {
-            if (event.target.id === "btn-close-modal") {
-                this._close();
-            } else if (event.target.id === "btn-submit") {
-                if ($(event.target).closest('form')[0].checkValidity()) {
-                    event.preventDefault();
-                    this._submit();
-                }
-            }
-        });
-    }
-
-    static template(account) {
+    template(account) {
         let action = 'Create';
-        if (account.id) {
+        if (account.id)
             action = 'Edit';
-        }
         return `
             <div class="my-modal">
                 <div class="d-flex align-items-center">
@@ -41,50 +22,17 @@ export class AccountForm {
                             required>
                     </div>
                     <div>
-                        <button id="btn-submit" class="btn-lg btn-block btn-success d-block m-auto">${action}</button>
+                        <button id="btn-submit" type="submit" class="btn-lg btn-block btn-success d-block m-auto">${action}</button>
                     </div>
                 </form>
             </div>
         `;
     }
 
-    open(object = {}) {
-        this._container.html(AccountForm.template(object));
-        $('body').css('overflow', 'hidden');
-    }
-
-    _close() {
-        this._container.html('');
-        $('body').css('overflow', 'auto');
-    }
-
-    static buildModel() {
+    buildModel() {
         const id = $("#account-id").val();
         const name = $("#account-name").val();
         const balance = $("#account-balance").val();
         return new Account(id, name, balance);
-    }
-
-    _submit() {
-        const object = AccountForm.buildModel();
-        if (object.id)
-            this._update(object);
-        else
-            this._create(object);
-    }
-
-    _create(object) {
-        object.create().then(newObject => {
-            this._cb(newObject);
-            this._close();
-        });
-    }
-
-    _update(object) {
-        object.save().then(() => {
-            console.log(object);
-            this._cb(object);
-            this._close();
-        });
     }
 }

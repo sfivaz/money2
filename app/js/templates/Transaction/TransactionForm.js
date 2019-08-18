@@ -3,16 +3,14 @@ import {categoriesPromise} from "../../helpers/globalCategories";
 import {MyMoment} from "../../helpers/myMoment";
 import {Transaction} from "../../models/Transaction";
 import {getCurrentAccount} from "../../helpers/accountHelper";
+import {ModelForm} from "../../helpers/ModelForm";
 
-export class TransactionForm {
+export class TransactionForm extends ModelForm {
 
     constructor(cb) {
-        this._container = $("#form");
-        this._cb = cb;
-        this.accounts = [];
+        super(cb);
         accountsPromise.then(accounts => this.accounts = accounts);
         categoriesPromise.then(categories => this.categories = categories);
-        this.eventHandlers();
     }
 
     eventHandlers() {
@@ -145,41 +143,23 @@ export class TransactionForm {
             .join('');
     }
 
-    open(object = {}) {
-        this._container.html(this.template(object));
-        $('body').css('overflow', 'hidden');
-        //TODO check it later
-        // $('form').validate({
-        //     destination:
-        // });
-    }
-
-    _close() {
-        this._container.html('');
-        $('body').css('overflow', 'auto');
-    }
-
     _submitForm(event) {
         event.preventDefault();
         if ($(event.target).closest('form')[0].checkValidity()) {
-            const iptDescription = $("#transaction-description");
-            if (!iptDescription.val()) {
-                const categoryName = $("#transaction-category-id option:selected").text();
-                iptDescription.val(categoryName);
-            }
-            this._submit();
+            this.dataProcess();
+            this.submit();
         }
     }
 
-    _submit() {
-        const object = TransactionForm.buildModel();
-        if (object.id)
-            this._update(object);
-        else
-            this._create(object);
+    dataProcess() {
+        const iptDescription = $("#transaction-description");
+        if (!iptDescription.val()) {
+            const categoryName = $("#transaction-category-id option:selected").text();
+            iptDescription.val(categoryName);
+        }
     }
 
-    static buildModel() {
+    buildModel() {
         const id = $("#transaction-id").val();
         const description = $("#transaction-description").val();
         const type = $("#transaction-type").val();
@@ -192,19 +172,5 @@ export class TransactionForm {
             destinationAccountId = $("#transaction-destination-id").val();
 
         return new Transaction(id, description, type, value, categoryId, date, sourceAccountId, destinationAccountId);
-    }
-
-    _create(object) {
-        object.create().then(newObject => {
-            this._cb(newObject);
-            this._close();
-        });
-    }
-
-    _update(object) {
-        object.save().then(newObject => {
-            this._cb(newObject);
-            this._close();
-        });
     }
 }

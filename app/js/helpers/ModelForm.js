@@ -8,15 +8,24 @@ export class ModelForm {
 
     eventHandlers() {
         this._container.click(event => {
-            if (event.target.id === "btn-close-modal") {
+            if (event.target.id === "btn-close-modal")
                 this._close();
-            } else if (event.target.id === "btn-submit") {
-                if ($(event.target).closest('form')[0].checkValidity()) {
-                    event.preventDefault();
-                    this._submit();
-                }
-            }
         });
+
+        this._container.submit(event => {
+            this._submitForm(event);
+        });
+    }
+
+    _submitForm(event) {
+        event.preventDefault();
+        if ($(event.target).closest('form')[0].checkValidity()) {
+            this.dataProcess();
+            this.submit();
+        }
+    }
+
+    dataProcess() {
     }
 
     template(model) {
@@ -26,6 +35,10 @@ export class ModelForm {
     open(object = {}) {
         this._container.html(this.template(object));
         $('body').css('overflow', 'hidden');
+        //TODO check it later
+        // $('form').validate({
+        //     destination:
+        // });
     }
 
     _close() {
@@ -37,7 +50,7 @@ export class ModelForm {
         throw new Error("this method should be implemented in the child class");
     }
 
-    _submit() {
+    submit() {
         const object = this.buildModel();
         if (object.id)
             this._update(object);
