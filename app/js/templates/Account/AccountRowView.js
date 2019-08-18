@@ -2,7 +2,7 @@ export class AccountRowView {
 
     static template(account) {
         return `
-            <div class="row align-items-center clr-account" data-id="${account.id}">
+            <div class="template-row align-items-center clr-account" data-id="${account.id}">
                 <div onclick="window.location.href='/account/${account.id}'" class="row-main">
                     <span class="name f-9">${account.name}</span>
                     <span class="balance f-1">${account.balance.toFixed(2)}</span>

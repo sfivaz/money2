@@ -3,35 +3,26 @@ import {ConfirmDeleteModal} from "../../../shared/ConfirmDeleteModal";
 import {TransactionRowView} from "../Transaction/TransactionRowView";
 import {categoriesPromise} from "../../helpers/globalCategories";
 import {Category} from "../../models/Category";
+import {ModelPageView} from "../../../shared/ModelPageView";
 
-export class AccountPageView {
+export class AccountPageView extends ModelPageView {
 
     constructor(account) {
-        this._container = $(".page");
-        this._list = $("#list");
-        this.model = account;
+        super(account);
         this.childForm = new TransactionForm(account => this.updateChildren(account));
-        this._confirmModal = new ConfirmDeleteModal(id => this._deleteChild(id));
-        this._init();
+        this._childName = 'transaction';
     }
 
-    _init() {
+    init() {
         AccountPageView.populateTypeFilter();
         AccountPageView.populateCategoryFilter();
-        this.updateTemplate(this.model);
-        this._eventHandlers();
+        super.init();
     }
 
-    _eventHandlers() {
+    eventHandlers() {
+        super.eventHandlers();
         this._container.click(event => {
-            const button = $(event.target).closest('button');
-            if (button.attr('id') === 'btn-create-child')
-                this._createChild();
-            else if (button.hasClass('row-btn-edit'))
-                this._editChild(event);
-            else if (button.hasClass('row-btn-del'))
-                this._openDeleteModal(event);
-            else if (button.attr('id') === 'btn-clean-filter')
+            if (event.target.id === 'btn-clean-filter')
                 this._clearFilter();
             //TODO maybe I should isolate filters into another class
         });
@@ -70,26 +61,6 @@ export class AccountPageView {
         $("#filtered-balance").text(account.filteredBalance);
     }
 
-    _createChild() {
-        this.childForm.open();
-    }
-
-    _editChild(event) {
-        const accountId = AccountPageView._getAccountId(event);
-        const account = this.getChild(accountId);
-        this.childForm.open(account);
-    }
-
-    _openDeleteModal(event) {
-        const accountId = AccountPageView._getAccountId(event);
-        this._confirmModal._openConfirm('account', accountId);
-    }
-
-    static _getAccountId(event) {
-        const accountRow = $(event.target).closest('.template-row');
-        return accountRow.data('id');
-    }
-
     updateChildren(child) {
         const index = this.model.children.findIndex(currentChild => child.id === currentChild.id);
         if (index === -1)
@@ -101,23 +72,6 @@ export class AccountPageView {
                 this.model.children[index] = child;
         }
         this.updateTemplate(this.model);
-    }
-
-    _deleteChild(id) {
-        const child = this.getChild(id);
-        child.delete().then(() => {
-            this.remoteChild(child);
-            this.updateTemplate(this.model);
-        });
-    }
-
-    remoteChild(child) {
-        const index = this.model.children.findIndex(currentObject => currentObject.id === child.id);
-        this.model.children.splice(index, 1);
-    }
-
-    getChild(id) {
-        return this.model.children.find(object => object.id === Number(id));
     }
 
     filterByDate() {

@@ -1,39 +1,36 @@
-.template-row {
-    margin-bottom: 10px;
+.transaction-grid {
     display: grid;
-    grid-template-areas: "row-date row-description row-category row-value row-btn-edit row-btn-del";
+    grid-template-areas: "date desc cate value edit del";
     grid-template-columns: 15% 1fr 20% 10% auto auto;
-    padding: .2rem .5rem .2rem .5rem;
     align-items: center;
     grid-gap: .5rem;
 }
 
-.row-date {
-    grid-area: row-date;
+.grid-date {
+    grid-area: date;
 }
 
-.row-description {
-    grid-area: row-description;
+.grid-description {
+    grid-area: desc;
 }
 
-.row-category {
-    grid-area: row-category;
+.grid-category {
+    grid-area: cate;
 }
 
-.row-value {
-    grid-area: row-value;
+.grid-value {
+    grid-area: value;
 }
 
-.row-btn-edit {
-    grid-area: row-btn-edit;
+.grid-btn-edit {
+    grid-area: edit;
 }
 
-.row-btn-del {
-    grid-area: row-btn-del;
+.grid-btn-delete {
+    grid-area: del;
 }
 
 .clr-transfer-source {
-
     background-color: #e5515f;
 }
 
@@ -50,8 +47,8 @@
 }
 
 @media (max-width: 768px) {
-    .template-row {
-        grid-template-areas: "row-description row-description row-description row-btn-edit" "row-date row-category row-value row-btn-del";
+    .transaction-grid {
+        grid-template-areas: "desc desc desc edit" "date cate value del";
         grid-template-columns: 1fr 1fr 1fr auto;
         grid-template-rows: auto auto;
     }
