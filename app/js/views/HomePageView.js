@@ -1,5 +1,6 @@
 import {AccountForm} from "./Account/AccountForm";
 import {AccountRowView} from "./Account/AccountRowView";
+import {ConfirmDeleteModal} from "../../shared/ConfirmDeleteModal";
 
 export class HomePageView {
 
@@ -8,6 +9,7 @@ export class HomePageView {
         this._main = $("main");
         this.home = home;
         this.childForm = new AccountForm(account => this.updateChildren(account));
+        this._confirmModal = new ConfirmDeleteModal(id => this._deleteChild(id));
         this._init();
     }
 
@@ -27,7 +29,9 @@ export class HomePageView {
                 const account = this.getChild(accountId);
                 this.childForm.open(account);
             } else if (button.hasClass('btn-delete-row')) {
-
+                const accountRow = $(event.target).closest('.row');
+                const accountId = accountRow.data('id');
+                this._confirmModal._openConfirm('account', accountId);
             }
         });
     }
@@ -63,6 +67,16 @@ export class HomePageView {
             this.home._accounts[index] = child;
         this.updateTemplate(this.home);
     }
+
+    _deleteChild(id) {
+        const child = this.getChild(id);
+        child.delete().then(() => {
+            const index = this.home.children.findIndex(currentObject => currentObject.id == id);
+            this.home.children.splice(index, 1);
+            this.updateTemplate(this.home);
+        });
+    }
+
 
     getChild(id) {
         return this.home.children.find(object => object.id == id);

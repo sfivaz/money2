@@ -20,9 +20,7 @@ export class ORM extends EventEmitter {
     }
 
     delete() {
-        DataSync.delete(this.getAPI() + '/' + this._id)
-            .then(() => this.emit("remove model"))
-            .catch(console.log);
+        return DataSync.delete(this.getAPI() + '/' + this._id);
     }
 
     find(id) {
