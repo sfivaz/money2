@@ -4,31 +4,96 @@ import {Category} from "../../models/Category";
 import {TransactionForm} from "../Transaction/TransactionForm";
 import {MyMoment} from "../../helpers/myMoment";
 import {Account} from "../../models/Account";
+import {AccountForm} from "./AccountForm";
+import {ConfirmDeleteModal} from "../../../shared/ConfirmDeleteModal";
+import {AccountRowView} from "./AccountRowView";
 
-export class AccountPageView extends PageView {
+export class AccountPageView {
 
-    constructor(model) {
-        super(model);
+    constructor(account) {
+        this._container = $(".page");
+        this._main = $("main");
+        this.model = account;
+        console.log(account);
+        this.childForm = new AccountForm(account => this.updateChildren(account));
+        this._confirmModal = new ConfirmDeleteModal(id => this._deleteChild(id));
+        this._init();
     }
 
-    template() {
-
-        this.addToNavBar();
-        this.elements = PageView.pageTemplate("New Transaction");
-
-        this.elements.header.className = "";
-
-        this.addHeaderInfo();
-        this.addFilterBar();
-
-        this.update();
-
-        return this.elements.template;
+    _init() {
+        this.updateTemplate(this.model);
+        this._eventHandlers();
     }
 
-    /**
-     * this method adds the name of the account in the navbar
-     */
+    _eventHandlers() {
+        this._container.click(event => {
+            const button = $(event.target).closest('button');
+            if (button.attr('id') === 'btn-create-child') {
+                this.createChildTemplate();
+            } else if (button.hasClass('btn-edit-row')) {
+                const accountRow = $(event.target).closest('.row');
+                const accountId = accountRow.data('id');
+                const account = this.getChild(accountId);
+                this.childForm.open(account);
+            } else if (button.hasClass('btn-delete-row')) {
+                const accountRow = $(event.target).closest('.row');
+                const accountId = accountRow.data('id');
+                this._confirmModal._openConfirm('account', accountId);
+            }
+        });
+    }
+
+    template(account) {
+        return `
+            <div class="d-flex justify-content-between">
+                <h2>${account.name}</h2><h2>${account.getFullBalance()}</h2>
+            </div>
+            <div>${this.listTemplate(account.children)}</div>
+        `;
+
+        // this.addToNavBar();
+        // this.addFilterBar();
+        // this.elements.filteredBalance.textContent = this.model.getBalanceFiltered();
+    }
+
+    listTemplate(children) {
+        // return children.map(child => {
+        //     return AccountRowView.template(child);
+        // }).join('');
+    }
+
+    updateTemplate(home) {
+        this._main.html(this.template(home));
+    }
+
+    createChildTemplate() {
+        this.childForm.open();
+    }
+
+    updateChildren(child) {
+        const index = this.model.children.findIndex(currentChild => child.id === currentChild.id);
+        if (index === -1)
+            this.model.addChild(child);
+        else
+            this.model._accounts[index] = child;
+        this.updateTemplate(this.model);
+    }
+
+    _deleteChild(id) {
+        const child = this.getChild(id);
+        child.delete().then(() => {
+            const index = this.model.children.findIndex(currentObject => currentObject.id === child.id);
+            this.model.children.splice(index, 1);
+            this.updateTemplate(this.model);
+        });
+    }
+
+    getChild(id) {
+        return this.model.children.find(object => object.id === Number(id));
+    }
+
+    /*----------------------------------------------------------------------------------------------------------------*/
+
     addToNavBar() {
         const link = $$("<a>");
         link.className = "nav-item nav-link";
@@ -191,34 +256,6 @@ export class AccountPageView extends PageView {
         else
             this.filterByCategory(category_id);
     }
-
-    /**
-     * this method creates the header with the name and the total
-     */
-    addHeaderInfo() {
-        this.elements.headerInfo = $$("<div>");
-        this.elements.name = $$("<h2>");
-        this.elements.initial_balance = $$("<h2>");
-
-        this.elements.headerInfo.className = "d-flex justify-content-between";
-
-        this.elements.header.appendChild(this.elements.headerInfo);
-        this.elements.headerInfo.appendChild(this.elements.name);
-        this.elements.headerInfo.appendChild(this.elements.initial_balance);
-    }
-
-    /**
-     * This method updates the data shown in the the header of the page based on the model's data
-     */
-    update() {
-        this.updateHeader();
-    };
-
-    updateHeader() {
-        this.elements.name.textContent = this.model.name;
-        this.elements.initial_balance.textContent = this.model.getFullBalance();
-        this.elements.filteredBalance.textContent = this.model.getBalanceFiltered();
-    };
 
     createChildTemplate() {
 

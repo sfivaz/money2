@@ -1,6 +1,15 @@
 <%- include('header'); -%>
 
-<main data-account-id="<%= id %>" class="container"></main>
+<div data-account-id="<%= id %>" class="page container">
+    <main></main>
+
+    <footer>
+        <button id="btn-create-child" class="footer-button btn btn-success">New transaction</button>
+    </footer>
+
+    <section id="form"></section>
+    <section id="confirm-modal"></section>
+</div>
 
 <%- include('imports'); -%>
 

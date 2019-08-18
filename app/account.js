@@ -1,10 +1,9 @@
-import {AccountPageBuilder} from "./js/builders/AccountPageBuilder";
 import {Account} from "./js/models/Account";
+import {AccountPageView} from "./js/templates/Account/AccountPageView";
 
-const accountId = $("main").data('accountId');
+const accountId = $(".page").data('accountId');
 
-new Account()
-    .find(accountId)
-    .then(account =>
-        AccountPageBuilder.build(account));
-
+new Account().find(accountId)
+    .then(account => {
+        $(() => new AccountPageView(account));
+    });
