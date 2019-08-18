@@ -13,6 +13,5 @@ export class Categories extends Parent {
 
     set children(value) {
         this._categories = value;
-        this.emit('children added');
     }
 }

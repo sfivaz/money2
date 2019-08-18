@@ -13,7 +13,6 @@ export class Home extends Parent {
 
     set children(value) {
         this._accounts = value;
-        this.emit("children added");
     }
 
     totalFixed() {

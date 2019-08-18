@@ -64,7 +64,6 @@ export class Account extends Parent {
 
     set children(value) {
         this._transactions = value;
-        this.emit("children added");
     }
 
     get transactions() {
@@ -162,6 +161,5 @@ export class Account extends Parent {
     addChild(child) {
         this.children.push(child);
         this.orderChildren();
-        this.emit("child added", child);
     }
 }
