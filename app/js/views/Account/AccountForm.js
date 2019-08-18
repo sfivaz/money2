@@ -34,6 +34,7 @@ export class AccountForm {
                 </div>
                 <form>
                     <input id="account-id" type="hidden" value="${account.id || ''}">
+                    <input id="account-balance" type="hidden" value="${account.balance || 0}">
                     <div class="form-group">
                         <label>name</label>
                         <input id="account-name" class="form-control" placeholder="name" value="${account.name || ''}" 
@@ -60,7 +61,8 @@ export class AccountForm {
     static buildModel() {
         const id = $("#account-id").val();
         const name = $("#account-name").val();
-        return new Account(id, name);
+        const balance = $("#account-balance").val();
+        return new Account(id, name, balance);
     }
 
     _submit() {
@@ -79,8 +81,9 @@ export class AccountForm {
     }
 
     _update(object) {
-        object.save().then(newObject => {
-            this._cb(newObject);
+        object.save().then(() => {
+            console.log(object);
+            this._cb(object);
             this._close();
         });
     }

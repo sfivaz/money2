@@ -24,7 +24,8 @@ export class HomePageView {
             } else if (button.hasClass('btn-edit-row')) {
                 const accountRow = $(event.target).closest('.row');
                 const accountId = accountRow.data('id');
-                console.log(accountId);
+                const account = this.getChild(accountId);
+                this.childForm.open(account);
             } else if (button.hasClass('btn-delete-row')) {
 
             }
@@ -61,5 +62,9 @@ export class HomePageView {
         else
             this.home._accounts[index] = child;
         this.updateTemplate(this.home);
+    }
+
+    getChild(id) {
+        return this.home.children.find(object => object.id == id);
     }
 }

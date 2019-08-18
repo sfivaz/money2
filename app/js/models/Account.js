@@ -8,9 +8,9 @@ export class Account extends Parent {
 
     constructor(id, name, balance, transactions, user_id, budget) {
         super();
-        this._id = id;
+        this._id = Number(id);
         this._name = name;
-        this._balance = balance;
+        this._balance = Number(balance) || 0;
         this._user_id = user_id;
         this._budget = budget;
     }
@@ -71,7 +71,6 @@ export class Account extends Parent {
     get transactions() {
         return this.children;
     }
-
 
     set transactions(transactions) {
         let transactionsObject = [];
