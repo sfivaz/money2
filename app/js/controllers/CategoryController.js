@@ -1,4 +1,6 @@
-class CategoryController extends Controller {
+import {Controller} from "./Controller";
+
+export class CategoryController extends Controller {
 
     edit(elements) {
         this.model.name = elements[0];

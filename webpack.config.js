@@ -9,7 +9,8 @@ module.exports = {
     },
     entry: {
         home: ['./app/home.js'],
-        account: ['./app/account.js']
+        account: ['./app/account.js'],
+        category: ['./app/category.js']
     },
     output: {
         path: path.join(__dirname, 'dist'),

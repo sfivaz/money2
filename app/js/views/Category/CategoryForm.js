@@ -1,4 +1,7 @@
-class CategoryForm extends View{
+import {View} from "../View";
+import {$$} from "../../helpers/myJQuery";
+
+export class CategoryForm extends View{
 
     static template() {
 

@@ -1,4 +1,8 @@
-class CategoryRowView extends RowView {
+import {RowView} from "../RowView";
+import {$$} from "../../helpers/myJQuery";
+import {CategoryForm} from "./CategoryForm";
+
+export class CategoryRowView extends RowView {
 
     template() {
 

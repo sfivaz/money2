@@ -6,4 +6,8 @@ module.exports = (app) => {
     app.get('/account/:id', function (req, res) {
         res.render('./account', {id: req.params.id});
     });
+
+    app.get('/categories', function (req, res) {
+        res.render('./categories.html');
+    });
 };

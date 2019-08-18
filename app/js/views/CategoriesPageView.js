@@ -1,4 +1,8 @@
-class CategoriesPageView extends PageView {
+import {PageView} from "./PageView";
+import {CategoryForm} from "./Category/CategoryForm";
+import {$$} from "../helpers/myJQuery";
+
+export class CategoriesPageView extends PageView {
 
     template() {
 

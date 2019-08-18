@@ -1,4 +1,6 @@
-class Categories extends Parent {
+import {Parent} from "./Parent";
+
+export class Categories extends Parent {
 
     constructor() {
         super();
