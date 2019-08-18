@@ -1,10 +1,15 @@
 import {Account} from "../../models/Account";
+import {accountsPromise} from "../../helpers/globalAccounts";
+import {categoriesPromise} from "../../helpers/globalCategories";
 
 export class TransactionForm {
 
     constructor(cb) {
         this._container = $("#form");
         this._cb = cb;
+        this.accounts = ['a', 'b'];
+        accountsPromise.then(accounts => this.accounts = accounts);
+        categoriesPromise.then(categories => this.categories = categories);
         this.eventHandlers();
     }
 
@@ -22,7 +27,7 @@ export class TransactionForm {
     }
 
     open(object = {}) {
-        this._container.html(TransactionForm.template(object));
+        this._container.html(this.template(object));
         $('body').css('overflow', 'hidden');
     }
 
@@ -38,65 +43,75 @@ export class TransactionForm {
         return new Account(id, name, balance);
     }
 
-    static template(transaction) {
+    template(transaction) {
         let action = 'Create';
         if (transaction.id) {
             action = 'Edit';
         }
-        return `
-            <div class="my-modal">
-                <div class="d-flex align-items-start">
-                    <h2 class="f-1">${action} transaction</h2>
-                    <button id="btn-close-modal" class="btn btn-outline-dark">X</button>
+        const types = ["spending", "income", "transfer"];
+        //@formatter:off
+            return `
+                <div class="my-modal">
+                    <div class="d-flex align-items-start">
+                        <h2 class="f-1">${action} transaction</h2>
+                        <button id="btn-close-modal" class="btn btn-outline-dark">X</button>
+                    </div>
+                    <form>
+                        <div class="form-group">
+                            <div>
+                                <label>description</label>
+                                <input class="form-control" placeholder="description">
+                            </div>
+                        </div>
+                        <div class="form-row ">
+                            <div class="col">
+                                <label>type</label>
+                                <select class="form-control">
+                                    ${types.map(type => `<option value="${type}">${type}</option>`).join('')}
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label>value</label>
+                                <input class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="col">
+                                <label>category</label>
+                                <select class="form-control">
+                                    ${this.categories.map(category => 
+                                        `<option value="${category.id}">${category.name}</option>`).join('')}
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label>date</label>
+                                <input class="form-control" type="date">
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="col">
+                                <label>source account</label>
+                                <select class="form-control">
+                                    ${this.accounts.map(account => 
+                                        `<option value="${account.id}">${account.name}</option>`).join('')}
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label>destination account</label>
+                                <select class="form-control">
+                                    ${this.accounts.map(account => 
+                                        `<option value="${account.id}">${account.name}</option>`).join('')}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <button id="btn-submit" class="btn-lg btn-block btn-success d-block m-auto">${action}</button>
+                        </div>
+                    </form>
                 </div>
-                <form>
-                    <div class="form-group">
-                        <div>
-                            <label>description</label>
-                            <input class="form-control" placeholder="description">
-                        </div>
-                    </div>
-                    <div class="form-row ">
-                        <div class="col">
-                            <label>type</label>
-                            <select class="form-control"></select>
-                        </div>
-                        <div class="col">
-                            <label>value</label>
-                            <input class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-row form-group">
-                        <div class="col">
-                            <label>category</label>
-                            <select class="form-control"></select>
-                        </div>
-                        <div class="col">
-                            <label>date</label>
-                            <input class="form-control" type="date">
-                        </div>
-                    </div>
-                    <div class="form-row form-group">
-                        <div class="col">
-                            <label>source account</label>
-                            <select class="form-control"></select>
-                        </div>
-                        <div class="col">
-                            <label>destination account</label>
-                            <select class="form-control" disabled></select>
-                        </div>
-                    </div>
-                    <div class="form-row form-group">
-                        <button id="btn-submit" class="btn-lg btn-block btn-success d-block m-auto">${action}</button>
-                    </div>
-                </form>
-            </div>
-        `;
+            `;
+        //@formatter:on
 
-        // //declaring specials
-        // ["spending", "income", "transfer"].forEach((type, key) =>
-        //     template.slcType[key] = new Option(type, type));
-        //
         // template.slcType.addEventListener("change", () =>
         //     template.slcAccountDestiny.disabled = (template.slcType.value !== "transfer"));
     }
