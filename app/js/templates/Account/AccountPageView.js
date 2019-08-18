@@ -44,7 +44,7 @@ export class AccountPageView {
             else if (event.target.id === 'iptCategoryFilter')
                 this.filterByCategory(event.target, $("#cbxBudget").is(':checked'));
             else if (event.target.id === 'cbxBudget')
-                this.toggleBudget(event.target.checked, $("#iptCategoryFilter").val());
+                this.toggleBudget(event.target.checked, $("#iptCategoryFilter"));
         });
     }
 
@@ -153,12 +153,14 @@ export class AccountPageView {
         const budget = option.data('budget');
         const category = new Category(id, null, budget);
 
+        const checkBox = $("#cbxBudget");
+
         if (id) {
-            // $("#cbxBudget").removeAttr('disabled');
+            checkBox.removeAttr('disabled');
             this.model.filterCategory(category, useBudget);
         } else {
-            // $("#cbxBudget").attr('disabled', 'disabled');
-            // $("#cbxBudget").prop('checked', false);
+            checkBox.attr('disabled', 'disabled');
+            checkBox.prop('checked', false);
             this._clearFilter("category");
         }
         this.updateTemplate(this.model);
@@ -174,11 +176,11 @@ export class AccountPageView {
         });
     }
 
-    toggleBudget(value, category_id) {
+    toggleBudget(value, select) {
         if (value)
-            this.filterByCategory(category_id, true);
+            this.filterByCategory(select, true);
         else
-            this.filterByCategory(category_id);
+            this.filterByCategory(select);
     }
 
     _clearFilter(filter = null) {
