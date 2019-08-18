@@ -15,10 +15,14 @@ export class CategoryForm extends ModelForm {
                 </div>
                 <form>
                     <input id="category-id" type="hidden" value="${category.id || ''}">
-                    <input id="category-budget" type="hidden" value="${category.budget || 0}">
                     <div class="form-group">
                         <label>name</label>
                         <input id="category-name" class="form-control" placeholder="name" value="${category.name || ''}" 
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label>budget</label>
+                        <input id="category-budget" class="form-control" placeholder="budget" value="${category.budget || ''}" 
                             required>
                     </div>
                     <div>
