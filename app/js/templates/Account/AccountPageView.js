@@ -30,12 +30,12 @@ export class AccountPageView extends ModelPageView {
         this._container.change(event => {
             if (event.target.id === 'iptDateFilter')
                 this.filterByDate();
-            else if (event.target.id === 'iptTypeFilter')
+            else if (event.target.id === 'slcTypeFilter')
                 this.filterByType(event.target.value);
-            else if (event.target.id === 'iptCategoryFilter')
+            else if (event.target.id === 'slcCategoryFilter')
                 this.filterByCategory(event.target, $("#cbxBudget").is(':checked'));
             else if (event.target.id === 'cbxBudget')
-                this.toggleBudget(event.target.checked, $("#iptCategoryFilter"));
+                this.toggleBudget(event.target.checked, $("#slcCategoryFilter"));
         });
     }
 
@@ -92,7 +92,7 @@ export class AccountPageView extends ModelPageView {
     }
 
     static populateTypeFilter() {
-        const select = $("#iptTypeFilter");
+        const select = $("#slcTypeFilter");
         const types = ["spending", "income", "transfer"];
 
         const optionsHtml = ['select an option'].concat(types)
@@ -121,7 +121,7 @@ export class AccountPageView extends ModelPageView {
     }
 
     static populateCategoryFilter() {
-        const select = $("#iptCategoryFilter");
+        const select = $("#slcCategoryFilter");
         categoriesPromise.then(categories => {
             const optionsHtml = [{id: '', name: 'select an option', budget: ''}].concat(categories)
                 .map(category => `<option data-budget="${category.budget}" 
@@ -137,7 +137,7 @@ export class AccountPageView extends ModelPageView {
             this.filterByCategory(select);
     }
 
-    _clearFilter(filter = null) {
+    _clearFilter(filter = "") {
         switch (filter) {
             case "type":
                 AccountPageView.cleanFilterType();
@@ -161,11 +161,11 @@ export class AccountPageView extends ModelPageView {
     }
 
     static cleanFilterType() {
-        $("#slcTypeFilter option:nth-child(1)").attr('selected', 'selected');
+        $("#slcTypeFilter").prop('selectedIndex', 0);
     }
 
     static cleanFilterCategory() {
-        $("#slcCategoryFilter option:nth-child(1)").attr('selected', 'selected');
-        $("#cbxBudget").removeAttr('checked');
+        $("#slcCategoryFilter").prop('selectedIndex', 0);
+        $("#cbxBudget").prop('checked', false);
     }
 }
