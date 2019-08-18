@@ -1,21 +1,20 @@
 import {ORM} from "./ORM";
 import {API} from "../helpers/API";
-import {MyMoment} from "../helpers/myMoment";
-import {Category} from "./Category";
+import {dateFormatEN, dateFormatFR} from "../helpers/dateGlobal";
 
 export class Transaction extends ORM {
 
     constructor(id, description, type, value, categoryId, date, sourceAccountId, destinationAccountId) {
         super();
-        this._id = id;
-        this._description = description;
-        this._type = type;
-        this._value = value;
-        this._categoryId = categoryId;
-        this._date = new Date(date);
-        this._sourceAccountId = sourceAccountId;
-        this._destinationAccountId = destinationAccountId;
-        this._filteredBy = [];
+        this.id = id;
+        this.description = description;
+        this.type = type;
+        this.value = value;
+        this.categoryId = categoryId;
+        this.date = date;
+        this.sourceAccountId = sourceAccountId;
+        this.destinationAccountId = destinationAccountId;
+        this.filteredBy = [];
     }
 
     getAPI() {
@@ -27,7 +26,7 @@ export class Transaction extends ORM {
     }
 
     set id(value) {
-        this._id = value;
+        this._id = Number(value);
     }
 
     get type() {
@@ -66,12 +65,12 @@ export class Transaction extends ORM {
         return this._date;
     }
 
-    get dateFormattedFR() {
-        return MyMoment.formatDateFR(this._date);
+    get dateInFR() {
+        return this._date.format(dateFormatFR);
     }
 
-    get dateFormattedEN() {
-        return MyMoment.formatDateEN(this._date);
+    get dateInEN() {
+        return this._date.format(dateFormatEN);
     }
 
     get dateLong() {
@@ -79,44 +78,31 @@ export class Transaction extends ORM {
     }
 
     set date(value) {
-        this._date = new Date(value);
+        this._date = moment(value, dateFormatEN);
     }
 
     get destinationAccountId() {
-        return Number(this._destinationAccountId) || null;
+        return this._destinationAccountId !== 0 ? this._destinationAccountId : null;
     }
 
     set destinationAccountId(value) {
-        this._destinationAccountId = value;
+        this._destinationAccountId = Number(value);
     }
 
     get sourceAccountId() {
-        return Number(this._sourceAccountId);
+        return this._sourceAccountId;
     }
 
     set sourceAccountId(value) {
-        this._sourceAccountId = value;
+        this._sourceAccountId = Number(value);
     }
 
     get categoryId() {
-        return Number(this._categoryId);
+        return this._categoryId;
     }
 
     set categoryId(value) {
-        this._categoryId = value;
-    }
-
-//TODO ref - maybe using browser database
-    getCategory() {
-        return new Promise(resolve => {
-            const category = new Category();
-            category.findAll().then(categories => {
-                for (const category of categories) {
-                    if (category.id === Number(this._categoryId))
-                        resolve(category.name);
-                }
-            });
-        });
+        this._categoryId = Number(value);
     }
 
     get filteredBy() {

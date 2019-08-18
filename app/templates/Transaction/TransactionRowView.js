@@ -7,7 +7,7 @@ export class TransactionRowView {
         return `
             <div class="template-row transaction-grid align-items-center ${TransactionRowView.getColor(account)}" 
                 data-id="${account.id}">
-                <span class="grid-date">${account.dateFormattedFR}</span>
+                <span class="grid-date">${account.dateInFR}</span>
                 <span class="grid-category">${account.category.name}</span>
                 <span class="grid-description">${account.description}</span>
                 <span class="grid-value">${account.value.toFixed(2)}</span>
