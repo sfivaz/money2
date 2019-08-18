@@ -3,7 +3,7 @@ import {categoriesPromise} from "../../helpers/globalCategories";
 import {MyMoment} from "../../helpers/myMoment";
 import {Transaction} from "../../models/Transaction";
 import {getCurrentAccount} from "../../helpers/accountHelper";
-import {ModelForm} from "../../helpers/ModelForm";
+import {ModelForm} from "../../../shared/ModelForm";
 
 export class TransactionForm extends ModelForm {
 
