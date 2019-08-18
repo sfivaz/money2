@@ -1,3 +1,0 @@
-RewriteEngine on
-RewriteCond $1 !\.(css|js|gif|jpe?g|png) [NC]
-RewriteRule (.*) routes.php [QSA,L]
