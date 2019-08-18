@@ -60,7 +60,7 @@ export class HomePageView {
     }
 
     updateChildren(child) {
-        const index = this.home.children.findIndex(currentChild => child.id == currentChild.id);
+        const index = this.home.children.findIndex(currentChild => child.id === currentChild.id);
         if (index === -1)
             this.home.addChild(child);
         else
@@ -71,14 +71,13 @@ export class HomePageView {
     _deleteChild(id) {
         const child = this.getChild(id);
         child.delete().then(() => {
-            const index = this.home.children.findIndex(currentObject => currentObject.id == id);
+            const index = this.home.children.findIndex(currentObject => currentObject.id === child.id);
             this.home.children.splice(index, 1);
             this.updateTemplate(this.home);
         });
     }
 
-
     getChild(id) {
-        return this.home.children.find(object => object.id == id);
+        return this.home.children.find(object => object.id === Number(id));
     }
 }
