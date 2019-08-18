@@ -1,6 +1,7 @@
 import {TransactionForm} from "../Transaction/TransactionForm";
 import {ConfirmDeleteModal} from "../../../shared/ConfirmDeleteModal";
 import {TransactionRowView} from "../Transaction/TransactionRowView";
+import {categoriesPromise} from "../../helpers/globalCategories";
 
 export class AccountPageView {
 
@@ -15,6 +16,7 @@ export class AccountPageView {
 
     _init() {
         AccountPageView.populateTypeFilter();
+        AccountPageView.populateCategoryFilter();
         this.updateTemplate(this.model);
         this._eventHandlers();
     }
@@ -36,8 +38,12 @@ export class AccountPageView {
         this._container.change(event => {
             if (event.target.id === 'iptDateFilter')
                 this.filterByDate();
-            if (event.target.id === 'iptTypeFilter')
+            else if (event.target.id === 'iptTypeFilter')
                 this.filterByType(event.target.value);
+            else if (event.target.id === 'iptCategoryFilter')
+                this.filterByCategory(event.target.value, $("#cbxBudget").is('checked'));
+            else if (event.target.id === 'cbxBudget')
+                this.toggleBudget(event.target.checked, $("#iptCategoryFilter").val());
         });
     }
 
@@ -140,50 +146,31 @@ export class AccountPageView {
         select.html(optionsHtml);
     }
 
-    // addCategoryFilter() {
-    //     this.elements.categoryFilter = $$("<div>");
-    //     this.elements.lblCategoryFilter = $$("<label>");
-    //     this.elements.slcCategoryFilter = $$("<select>");
-    //     this.elements.lblBudget = $$("<label>");
-    //     this.elements.cbxBudget = $$("<input>");
-    //
-    //     this.elements.lblCategoryFilter.textContent = "Choose a category";
-    //     this.elements.lblCategoryFilter.for = "iptCategoryFilter";
-    //     this.elements.slcCategoryFilter.for = "iptCategoryFilter";
-    //     this.elements.lblBudget.textContent = "use Budget";
-    //     this.elements.lblBudget.for = "cbxBudget";
-    //     this.elements.cbxBudget.for = "cbxBudget";
-    //     this.elements.cbxBudget.type = "checkbox";
-    //
-    //     this.elements.categoryFilter.className = "filter-category d-flex";
-    //     this.elements.lblCategoryFilter.className = "filter__label";
-    //     this.elements.slcCategoryFilter.className = "filter__select custom-select custom-select-sm";
-    //
-    //     new Category().findAll()
-    //         .then(categories => {
-    //             [{name: "select an option", id: ""}].concat(categories).forEach((category, key) =>
-    //                 this.elements.slcCategoryFilter[key] = new Option(category.name, category.id));
-    //
-    //             this.elements.slcCategoryFilter.addEventListener("change",
-    //                 () => {
-    //                     this.filterByCategory(this.elements.slcCategoryFilter.value, this.elements.cbxBudget.checked);
-    //                     this.elements.cbxBudget.disabled = (this.elements.slcCategoryFilter.value === "");
-    //                 });
-    //
-    //             this.elements.cbxBudget.disabled = (this.elements.slcCategoryFilter.value === "");
-    //
-    //             this.elements.cbxBudget.addEventListener("change",
-    //                 () => this.toggleBudget(this.elements.cbxBudget.checked, this.elements.slcCategoryFilter.value));
-    //
-    //
-    //             this.elements.filterBar.appendChild(this.elements.categoryFilter);
-    //             this.elements.categoryFilter.appendChild(this.elements.lblCategoryFilter);
-    //             this.elements.categoryFilter.appendChild(this.elements.slcCategoryFilter);
-    //             this.elements.categoryFilter.appendChild(this.elements.lblBudget);
-    //             this.elements.categoryFilter.appendChild(this.elements.cbxBudget);
-    //         });
-    // }
-    //
+    filterByCategory(categoryId, useBudget = false) {
+        if (categoryId)
+            this.model.filterCategory(categoryId, useBudget);
+        else
+            this._clearFilter("category");
+        this.updateTemplate(this.model);
+    }
+
+    static populateCategoryFilter() {
+        const select = $("#iptCategoryFilter");
+        categoriesPromise.then(categories => {
+            const optionsHtml = [{id: '', name: 'select an option'}].concat(categories)
+                .map(category => `<option value="${category.id}">${category.name}</option>`);
+
+            select.html(optionsHtml);
+        });
+    }
+
+    toggleBudget(value, category_id) {
+        if (value)
+            this.filterByCategory(category_id, true);
+        else
+            this.filterByCategory(category_id);
+    }
+
     _clearFilter(filter = null) {
         if (filter === "type")
             AccountPageView.cleanFilterType();
@@ -208,20 +195,6 @@ export class AccountPageView {
     static cleanFilterCategory() {
         $("#slcCategoryFilter option:nth-child(1)").attr('selected', 'selected');
     }
-
-// filterByCategory(category_id, useBudget = false) {
-//     if (category_id)
-//         this.emit("filter by category", category_id, useBudget);
-//     else
-//         this._clearFilter("category");
-// }
-//
-// toggleBudget(value, category_id) {
-//     if (value)
-//         this.filterByCategory(category_id, true);
-//     else
-//         this.filterByCategory(category_id);
-// }
 
 // _createChild() {
 //

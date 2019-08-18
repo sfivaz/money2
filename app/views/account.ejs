@@ -19,8 +19,13 @@
                 <select id="iptTypeFilter" class="filter__select custom-select custom-select-sm"></select>
             </div>
 
-            <!--            // this.addTypeFilter();-->
-            <!--            // this.addCategoryFilter();-->
+            <div class="filter-category d-flex">
+                <label for="iptCategoryFilter" class="filter__label">Choose a category</label>
+                <select id="iptCategoryFilter" class="filter__select custom-select custom-select-sm"></select>
+                <label for="cbxBudget">use Budget</label>
+                <input type="checkbox" id="cbxBudget" disabled>
+            </div>
+
             <button class="btn-clean-filter btn btn-sm btn-secondary">clean filters</button>
             <h3 class="filtered-balance"></h3>
         </div>
