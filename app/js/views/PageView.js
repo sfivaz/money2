@@ -5,14 +5,6 @@ export class PageView extends View {
     constructor(props) {
         super(props);
         this.container = null;
-        this.eventHandlers();
-    }
-
-    eventHandlers() {
-        this.container.click(event => {
-            if (event.target.id === "btn-create-child")
-                this.createChildTemplate();
-        });
     }
 
     showChild(childView) {

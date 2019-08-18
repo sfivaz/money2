@@ -1,49 +1,65 @@
-import {View} from "../View";
-import {$$} from "../../helpers/myJQuery";
+export class AccountForm {
 
-export class AccountForm extends View {
+    constructor() {
+        this._container = $("#form");
+        this.eventHandlers();
+    }
 
-    static template() {
-        const template = {
-            form: $$("<div>"),
-            header: $$("<header>"),
-            title: $$("<h2>"),
-            btnClose: $$("<button>"),
-            main: $$("<main>"),
-            lblName: $$("<label>"),
-            iptName: $$("<input>"),
-            footer: $$("<footer>"),
-            btnSubmit: $$("<button>")
-        };
+    eventHandlers() {
+        this._container.click(event => {
+            if (event.target.id === "btn-close-modal") {
+                this._close();
+            } else if (event.target.id === "btn-submit") {
+                if ($(event.target).closest('form')[0].checkValidity()) {
+                    event.preventDefault();
+                    this._submit();
+                }
+            }
+        });
+    }
 
-        template.form.className = "my-modal";
+    static template(account) {
+        let action = 'Create';
+        if (account.id) {
+            action = 'Edit';
+        }
+        return `
+            <div class="my-modal">
+                <div class="d-flex align-items-center">
+                    <h2 class="f-1">${action}</h2>
+                    <button class="btn btn-outline-dark">X</button>
+                </div>
+                <form>
+                    <div class="form-group">
+                        <label>name</label>
+                        <input class="form-control" placeholder="name">
+                    </div>
+                    <div>
+                        <button class="btn-submit btn-lg btn-block btn-success d-block m-auto">${action}</button>
+                    </div>
+                </form>
+            </div>
+        `;
 
-        template.header.className = "d-flex align-items-center";
-        template.title.className = "f-1";
-        template.btnClose.className = "btn btn-outline-dark";
+        // template.btnClose.addEventListener("click", () =>
+        //     template.form.parentElement.removeChild(template.form));
+    }
 
-        template.btnSubmit.className = "btn-submit btn-lg btn-block btn-success d-block m-auto";
+    open(object = {}) {
+        this._container.html(AccountForm.template(object));
+        $('body').css('overflow', 'hidden');
+    }
 
-        template.iptName.className = "form-control form-group";
+    _close() {
+        this._container.html('');
+        $('body').css('overflow', 'auto');
+    }
 
-        template.iptName.placeholder = "name";
-
-        template.lblName.textContent = "name";
-        template.btnClose.textContent = "X";
-
-        template.btnClose.addEventListener("click", () =>
-            template.form.parentElement.removeChild(template.form));
-
-        document.body.appendChild(template.form);
-        template.form.appendChild(template.header);
-        template.form.appendChild(template.main);
-        template.form.appendChild(template.footer);
-        template.header.appendChild(template.title);
-        template.header.appendChild(template.btnClose);
-        template.main.appendChild(template.lblName);
-        template.main.appendChild(template.iptName);
-        template.footer.appendChild(template.btnSubmit);
-
-        return template;
+    _submit() {
+        // const object = this.buildModel();
+        // if (object.id)
+        //     this._update(object);
+        // else
+        //     this._create(object);
     }
 }
