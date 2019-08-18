@@ -38,7 +38,7 @@ export class Controller {
     }
 
     onCreateChildren() {
-        this.view.update();
+        this.view.updateTemplate();
         this.showChildren();
         this.model.children.forEach((child) => this.mapChildEvents(child));
     }
@@ -55,7 +55,7 @@ export class Controller {
     }
 
     onUpdateChildren() {
-        this.view.update();
+        this.view.updateTemplate();
         this.view.clearAll();
         this.showChildren();
     }

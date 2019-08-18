@@ -7,12 +7,12 @@ export class HomePageView {
         this._container = $(".page");
         this._main = $("main");
         this.home = home;
-        this.childForm = new AccountForm();
+        this.childForm = new AccountForm(account => this.updateChildren(account));
         this._init();
     }
 
     _init() {
-        this.update(this.home);
+        this.updateTemplate(this.home);
         this._eventHandlers();
     }
 
@@ -46,17 +46,20 @@ export class HomePageView {
         }).join('');
     }
 
-    update(home) {
+    updateTemplate(home) {
         this._main.html(this.template(home));
     }
 
     createChildTemplate() {
-
         this.childForm.open();
+    }
 
-        // template.btnSubmit.addEventListener("click", () => {
-        //     this.emit("create child", template.iptName.value);
-        //     template.form.parentElement.removeChild(template.form);
-        // });
+    updateChildren(child) {
+        const index = this.home.children.findIndex(currentChild => child.id == currentChild.id);
+        if (index === -1)
+            this.home.addChild(child);
+        else
+            this.home._accounts[index] = child;
+        this.updateTemplate(this.home);
     }
 }

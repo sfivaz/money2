@@ -64,25 +64,25 @@ export class AccountController extends Controller {
     filterMonths(month, year) {
         this.model.filterMonths(month, year);
         this.showChildren();
-        this.view.update();
+        this.view.updateTemplate();
     }
 
     filterType(type) {
         this.model.filterType(type);
         this.showChildren();
-        this.view.update();
+        this.view.updateTemplate();
     }
 
     filterCategory(category_id, useBudget) {
         this.model.filterCategory(category_id, useBudget);
         this.showChildren();
-        this.view.update();
+        this.view.updateTemplate();
     }
 
     clearFilter(filter) {
         this.model.clearFilter(filter);
         this.showChildren();
-        this.view.update();
+        this.view.updateTemplate();
     }
 
     useBudget() {

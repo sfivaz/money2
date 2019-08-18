@@ -1,7 +1,10 @@
+import {Account} from "../../models/Account";
+
 export class AccountForm {
 
-    constructor() {
+    constructor(cb) {
         this._container = $("#form");
+        this._cb = cb;
         this.eventHandlers();
     }
 
@@ -30,19 +33,18 @@ export class AccountForm {
                     <button id="btn-close-modal" class="btn btn-outline-dark">X</button>
                 </div>
                 <form>
+                    <input id="account-id" type="hidden" value="${account.id || ''}">
                     <div class="form-group">
                         <label>name</label>
-                        <input class="form-control" placeholder="name">
+                        <input id="account-name" class="form-control" placeholder="name" value="${account.name || ''}" 
+                            required>
                     </div>
                     <div>
-                        <button class="btn-submit btn-lg btn-block btn-success d-block m-auto">${action}</button>
+                        <button id="btn-submit" class="btn-lg btn-block btn-success d-block m-auto">${action}</button>
                     </div>
                 </form>
             </div>
         `;
-
-        // template.btnClose.addEventListener("click", () =>
-        //     template.form.parentElement.removeChild(template.form));
     }
 
     open(object = {}) {
@@ -55,11 +57,31 @@ export class AccountForm {
         $('body').css('overflow', 'auto');
     }
 
+    static buildModel() {
+        const id = $("#account-id").val();
+        const name = $("#account-name").val();
+        return new Account(id, name);
+    }
+
     _submit() {
-        // const object = this.buildModel();
-        // if (object.id)
-        //     this._update(object);
-        // else
-        //     this._create(object);
+        const object = AccountForm.buildModel();
+        if (object.id)
+            this._update(object);
+        else
+            this._create(object);
+    }
+
+    _create(object) {
+        object.create().then(newObject => {
+            this._cb(newObject);
+            this._close();
+        });
+    }
+
+    _update(object) {
+        object.save().then(newObject => {
+            this._cb(newObject);
+            this._close();
+        });
     }
 }

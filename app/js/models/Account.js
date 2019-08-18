@@ -6,14 +6,13 @@ import {getCategory} from "../helpers/categoriesHelper";
 
 export class Account extends Parent {
 
-    constructor(...args) {
+    constructor(id, name, balance, transactions, user_id, budget) {
         super();
-        this._name = args[0] || null;
-        this._user_id = args[1] || null;
-        this._id = args[2] || null;
-        this._balance = args[3] || null;
-        this._transactions = [];
-        this._budget = 0;
+        this._id = id;
+        this._name = name;
+        this._balance = balance;
+        this._user_id = user_id;
+        this._budget = budget;
     }
 
     getAPI() {
@@ -72,6 +71,7 @@ export class Account extends Parent {
     get transactions() {
         return this.children;
     }
+
 
     set transactions(transactions) {
         let transactionsObject = [];
