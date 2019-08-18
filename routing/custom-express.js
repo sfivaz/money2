@@ -15,9 +15,9 @@ const devServerEnabled = true;
 if (devServerEnabled) {
     //reload=true:Enable auto reloading when changing JS files or content
     //timeout=1000:Time from disconnecting from server to reconnecting
-    for (let bundler in config.entry) {
-        if (config.entry.hasOwnProperty(bundler))
-            config.entry[bundler].unshift('webpack-hot-middleware/client?reload=true&timeout=1000');
+    for (let key in config.entry) {
+        if (config.entry.hasOwnProperty(key))
+            config.entry[key].unshift('webpack-hot-middleware/client?reload=true&timeout=1000');
     }
 
     //Add HMR plugin
@@ -40,8 +40,6 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/styles', express.static(root + '/app/styles'));
-// app.use('/bundles', express.static(root + '/app/bundles'));
-app.use(express.static('./views'));
 
 app.set('views', path.join(root + '/app/views'));
 app.engine('html', ejs);

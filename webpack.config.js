@@ -2,11 +2,11 @@ const path = require('path');
 
 module.exports = {
     mode: 'development',
-    devServer: {
-        // contentBase: path.join(__dirname, 'public'),
-        port: 8080,
-        host: `localhost`,
-    },
+    // devServer: {
+    //     contentBase: path.join(__dirname, 'public'),
+    //     port: 8080,
+    //     host: `localhost`,
+    // },
     entry: {
         home: ['./app/home.js'],
         account: ['./app/account.js'],
@@ -47,6 +47,5 @@ module.exports = {
         alias: {}
     },
     plugins: [],
-
 };
    
