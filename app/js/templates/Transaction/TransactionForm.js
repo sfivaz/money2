@@ -16,20 +16,27 @@ export class TransactionForm {
 
     eventHandlers() {
         this._container.click(event => {
-            if (event.target.id === "btn-close-modal") {
+            if (event.target.id === "btn-close-modal")
                 this._close();
-            } else if (event.target.id === "btn-submit") {
-                if ($(event.target).closest('form')[0].checkValidity()) {
-                    event.preventDefault();
-                    this._submit();
-                }
-            }
         });
         this._container.change(event => {
             if (event.target.id === 'transaction-type') {
                 const isNotTransfer = event.target.value !== 'transfer';
                 $("#transaction-destination-account-id").attr('disabled', isNotTransfer);
+            } else if (event.target.id === 'transaction-source-account-id' ||
+                event.target.id === 'transaction-destination-account-id') {
+                const areEqual = $('#transaction-source-account-id').val() === $('#transaction-destination-account-id').val();
+                if (areEqual) {
+                    event.target.setCustomValidity("source and destination account can't be the same");
+                    $('#btn-submit').trigger('click');
+                } else {
+                    event.target.id.setCustomValidity('');
+                }
             }
+        });
+
+        this._container.submit(event => {
+            this._submitForm(event);
         });
     }
 
@@ -101,7 +108,7 @@ export class TransactionForm {
                             </div>
                         </div>
                         <div class="form-row form-group">
-                            <button id="btn-submit" class="btn-lg btn-block btn-success d-block m-auto">${action}</button>
+                            <button id="btn-submit" type="submit" class="btn-lg btn-block btn-success d-block m-auto">${action}</button>
                         </div>
                     </form>
                 </div>
@@ -110,10 +117,6 @@ export class TransactionForm {
 
         // template.slcType.addEventListener("change", () =>
         //     template.slcAccountDestiny.disabled = (template.slcType.value !== "transfer"));
-    }
-
-    static manageDestinationAccount() {
-        console.log("aaa");
     }
 
     open(object = {}) {
@@ -139,6 +142,13 @@ export class TransactionForm {
             destinationAccountId = $("#transaction-destination-account-id").val();
 
         return new Transaction(id, description, type, value, categoryId, date, sourceAccountId, destinationAccountId);
+    }
+
+    _submitForm(event) {
+        event.preventDefault();
+        if ($(event.target).closest('form')[0].checkValidity()) {
+            this._submit();
+        }
     }
 
     _submit() {
