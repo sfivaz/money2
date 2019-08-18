@@ -1,0 +1,32 @@
+<%- include('header'); -%>
+
+<main class="container login-container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 login-form-2">
+            <h3>Login to Money</h3>
+            <form>
+                <div class="form-group">
+                    <input id="email" type="email" class="form-control" placeholder="Your Email">
+                </div>
+                <div class="form-group">
+                    <input id="password" type="password" class="form-control" placeholder="Your Password">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btnSubmit">Login</button>
+                </div>
+                <div class="form-group">
+                    <a href="/register" class="ForgetPwd">Don't have an account? Register </a>
+                </div>
+                <div id="error-msg" class="p-3 bg-danger text-white">Your username or/and your password was/were
+                    incorrect.
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+<%- include('imports'); -%>
+
+<script src="/bundles/login.js"></script>
+
+<%- include('footer'); -%>

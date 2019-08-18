@@ -1,15 +1,15 @@
 module.exports = (app) => {
-    app.get('/', function (req, res) {
-        res.render('./home');
-    });
+    app.get('/', (req, res) =>
+        res.render('./home'));
 
-    app.get('/account/:id', function (req, res) {
-        res.render('./account', {id: req.params.id});
-    });
+    app.get('/account/:id', (req, res) =>
+        res.render('./account', {id: req.params.id}));
 
-    app.get('/categories', function (req, res) {
-        res.render('./categories');
-    });
+    app.get('/categories', (req, res) =>
+        res.render('./categories'));
+
+    app.get('/login', (req, res) =>
+        res.render('./login'));
 
     // /register
     // /login
