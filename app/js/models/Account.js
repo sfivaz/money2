@@ -11,8 +11,8 @@ export class Account extends Parent {
         this._id = Number(id);
         this._name = name;
         this._balance = Number(balance) || 0;
-        this._user_id = user_id;
-        this._budget = budget;
+        this._user_id = Number(user_id);
+        this._budget = Number(budget) || 0;
     }
 
     getAPI() {
@@ -24,7 +24,7 @@ export class Account extends Parent {
     }
 
     set id(value) {
-        this._id = value;
+        this._id = Number(value);
     }
 
     get name() {
@@ -40,7 +40,7 @@ export class Account extends Parent {
     }
 
     set user_id(value) {
-        this._user_id = value;
+        this._user_id = Number(value);
     }
 
     get balance() {

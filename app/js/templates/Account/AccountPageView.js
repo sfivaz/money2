@@ -70,18 +70,27 @@ export class AccountPageView {
         const index = this.model.children.findIndex(currentChild => child.id === currentChild.id);
         if (index === -1)
             this.model.addChild(child);
-        else
-            this.model.children[index] = child;
+        else {
+            if (child.sourceAccountId != this.model.id && child.destinationAccountId != this.model.id)
+                this.remoteChild(child);
+            else
+                this.model.children[index] = child;
+        }
         this.updateTemplate(this.model);
     }
+
 
     _deleteChild(id) {
         const child = this.getChild(id);
         child.delete().then(() => {
-            const index = this.model.children.findIndex(currentObject => currentObject.id === child.id);
-            this.model.children.splice(index, 1);
+            this.remoteChild(child);
             this.updateTemplate(this.model);
         });
+    }
+
+    remoteChild(child) {
+        const index = this.model.children.findIndex(currentObject => currentObject.id === child.id);
+        this.model.children.splice(index, 1);
     }
 
     getChild(id) {
