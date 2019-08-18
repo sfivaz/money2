@@ -191,16 +191,14 @@ export class TransactionForm {
 
     _create(object) {
         object.create().then(newObject => {
-            console.log(newObject);
             this._cb(newObject);
             this._close();
         });
     }
 
     _update(object) {
-        object.save().then(() => {
-            console.log(object);
-            this._cb(object);
+        object.save().then(newObject => {
+            this._cb(newObject);
             this._close();
         });
     }

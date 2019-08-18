@@ -12,7 +12,6 @@ export class AccountPageView {
         this._container = $(".page");
         this._main = $("main");
         this.model = account;
-        console.log(account);
         this.childForm = new TransactionForm(account => this.updateChildren(account));
         this._confirmModal = new ConfirmDeleteModal(id => this._deleteChild(id));
         this._init();
@@ -72,7 +71,7 @@ export class AccountPageView {
         if (index === -1)
             this.model.addChild(child);
         else
-            this.model._accounts[index] = child;
+            this.model.children[index] = child;
         this.updateTemplate(this.model);
     }
 
