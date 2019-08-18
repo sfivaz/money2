@@ -5,17 +5,16 @@ import {Category} from "./Category";
 
 export class Transaction extends ORM {
 
-    constructor(...args) {
+    constructor(id, description, type, value, categoryId, date, sourceAccountId, destinationAccountId) {
         super();
-        this._type = args[0] || null;
-        this._description = args[1] || null;
-        this._value = args[2] || null;
-        this._date = new Date(args[3]) || null;
-        this._sourceAccountId = args[4] || null;
-        this._destinationAccountId = args[5] || null;
-        this._categoryId = args[6] || null;
-        this._id = args[7] || null;
-        this._category = args[8] || null;
+        this._id = id;
+        this._description = description;
+        this._type = type;
+        this._value = value;
+        this._categoryId = categoryId;
+        this._date = new Date(date);
+        this._sourceAccountId = sourceAccountId;
+        this._destinationAccountId = destinationAccountId;
         this._filteredBy = [];
     }
 
@@ -91,14 +90,6 @@ export class Transaction extends ORM {
         this._destinationAccountId = value;
     }
 
-    get destination_account_id() {
-        return this.destinationAccountId;
-    }
-
-    set destination_account_id(value) {
-        this.destinationAccountId = value;
-    }
-
     get sourceAccountId() {
         return Number(this._sourceAccountId);
     }
@@ -110,14 +101,6 @@ export class Transaction extends ORM {
         this._sourceAccountId = value;
     }
 
-    get source_account_id() {
-        return this.sourceAccountId;
-    }
-
-    set source_account_id(value) {
-        this.sourceAccountId = value;
-    }
-
     get categoryId() {
         return Number(this._categoryId);
     }
@@ -126,7 +109,7 @@ export class Transaction extends ORM {
         this._categoryId = value;
     }
 
-    //TODO ref - maybe using browser database
+//TODO ref - maybe using browser database
     getCategory() {
         return new Promise(resolve => {
             const category = new Category();
