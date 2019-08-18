@@ -69,7 +69,8 @@ export class TransactionForm {
                             <label>type</label>
                             <select id="transaction-type" class="form-control">
                                 ${types.map(type => 
-                                    `<option ${transaction.type === type ? 'selected' : ''} value="${type}">${type}</option>`).join('')}
+                                    `<option ${transaction.type === type ? 'selected' : ''} 
+                                        value="${type}">${type}</option>`).join('')}
                             </select>
                         </div>
                         <div class="col">
@@ -104,9 +105,7 @@ export class TransactionForm {
                             <label>destination account</label>
                             <select id="transaction-destination-id" class="form-control" 
                                 ${transaction.type && transaction.type === 'transfer' ? '' : 'disabled'}>
-                                ${this.accounts.map(account => 
-                                    `<option ${transaction.destinationAccountId == account.id ? 'selected' : ''} 
-                                        value="${account.id}">${account.name}</option>`).join('')}
+                                ${this.buildDestinations(transaction)}
                             </select>
                         </div>
                     </div>
@@ -117,6 +116,17 @@ export class TransactionForm {
             </div>
         `;
         //@formatter:on
+    }
+
+    buildDestinations(transaction) {
+        console.log(transaction);
+        let check = (account, index) => index === 0;
+
+        if (transaction.id)
+            check = (account) => transaction.destinationAccountId == account.id;
+
+        return ['select an option'].concat(this.accounts).map((account, index) => `<option ${check(account, index) ? 'selected' : ''} 
+            value="${account.id || ''}">${account.name || ''}</option>`).join('');
     }
 
     open(object = {}) {
