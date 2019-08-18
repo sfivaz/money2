@@ -6,7 +6,7 @@ export class CategoriesPageView extends ModelPageView {
 
     constructor(categories) {
         super(categories);
-        this.childForm = new CategoryForm(account => this.updateChildren(account));
+        this.childForm = new CategoryForm(category => this.updateChildren(category));
         this.childName = 'category';
     }
 

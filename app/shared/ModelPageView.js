@@ -66,7 +66,7 @@ export class ModelPageView {
         if (index === -1)
             this.model.addChild(child);
         else
-            this.model._accounts[index] = child;
+            this.model.children[index] = child;
         this.updateTemplate(this.model);
     }
 
