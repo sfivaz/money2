@@ -2,7 +2,6 @@ import {Parent} from "./Parent";
 import {API} from "../helpers/API";
 import {Transaction} from "./Transaction";
 import {MyMoment} from "../helpers/myMoment";
-import {getCategory} from "../helpers/categoriesHelper";
 
 export class Account extends Parent {
 
@@ -118,18 +117,15 @@ export class Account extends Parent {
         }
     }
 
-    filterCategory(category_id, useBudget) {
-        for (const transaction of this._transactions) {
-            if (transaction.categoryId !== Number(category_id))
+    filterCategory(category, useBudget) {
+        this._transactions.forEach(transaction => {
+            if (transaction.categoryId !== category.id)
                 transaction.addFilter("category");
+            //TODO maybe this second check is useless
             else if (transaction.filteredBy.includes("category"))
                 transaction.removeFilter("category");
-        }
-        if (useBudget)
-            this.budget = getCategory(category_id).budget;
-        else
-            this.budget = 0;
-
+        });
+        this.budget = useBudget ? category.budget : 0;
     }
 
     clearFilter(filter = null) {
