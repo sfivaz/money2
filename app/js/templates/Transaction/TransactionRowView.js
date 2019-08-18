@@ -1,17 +1,29 @@
-export class AccountRowView {
+import {getCurrentAccount} from "../../helpers/accountHelper";
+
+export class TransactionRowView {
 
     static template(account) {
+        //TODO rename these classes
         return `
-            <div class="row align-items-center clr-account" data-id="${account.id}">
-                <div onclick="window.location.href='/account/${account.id}'" class="row-main">
-                    <span class="name f-9">${account.name}</span>
-                    <span class="balance f-1">${account.balance.toFixed(2)}</span>
-                </div>
-                <aside class="row-aside">
-                    <button class="btn-edit-row btn btn-primary mr-3"><i class="fa fa-pencil-square-o"></i></button>
-                    <button class="btn-delete-row btn btn-danger mr-3"><i class="fa fa-trash-o"></i></button>
-                </aside>
+            <div class="template-row align-items-center ${TransactionRowView.getColor(account)}" 
+                data-id="${account.id}">
+                <span class="row-date">${account.dateFormattedFR}</span>
+                <span class="row-category">${account.category}</span>
+                <span class="row-description">${account.description}</span>
+                <span class="row-value">${account.value.toFixed(2)}</span>
+                <button class="row-btn-edit btn-edit-row btn btn-primary mr-3"><i class="fa fa-pencil-square-o"></i></button>
+                <button class="row-btn-del btn-delete-row btn btn-danger mr-3"><i class="fa fa-trash-o"></i></button>
             </div>
         `;
+    }
+
+    static getColor(transaction) {
+        if (transaction.type === "transfer") {
+            if (transaction.sourceAccountId === getCurrentAccount())
+                return "clr-transfer-source";
+            else
+                return "clr-transfer-destiny";
+        } else
+            return " clr-" + transaction.type.toLowerCase();
     }
 }

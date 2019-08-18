@@ -19,12 +19,6 @@ export class TransactionView extends RowView {
             icnEdit: $$("<i>")
         };
 
-        elements.row.className = "template-row";
-        elements.btnEdit.className = "row-btn-edit btn-edit btn btn-primary";
-        elements.icnEdit.className = "fa fa-pencil-square-o";
-        elements.btnDel.className = "row-btn-del btn-delete btn btn-danger";
-        elements.icnDel.className = "fa fa-trash-o";
-
         elements.btnEdit.addEventListener("click", () => this.editTemplate());
         elements.btnDel.addEventListener("click", () => this.confirmDelete());
 
