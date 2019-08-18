@@ -2,6 +2,7 @@ import {Parent} from "./Parent";
 import {API} from "../helpers/API";
 import {Transaction} from "./Transaction";
 import {MyMoment} from "../helpers/myMoment";
+import {dateFormatEN, dateFormatFR} from "../helpers/dateGlobal";
 
 export class Account extends Parent {
 
@@ -96,15 +97,17 @@ export class Account extends Parent {
     }
 
     filterMonths(month, year) {
-        const firstDate = MyMoment.getFirstDate(year, month).getTime();
-        const lastDate = MyMoment.getLastDate(year, month).getTime();
+        const firstDay = moment(`${year}-${month}-01`, dateFormatEN);
+        const lastDay = firstDay.clone().endOf('month');
+        console.log(firstDay.format(dateFormatFR));
+        console.log(lastDay.format(dateFormatFR));
 
-        for (const transaction of this._transactions) {
-            if (transaction.dateLong < firstDate || transaction.dateLong > lastDate)
+        this._transactions.forEach(transaction => {
+            if (transaction.dateLong < firstDay || transaction.dateLong > lastDay)
                 transaction.addFilter("month");
             else if (transaction.filteredBy.includes("month"))
                 transaction.removeFilter("month");
-        }
+        });
     }
 
     filterType(type) {
