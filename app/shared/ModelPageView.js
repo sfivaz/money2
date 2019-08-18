@@ -47,7 +47,7 @@ export class ModelPageView {
 
     _editChild(event) {
         const accountId = this._getRowId(event);
-        const account = this.getChild(accountId);
+        const account = this.model.getChild(accountId);
         this.childForm.open(account);
     }
 

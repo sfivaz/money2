@@ -1,8 +1,6 @@
 import {Parent} from "./Parent";
 import {API} from "../helpers/API";
 import {Transaction} from "./Transaction";
-import {MyMoment} from "../helpers/myMoment";
-import {dateFormatEN, dateFormatFR} from "../helpers/dateGlobal";
 
 export class Account extends Parent {
 
@@ -110,26 +108,26 @@ export class Account extends Parent {
     }
 
     filterType(type) {
-        for (const transaction of this._transactions) {
+        this._transactions.forEach(transaction => {
             if (transaction.type !== type)
                 transaction.addFilter("type");
-            else if (transaction.filteredBy.includes("type"))
+            else
                 transaction.removeFilter("type");
-        }
+        });
     }
 
     filterCategory(category, useBudget) {
         this._transactions.forEach(transaction => {
             if (transaction.categoryId !== category.id)
                 transaction.addFilter("category");
-            //TODO maybe this second check is useless
-            else if (transaction.filteredBy.includes("category"))
+            else
                 transaction.removeFilter("category");
         });
         this.budget = useBudget ? category.budget : 0;
     }
 
     clearFilter(filter = null) {
+        //TODO filter == null? why not (!filter)
         if (filter == null)
             this.clearAllFilters();
         else
