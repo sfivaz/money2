@@ -1,9 +1,9 @@
 import {accountsPromise} from "../../helpers/globalAccounts";
 import {categoriesPromise} from "../../helpers/globalCategories";
-import {MyMoment} from "../../helpers/myMoment";
 import {Transaction} from "../../models/Transaction";
 import {getCurrentAccount} from "../../helpers/accountHelper";
 import {ModelForm} from "../../shared/ModelForm";
+import {now} from "../../helpers/dateGlobal";
 
 export class TransactionForm extends ModelForm {
 
@@ -96,7 +96,7 @@ export class TransactionForm extends ModelForm {
                         </div>
                         <div class="col">
                             <label>date</label>
-                            <input id="transaction-date" class="form-control" type="date" value="${MyMoment.now()}">
+                            <input id="transaction-date" class="form-control" type="date" value="${now}">
                         </div>
                     </div>
                     <div class="form-row form-group">
