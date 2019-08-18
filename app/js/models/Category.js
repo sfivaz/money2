@@ -1,14 +1,14 @@
 import {ORM} from "./ORM";
 import {API} from "../helpers/API";
 
-export class Category extends ORM{
+export class Category extends ORM {
 
-    constructor(...args) {
+    constructor(id, name, budget) {
         super();
-        this._name = args[0];
-        this._budget = args[1];
-        this._user_id = args[2];
-        this._id = args[3];
+        this._id = Number(id);
+        this._name = name;
+        this._budget = Number(budget);
+        this._user_id = null;
     }
 
     getAPI() {
@@ -18,9 +18,8 @@ export class Category extends ORM{
     get id() {
         return this._id;
     }
-
     set id(value) {
-        this._id = value;
+        this._id = Number(value);
     }
 
     get user_id() {
@@ -28,7 +27,7 @@ export class Category extends ORM{
     }
 
     set user_id(value) {
-        this._user_id = value;
+        this._user_id = Number(value);
     }
 
     get name() {
@@ -44,6 +43,6 @@ export class Category extends ORM{
     }
 
     set budget(value) {
-        this._budget = value;
+        this._budget = Number(value);
     }
 }
