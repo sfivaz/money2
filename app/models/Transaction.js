@@ -1,5 +1,4 @@
 import {ORM} from "./ORM";
-import {API} from "../helpers/API";
 import {dateFormatEN, dateFormatFR} from "../helpers/dateGlobal";
 
 export class Transaction extends ORM {
@@ -15,10 +14,6 @@ export class Transaction extends ORM {
         this.sourceAccountId = sourceAccountId;
         this.destinationAccountId = destinationAccountId;
         this.filteredBy = [];
-    }
-
-    getAPI() {
-        return API + "transactions";
     }
 
     get id() {
@@ -123,5 +118,9 @@ export class Transaction extends ORM {
             const index = this._filteredBy.indexOf(filter);
             this._filteredBy.splice(index, 1);
         }
+    }
+
+    getAPI() {
+        return super.getAPI() + "transaction";
     }
 }

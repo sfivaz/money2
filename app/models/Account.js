@@ -1,20 +1,15 @@
 import {Parent} from "./Parent";
-import {API} from "../helpers/API";
 import {Transaction} from "./Transaction";
 
 export class Account extends Parent {
 
-    constructor(id, name, balance, transactions, user_id, budget) {
+    constructor(id, name, balance, transactions, userId, budget) {
         super();
-        this._id = Number(id);
-        this._name = name;
-        this._balance = Number(balance) || 0;
-        this._user_id = Number(user_id);
-        this._budget = Number(budget) || 0;
-    }
-
-    getAPI() {
-        return API + "accounts";
+        this.id = id;
+        this.name = name;
+        this.balance = balance;
+        this.userId = userId;
+        this.budget = budget;
     }
 
     get id() {
@@ -33,11 +28,11 @@ export class Account extends Parent {
         this._name = value;
     }
 
-    get user_id() {
+    get userId() {
         return this._user_id;
     }
 
-    set user_id(value) {
+    set userId(value) {
         this._user_id = Number(value);
     }
 
@@ -70,12 +65,8 @@ export class Account extends Parent {
     }
 
     set transactions(transactions) {
-        let transactionsObject = [];
-        transactions.forEach(transaction => {
-            const transactionObject = Object.assign(new Transaction(), transaction);
-            transactionsObject.push(transactionObject);
-        });
-        this.children = transactionsObject;
+        this._transactions = transactions.map(transaction =>
+            Object.assign(new Transaction(), transaction));
     }
 
     get filteredBalance() {
@@ -161,5 +152,9 @@ export class Account extends Parent {
     addChild(child) {
         this.children.push(child);
         this.orderChildren();
+    }
+
+    getAPI() {
+        return super.getAPI() + "accounts";
     }
 }

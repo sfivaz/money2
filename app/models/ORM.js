@@ -1,9 +1,10 @@
 import {DataSync} from "../services/DataSync";
+import {API} from "../helpers/API";
 
 export class ORM {
 
     getAPI() {
-        return "";
+        return API;
     }
 
     toString() {
