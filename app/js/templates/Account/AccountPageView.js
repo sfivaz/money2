@@ -36,20 +36,19 @@ export class AccountPageView {
                 const accountRow = $(event.target).closest('.template-row');
                 const accountId = accountRow.data('id');
                 this._confirmModal._openConfirm('account', accountId);
-            }
+            } else if (button.attr('id') === 'btn-clean-filter')
+                this.clearFilter();
         });
     }
 
     template(account) {
         return `
             <div class="d-flex justify-content-between">
-                <h2>${account.name}</h2><h2>${account.getFullBalance()}</h2>
+                <h2>${account.name}</h2><h2>${account.fullBalance}</h2>
             </div>
+            ${this.addFilterBar()}
             <div>${this.listTemplate(account.children)}</div>
         `;
-
-        // this.addFilterBar();
-        // this.elements.filteredBalance.textContent = this.model.getBalanceFiltered();
     }
 
     listTemplate(children) {
@@ -97,28 +96,19 @@ export class AccountPageView {
         return this.model.children.find(object => object.id === Number(id));
     }
 
-    /*----------------------------------------------------------------------------------------------------------------*/
-    //
-    // addFilterBar() {
-    //     this.elements.filterBar = $$("<div>");
-    //     this.elements.btnClearFilter = $$("<button>");
-    //     this.elements.filteredBalance = $$("<h3>");
-    //
-    //     this.elements.filterBar.className = "filter-bar";
-    //     this.elements.btnClearFilter.className = "btn-filter-clear btn btn-sm btn-secondary";
-    //     this.elements.filteredBalance.className = "filtered-balance";
-    //
-    //     this.elements.btnClearFilter.innerText = "clean filters";
-    //
-    //     this.elements.btnClearFilter.addEventListener("click", () => this.clearFilter());
-    //
-    //     this.elements.header.appendChild(this.elements.filterBar);
-    //     this.addMonthFilter();
-    //     this.addTypeFilter();
-    //     this.addCategoryFilter();
-    //     this.elements.filterBar.appendChild(this.elements.btnClearFilter);
-    //     this.elements.filterBar.appendChild(this.elements.filteredBalance);
-    // }
+    addFilterBar() {
+        return `
+            <div class="filter-bar">
+                <button class="btn-clean-filter btn btn-sm btn-secondary">clean filters</button>
+                <h3 class="filtered-balance">${this.model.balanceFiltered}</h3>
+            </div>
+        `;
+
+        // this.addMonthFilter();
+        // this.addTypeFilter();
+        // this.addCategoryFilter();
+    }
+
     //
     // addMonthFilter() {
     //     this.elements.dateFilter = $$("<div>");
@@ -211,18 +201,19 @@ export class AccountPageView {
     //         });
     // }
     //
-    // clearFilter(filter = null) {
-    //     if (filter === "type")
-    //         this.elements.slcTypeFilter.options[0].selected = true;
-    //     else if (filter === "month")
-    //         this.elements.iptDateFilter.value = "";
-    //     else if (!filter) {
-    //         this.elements.iptDateFilter.value = "";
-    //         this.elements.slcTypeFilter.options[0].selected = true;
-    //         this.elements.slcCategoryFilter.options[0].selected = true;
-    //     }
-    //     this.emit("clear filter", filter);
-    // }
+    clearFilter(filter = null) {
+        // if (filter === "type")
+        //     this.elements.slcTypeFilter.options[0].selected = true;
+        // else if (filter === "month")
+        //     this.elements.iptDateFilter.value = "";
+        // else if (!filter) {
+        //     this.elements.iptDateFilter.value = "";
+        //     this.elements.slcTypeFilter.options[0].selected = true;
+        //     this.elements.slcCategoryFilter.options[0].selected = true;
+        // }
+        // this.emit("clear filter", filter);
+    }
+
     //
     // filterByDate() {
     //     //the input type="month" returns the value in this format: YYYY-MM
