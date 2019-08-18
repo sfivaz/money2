@@ -1,7 +1,7 @@
 import {Controller} from "./Controller";
 import {Category} from "../models/Category";
 import {CategoryController} from "../controllers/CategoryController";
-import {CategoryRowView} from "../views/Category/CategoryRowView";
+import {CategoryRowView} from "../templates/Category/CategoryRowView";
 
 export class CategoriesController extends Controller {
 

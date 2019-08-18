@@ -1,7 +1,7 @@
 import {Controller} from "./Controller";
 import {Account} from "../models/Account";
 import {AccountController} from "./AccountController";
-import {AccountRowView} from "../views/Account/AccountRowView";
+import {AccountRowView} from "../templates/Account/AccountRowView";
 
 export class HomeController extends Controller {
 

@@ -1,4 +1,4 @@
-import {PageView} from "../views/PageView";
+import {PageView} from "../templates/PageView";
 import {$$} from "../helpers/myJQuery";
 
 export class Controller {

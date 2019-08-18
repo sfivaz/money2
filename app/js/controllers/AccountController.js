@@ -2,7 +2,7 @@ import {Controller} from "./Controller";
 import {Transaction} from "../models/Transaction";
 import {$$} from "../helpers/myJQuery";
 import {MyMoment} from "../helpers/myMoment";
-import {TransactionView} from "../views/Transaction/TransactionView";
+import {TransactionView} from "../templates/Transaction/TransactionView";
 import {TransactionController} from "./TransactionController";
 
 export class AccountController extends Controller {

@@ -1,5 +1,5 @@
 import {PageBuilder} from "./PageBuilder";
-import {HomePageView} from "../views/HomePageView";
+import {HomePageView} from "../templates/HomePageView";
 import {HomeController} from "../controllers/HomeController";
 import {Home} from "../models/Home";
 

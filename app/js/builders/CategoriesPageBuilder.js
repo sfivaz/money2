@@ -1,6 +1,6 @@
 import {PageBuilder} from "./PageBuilder";
 import {Categories} from "../models/Categories";
-import {CategoriesPageView} from "../views/CategoriesPageView";
+import {CategoriesPageView} from "../templates/CategoriesPageView";
 import {CategoriesController} from "../controllers/CategoriesController";
 
 export class CategoriesPageBuilder extends PageBuilder{
