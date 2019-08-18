@@ -2,6 +2,7 @@ import {TransactionForm} from "../Transaction/TransactionForm";
 import {ConfirmDeleteModal} from "../../../shared/ConfirmDeleteModal";
 import {TransactionRowView} from "../Transaction/TransactionRowView";
 import {categoriesPromise} from "../../helpers/globalCategories";
+import {Category} from "../../models/Category";
 
 export class AccountPageView {
 
@@ -41,7 +42,7 @@ export class AccountPageView {
             else if (event.target.id === 'iptTypeFilter')
                 this.filterByType(event.target.value);
             else if (event.target.id === 'iptCategoryFilter')
-                this.filterByCategory(event.target.value, $("#cbxBudget").is('checked'));
+                this.filterByCategory(event.target, $("#cbxBudget").is(':checked'));
             else if (event.target.id === 'cbxBudget')
                 this.toggleBudget(event.target.checked, $("#iptCategoryFilter").val());
         });
@@ -146,20 +147,29 @@ export class AccountPageView {
         select.html(optionsHtml);
     }
 
-    filterByCategory(categoryId, useBudget = false) {
-        if (categoryId)
-            this.model.filterCategory(categoryId, useBudget);
-        else
+    filterByCategory(select, useBudget = false) {
+        const option = ($(select).children('option:selected'));
+        const id = option.val();
+        const budget = option.data('budget');
+        const category = new Category(id, null, budget);
+
+        if (id) {
+            // $("#cbxBudget").removeAttr('disabled');
+            this.model.filterCategory(category, useBudget);
+        } else {
+            // $("#cbxBudget").attr('disabled', 'disabled');
+            // $("#cbxBudget").prop('checked', false);
             this._clearFilter("category");
+        }
         this.updateTemplate(this.model);
     }
 
     static populateCategoryFilter() {
         const select = $("#iptCategoryFilter");
         categoriesPromise.then(categories => {
-            const optionsHtml = [{id: '', name: 'select an option'}].concat(categories)
-                .map(category => `<option value="${category.id}">${category.name}</option>`);
-
+            const optionsHtml = [{id: '', name: 'select an option', budget: ''}].concat(categories)
+                .map(category => `<option data-budget="${category.budget}" 
+                    value="${category.id}">${category.name}</option>`);
             select.html(optionsHtml);
         });
     }
@@ -200,6 +210,7 @@ export class AccountPageView {
 
     static cleanFilterCategory() {
         $("#slcCategoryFilter option:nth-child(1)").attr('selected', 'selected');
+        $("#cbxBudget").removeAttr('checked');
     }
 
 // _createChild() {
