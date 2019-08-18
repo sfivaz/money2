@@ -1,5 +1,5 @@
 import {CategoryForm} from "./Category/CategoryForm";
-import {ModelPageView} from "../../shared/ModelPageView";
+import {ModelPageView} from "../shared/ModelPageView";
 import {CategoryRowView} from "./Category/CategoryRowView";
 
 export class CategoriesPageView extends ModelPageView {

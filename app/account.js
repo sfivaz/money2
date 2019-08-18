@@ -1,5 +1,5 @@
-import {Account} from "./js/models/Account";
-import {AccountPageView} from "./js/templates/Account/AccountPageView";
+import {Account} from "./models/Account";
+import {AccountPageView} from "./templates/Account/AccountPageView";
 
 const accountId = $(".page").data('accountId');
 

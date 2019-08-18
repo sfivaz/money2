@@ -1,5 +1,5 @@
 import {Account} from "../../models/Account";
-import {ModelForm} from "../../../shared/ModelForm";
+import {ModelForm} from "../../shared/ModelForm";
 
 export class AccountForm extends ModelForm {
 

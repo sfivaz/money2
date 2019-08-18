@@ -2,7 +2,7 @@ import {TransactionForm} from "../Transaction/TransactionForm";
 import {TransactionRowView} from "../Transaction/TransactionRowView";
 import {categoriesPromise} from "../../helpers/globalCategories";
 import {Category} from "../../models/Category";
-import {ModelPageView} from "../../../shared/ModelPageView";
+import {ModelPageView} from "../../shared/ModelPageView";
 
 export class AccountPageView extends ModelPageView {
 

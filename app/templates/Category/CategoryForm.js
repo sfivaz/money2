@@ -1,4 +1,4 @@
-import {ModelForm} from "../../../shared/ModelForm";
+import {ModelForm} from "../../shared/ModelForm";
 import {Category} from "../../models/Category";
 
 export class CategoryForm extends ModelForm {

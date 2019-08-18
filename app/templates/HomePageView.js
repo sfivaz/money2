@@ -1,6 +1,6 @@
 import {AccountForm} from "./Account/AccountForm";
 import {AccountRowView} from "./Account/AccountRowView";
-import {ModelPageView} from "../../shared/ModelPageView";
+import {ModelPageView} from "../shared/ModelPageView";
 
 export class HomePageView extends ModelPageView {
 

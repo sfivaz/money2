@@ -1,6 +1,6 @@
-import {Home} from "./js/models/Home";
-import {HomePageView} from "./js/templates/HomePageView";
-import {Account} from "./js/models/Account";
+import {Home} from "./models/Home";
+import {HomePageView} from "./templates/HomePageView";
+import {Account} from "./models/Account";
 
 new Account().findAll()
     .then(accounts => {

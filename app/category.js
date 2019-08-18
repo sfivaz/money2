@@ -1,6 +1,6 @@
-import {Categories} from "./js/models/Categories";
-import {CategoriesPageView} from "./js/templates/CategoriesPageView";
-import {Category} from "./js/models/Category";
+import {Categories} from "./models/Categories";
+import {CategoriesPageView} from "./templates/CategoriesPageView";
+import {Category} from "./models/Category";
 
 new Category().findAll()
     .then(categories => {
