@@ -14,6 +14,7 @@ export class AccountPageView {
     }
 
     _init() {
+        AccountPageView.populateTypeFilter();
         this.updateTemplate(this.model);
         this._eventHandlers();
     }
@@ -35,6 +36,8 @@ export class AccountPageView {
         this._container.change(event => {
             if (event.target.id === 'iptDateFilter')
                 this.filterByDate();
+            if (event.target.id === 'iptTypeFilter')
+                this.filterByType(event.target.value);
         });
     }
 
@@ -119,32 +122,24 @@ export class AccountPageView {
         this.updateTemplate(this.model);
     }
 
-    //
-    // addTypeFilter() {
-    //     this.elements.typeFilter = $$("<div>");
-    //     this.elements.lblTypeFilter = $$("<label>");
-    //     this.elements.slcTypeFilter = $$("<select>");
-    //
-    //     this.elements.lblTypeFilter.textContent = "Choose a type";
-    //     this.elements.lblTypeFilter.for = "iptTypeFilter";
-    //     this.elements.slcTypeFilter.for = "iptTypeFilter";
-    //
-    //     this.elements.typeFilter.className = "filter-type d-flex";
-    //     this.elements.lblTypeFilter.className = "filter__label";
-    //     this.elements.slcTypeFilter.className = "filter__select custom-select custom-select-sm";
-    //
-    //     ["select an option", "spending", "income", "transfer"].forEach((type, key) =>
-    //         this.elements.slcTypeFilter[key] = new Option(type, type));
-    //     this.elements.slcTypeFilter.options[0].value = "";
-    //
-    //     this.elements.slcTypeFilter.addEventListener("change",
-    //         () => this.filterByType(this.elements.slcTypeFilter.value));
-    //
-    //     this.elements.filterBar.appendChild(this.elements.typeFilter);
-    //     this.elements.typeFilter.appendChild(this.elements.lblTypeFilter);
-    //     this.elements.typeFilter.appendChild(this.elements.slcTypeFilter);
-    // }
-    //
+    filterByType(type) {
+        if (type)
+            this.model.filterType(type);
+        else
+            this._clearFilter("type");
+        this.updateTemplate(this.model);
+    }
+
+    static populateTypeFilter() {
+        const select = $("#iptTypeFilter");
+        const types = ["spending", "income", "transfer"];
+
+        const optionsHtml = ['select an option'].concat(types)
+            .map((type, index) => `<option value="${index > 0 ? type : ''}">${type}</option>`);
+
+        select.html(optionsHtml);
+    }
+
     // addCategoryFilter() {
     //     this.elements.categoryFilter = $$("<div>");
     //     this.elements.lblCategoryFilter = $$("<label>");
@@ -190,82 +185,86 @@ export class AccountPageView {
     // }
     //
     _clearFilter(filter = null) {
-        // if (filter === "type")
-        //     this.elements.slcTypeFilter.options[0].selected = true;
-        // else if (filter === "month")
-        //     this.elements.iptDateFilter.value = "";
-        // else if (!filter) {
-        //     this.elements.iptDateFilter.value = "";
-        //     this.elements.slcTypeFilter.options[0].selected = true;
-        //     this.elements.slcCategoryFilter.options[0].selected = true;
-        // }
-        // this.emit("clear filter", filter);
+        if (filter === "type")
+            AccountPageView.cleanFilterType();
+        else if (filter === "month")
+            AccountPageView.cleanFilterDate();
+        else if (!filter) {
+            AccountPageView.cleanFilterDate();
+            AccountPageView.cleanFilterType();
+            AccountPageView.cleanFilterCategory();
+        }
+        this.model.clearFilter(filter);
     }
 
-    //
-    // filterByType(type) {
-    //     if (type)
-    //         this.emit("filter by type", type);
-    //     else
-    //         this._clearFilter("type");
-    // }
-    //
-    // filterByCategory(category_id, useBudget = false) {
-    //     if (category_id)
-    //         this.emit("filter by category", category_id, useBudget);
-    //     else
-    //         this._clearFilter("category");
-    // }
-    //
-    // toggleBudget(value, category_id) {
-    //     if (value)
-    //         this.filterByCategory(category_id, true);
-    //     else
-    //         this.filterByCategory(category_id);
-    // }
+    static cleanFilterDate() {
+        $("#slcDateFilter").val('');
+    }
 
-    // _createChild() {
-    //
-    //     let template = TransactionForm.template();
-    //
-    //     template.title.textContent = "create transaction";
-    //     template.btnSubmit.textContent = "create";
-    //
-    //     template.iptDate.value = MyMoment.now();
-    //
-    //     new Account().findAll().then(accounts => {
-    //         accounts.forEach((account, key) => {
-    //             template.slcAccountOrigin[key] = new Option(account.name, account.id, false,
-    //                 account.id === this.model.id);
-    //
-    //             template.slcAccountDestiny[key] = new Option(account.name, account.id);
-    //         });
-    //     });
-    //
-    //     new Category().findAll().then(categories => {
-    //         categories.forEach((category, key) => {
-    //             template.slcCategory[key] = new Option(category.name, category.id);
-    //         });
-    //     });
-    //
-    //     template.btnSubmit.addEventListener("click", () => {
-    //
-    //         //if no description was added use the category as a description
-    //         if (template.iptDescription.value === "") {
-    //             const category = getCategory(template.slcCategory.value);
-    //             template.iptDescription.value = category.name;
-    //         }
-    //
-    //         this.emit("create child",
-    //             template.slcType.value,
-    //             template.iptDescription.value,
-    //             template.iptValue.value,
-    //             template.iptDate.value,
-    //             template.slcAccountOrigin.value,
-    //             template.slcAccountDestiny.value,
-    //             template.slcCategory.value
-    //         );
-    //         template.form.parentElement.removeChild(template.form);
-    //     });
-    // }
+    static cleanFilterType() {
+        $("#slcTypeFilter option:nth-child(1)").attr('selected', 'selected');
+    }
+
+    static cleanFilterCategory() {
+        $("#slcCategoryFilter option:nth-child(1)").attr('selected', 'selected');
+    }
+
+// filterByCategory(category_id, useBudget = false) {
+//     if (category_id)
+//         this.emit("filter by category", category_id, useBudget);
+//     else
+//         this._clearFilter("category");
+// }
+//
+// toggleBudget(value, category_id) {
+//     if (value)
+//         this.filterByCategory(category_id, true);
+//     else
+//         this.filterByCategory(category_id);
+// }
+
+// _createChild() {
+//
+//     let template = TransactionForm.template();
+//
+//     template.title.textContent = "create transaction";
+//     template.btnSubmit.textContent = "create";
+//
+//     template.iptDate.value = MyMoment.now();
+//
+//     new Account().findAll().then(accounts => {
+//         accounts.forEach((account, key) => {
+//             template.slcAccountOrigin[key] = new Option(account.name, account.id, false,
+//                 account.id === this.model.id);
+//
+//             template.slcAccountDestiny[key] = new Option(account.name, account.id);
+//         });
+//     });
+//
+//     new Category().findAll().then(categories => {
+//         categories.forEach((category, key) => {
+//             template.slcCategory[key] = new Option(category.name, category.id);
+//         });
+//     });
+//
+//     template.btnSubmit.addEventListener("click", () => {
+//
+//         //if no description was added use the category as a description
+//         if (template.iptDescription.value === "") {
+//             const category = getCategory(template.slcCategory.value);
+//             template.iptDescription.value = category.name;
+//         }
+//
+//         this.emit("create child",
+//             template.slcType.value,
+//             template.iptDescription.value,
+//             template.iptValue.value,
+//             template.iptDate.value,
+//             template.slcAccountOrigin.value,
+//             template.slcAccountDestiny.value,
+//             template.slcCategory.value
+//         );
+//         template.form.parentElement.removeChild(template.form);
+//     });
+// }
 }
