@@ -1,7 +1,19 @@
 import {View} from "./View";
-import {$$} from "../helpers/myJQuery";
 
 export class PageView extends View {
+
+    constructor(props) {
+        super(props);
+        this.container = null;
+        this.eventHandlers();
+    }
+
+    eventHandlers() {
+        this.container.click(event => {
+            if (event.target.id === "btn-create-child")
+                this.createChildTemplate();
+        });
+    }
 
     showChild(childView) {
         this.elements.main.appendChild(childView.template());
@@ -12,29 +24,14 @@ export class PageView extends View {
     }
 
     //TODO create a header without d-flex to accept a filter
-    pageTemplate(btnNewChildName) {
-
-        this.elements = {
-            template: $$("<div>"),
-            header: $$("<header>"),
-            main: $$("<main>"),
-            footer: $$("<footer>"),
-            btnNew: $$("<button>")
-        };
-
-        this.elements.header.className = "d-flex justify-content-between";
-        this.elements.btnNew.className = "footer-button btn btn-success";
-
-        this.elements.btnNew.textContent = btnNewChildName;
-
-        this.elements.btnNew.addEventListener("click", () => this.createChildTemplate());
-
-        this.elements.template.appendChild(this.elements.header);
-        this.elements.template.appendChild(this.elements.main);
-        this.elements.template.appendChild(this.elements.footer);
-        this.elements.footer.appendChild(this.elements.btnNew);
-
-        return this.elements;
+    static pageTemplate(btnNewChildName) {
+        return `
+            <div class="d-flex justify-content-between">
+            </div>
+                <main>
+                </main>
+            </div>
+        `;
     }
 
     createChildTemplate() {

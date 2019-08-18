@@ -2,9 +2,9 @@ import {Parent} from "./Parent";
 
 export class Home extends Parent {
 
-    constructor() {
+    constructor(accounts) {
         super();
-        this._accounts = [];
+        this._accounts = accounts || [];
     }
 
     get children() {
@@ -16,7 +16,7 @@ export class Home extends Parent {
         this.emit("children added");
     }
 
-    totalFixed(){
+    totalFixed() {
         return this.getTotal().toFixed(2);
     }
 

@@ -6,7 +6,7 @@ export class CategoriesPageView extends PageView {
 
     template() {
 
-        this.elements = super.pageTemplate("New Category");
+        this.elements = PageView.pageTemplate("New Category");
 
         this.elements.title = $$("<h2>");
         this.elements.title.textContent = "Categories";

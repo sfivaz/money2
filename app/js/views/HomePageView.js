@@ -1,26 +1,25 @@
-import {PageView} from "./PageView";
-import {$$} from "../helpers/myJQuery";
 import {AccountForm} from "./Account/AccountForm";
+import {AccountRowView} from "./Account/AccountRowView";
 
-export class HomePageView extends PageView {
+export class HomePageView {
 
-    template() {
-
-        this.elements = this.pageTemplate("New Account");
-        this.elements.title = $$("<h2>");
-        this.elements.total = $$("<h2>");
-        this.elements.title.textContent = "Accounts";
-
-        this.elements.header.appendChild(this.elements.title);
-        this.elements.header.appendChild(this.elements.total);
-
-        this.update();
-
-        return this.elements.template;
+    constructor(model) {
+        this.container = $("main");
+        this.model = model;
+        this.update(this.model);
     }
 
-    update() {
-        this.elements.total.textContent = this.model.totalFixed();
+    template(model) {
+        return `
+            <div class="d-flex justify-content-between">
+                <h2>Accounts</h2><h2>${model.totalFixed()}</h2>
+            </div>
+            <div>${AccountRowView.template(model.accounts)}</div>
+        `;
+    }
+
+    update(model) {
+        this.container.html(this.template(model));
     }
 
     createChildTemplate() {

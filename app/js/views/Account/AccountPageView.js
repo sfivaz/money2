@@ -14,7 +14,7 @@ export class AccountPageView extends PageView {
     template() {
 
         this.addToNavBar();
-        this.elements = this.pageTemplate("New Transaction");
+        this.elements = PageView.pageTemplate("New Transaction");
 
         this.elements.header.className = "";
 

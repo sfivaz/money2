@@ -29,7 +29,7 @@ export class Controller {
 
     start() {
         this.load();
-        $$(".container").appendChild(this.view.template());
+        $$(".container").innerHTML = this.view.template().innerHTML;
     }
 
     load(parentId = null) {
