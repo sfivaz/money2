@@ -81,7 +81,7 @@ export class Account extends Parent {
         this.children = transactionsObject;
     }
 
-    getBalanceFiltered() {
+    get balanceFiltered() {
         const reducer = (total, transaction) => {
             if (transaction.filteredBy.length > 0)
                 return total;
@@ -92,7 +92,7 @@ export class Account extends Parent {
         return balanceFiltered.toFixed(2);
     }
 
-    getFullBalance() {
+    get fullBalance() {
         const reducer = (total, transaction) => total + this.getValue(transaction);
         return this._transactions.reduce(reducer, 0).toFixed(2);
     }
