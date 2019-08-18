@@ -25,28 +25,12 @@ export class TransactionForm {
                 }
             }
         });
-    }
-
-    open(object = {}) {
-        this._container.html(this.template(object));
-        $('body').css('overflow', 'hidden');
-    }
-
-    _close() {
-        this._container.html('');
-        $('body').css('overflow', 'auto');
-    }
-
-    static buildModel() {
-        const id = $("#transaction-id").val();
-        const description = $("#transaction-description").val();
-        const type = $("#transaction-type").val();
-        const value = $("#transaction-value").val();
-        const categoryId = $("#transaction-category-id").val();
-        const date = $("#transaction-date").val();
-        const sourceAccountId = $("#transaction-source-account-id").val();
-        const destinationAccountId = $("#transaction-destination-account-id").val();
-        return new Transaction(id, description, type, value, categoryId, date, sourceAccountId, destinationAccountId);
+        this._container.change(event => {
+            if (event.target.id === 'transaction-type') {
+                const isNotTransfer = event.target.value !== 'transfer';
+                $("#transaction-destination-account-id").attr('disabled', isNotTransfer);
+            }
+        });
     }
 
     template(transaction) {
@@ -102,14 +86,17 @@ export class TransactionForm {
                                 <label>source account</label>
                                 <select id="transaction-source-account-id" class="form-control">
                                     ${this.accounts.map(account => 
-                                        `<option ${transaction.sourceAccountId == account.id ? 'selected' : ''} value="${account.id}">${account.name}</option>`).join('')}
+                                        `<option ${transaction.sourceAccountId == account.id ? 'selected' : ''} 
+                                            value="${account.id}">${account.name}</option>`).join('')}
                                 </select>
                             </div>
                             <div class="col">
                                 <label>destination account</label>
-                                <select id="transaction-destination-account-id" class="form-control">
+                                <select id="transaction-destination-account-id" class="form-control" 
+                                    ${transaction.type && transaction.type === 'transfer' ? '' : 'disabled'}>
                                     ${this.accounts.map(account => 
-                                        `<option ${transaction.destinationAccountId == account.id ? 'selected' : ''} value="${account.id}">${account.name}</option>`).join('')}
+                                        `<option ${transaction.destinationAccountId == account.id ? 'selected' : ''} 
+                                            value="${account.id}">${account.name}</option>`).join('')}
                                 </select>
                             </div>
                         </div>
@@ -123,6 +110,35 @@ export class TransactionForm {
 
         // template.slcType.addEventListener("change", () =>
         //     template.slcAccountDestiny.disabled = (template.slcType.value !== "transfer"));
+    }
+
+    static manageDestinationAccount() {
+        console.log("aaa");
+    }
+
+    open(object = {}) {
+        this._container.html(this.template(object));
+        $('body').css('overflow', 'hidden');
+    }
+
+    _close() {
+        this._container.html('');
+        $('body').css('overflow', 'auto');
+    }
+
+    static buildModel() {
+        const id = $("#transaction-id").val();
+        const description = $("#transaction-description").val();
+        const type = $("#transaction-type").val();
+        const value = $("#transaction-value").val();
+        const categoryId = $("#transaction-category-id").val();
+        const date = $("#transaction-date").val();
+        const sourceAccountId = $("#transaction-source-account-id").val();
+        let destinationAccountId = null;
+        if (type === 'transfer')
+            destinationAccountId = $("#transaction-destination-account-id").val();
+
+        return new Transaction(id, description, type, value, categoryId, date, sourceAccountId, destinationAccountId);
     }
 
     _submit() {
