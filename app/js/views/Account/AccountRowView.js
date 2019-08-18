@@ -1,9 +1,9 @@
 export class AccountRowView {
 
     static template(account) {
-
         return `
-            <div class="row align-items-center clr-account" data-id="${account.id}">
+            <div onclick="window.location.href='/account/${account.id}'"
+                class="row align-items-center clr-account" data-id="${account.id}">
                 <div class="row-main">
                     <span class="name f-9">${account.name}</span>
                     <span class="balance f-1">${account.balance.toFixed(2)}</span>
@@ -14,31 +14,5 @@ export class AccountRowView {
                 </aside>
             </div>
         `;
-
-        // elements.btnEdit.addEventListener("click", () => this.editTemplate());
-        // elements.btnDel.addEventListener("click", () => this.confirmDelete());
-        // this.elements.main.addEventListener("click", () => window.location.href = "account/" + this.model.id);
     }
-
-    // editTemplate() {
-    //
-    //     const template = AccountForm.template();
-    //
-    //     template.title.textContent = "edit account";
-    //     template.btnSubmit.textContent = "edit";
-    //
-    //     template.iptName.value = this.model.name;
-    //
-    //     template.btnSubmit.addEventListener("click", () => {
-    //
-    //         this.emit("edit model", template.iptName.value);
-    //
-    //         template.form.parentElement.removeChild(template.form);
-    //     });
-    //
-    // }
-    //
-    // confirmDelete() {
-    //     this.confirmTemplateDelete("account");
-    // }
 }
