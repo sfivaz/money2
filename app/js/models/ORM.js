@@ -12,11 +12,13 @@ export class ORM extends EventEmitter {
     }
 
     save() {
-        return DataSync.update(this.getAPI() + '/' + this._id, this);
+        return DataSync.update(this.getAPI() + '/' + this._id, this)
+            .then(object => Object.assign(new this.constructor(), object));
     }
 
     create() {
-        return DataSync.insert(this.getAPI(), this);
+        return DataSync.insert(this.getAPI(), this)
+            .then(object => Object.assign(new this.constructor(), object));
     }
 
     delete() {
