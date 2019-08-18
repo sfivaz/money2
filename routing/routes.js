@@ -1,6 +1,6 @@
 module.exports = (app) => {
     app.get('/', function (req, res) {
-        res.render('./home.html');
+        res.render('./home');
     });
 
     app.get('/account/:id', function (req, res) {
@@ -8,7 +8,7 @@ module.exports = (app) => {
     });
 
     app.get('/categories', function (req, res) {
-        res.render('./categories.html');
+        res.render('./categories');
     });
 
     // /register
