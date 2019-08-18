@@ -214,49 +214,4 @@ export class AccountPageView {
         $("#slcCategoryFilter option:nth-child(1)").attr('selected', 'selected');
         $("#cbxBudget").removeAttr('checked');
     }
-
-// _createChild() {
-//
-//     let template = TransactionForm.template();
-//
-//     template.title.textContent = "create transaction";
-//     template.btnSubmit.textContent = "create";
-//
-//     template.iptDate.value = MyMoment.now();
-//
-//     new Account().findAll().then(accounts => {
-//         accounts.forEach((account, key) => {
-//             template.slcAccountOrigin[key] = new Option(account.name, account.id, false,
-//                 account.id === this.model.id);
-//
-//             template.slcAccountDestiny[key] = new Option(account.name, account.id);
-//         });
-//     });
-//
-//     new Category().findAll().then(categories => {
-//         categories.forEach((category, key) => {
-//             template.slcCategory[key] = new Option(category.name, category.id);
-//         });
-//     });
-//
-//     template.btnSubmit.addEventListener("click", () => {
-//
-//         //if no description was added use the category as a description
-//         if (template.iptDescription.value === "") {
-//             const category = getCategory(template.slcCategory.value);
-//             template.iptDescription.value = category.name;
-//         }
-//
-//         this.emit("create child",
-//             template.slcType.value,
-//             template.iptDescription.value,
-//             template.iptValue.value,
-//             template.iptDate.value,
-//             template.slcAccountOrigin.value,
-//             template.slcAccountDestiny.value,
-//             template.slcCategory.value
-//         );
-//         template.form.parentElement.removeChild(template.form);
-//     });
-// }
 }

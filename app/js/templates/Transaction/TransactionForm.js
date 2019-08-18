@@ -70,7 +70,7 @@ export class TransactionForm {
                         <div>
                             <label>description</label>
                             <input id="transaction-description" class="form-control" placeholder="description" 
-                                value="${transaction.description || 'a'}">
+                                value="${transaction.description || ''}">
                         </div>
                     </div>
                     <div class="form-row ">
@@ -162,6 +162,11 @@ export class TransactionForm {
     _submitForm(event) {
         event.preventDefault();
         if ($(event.target).closest('form')[0].checkValidity()) {
+            const iptDescription = $("#transaction-description");
+            if (!iptDescription.val()) {
+                const categoryName = $("#transaction-category-id option:selected").text();
+                iptDescription.val(categoryName);
+            }
             this._submit();
         }
     }
