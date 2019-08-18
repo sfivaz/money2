@@ -6,7 +6,7 @@ export class AccountPageView {
 
     constructor(account) {
         this._container = $(".page");
-        this._main = $("main");
+        this._list = $("#list");
         this.model = account;
         this.childForm = new TransactionForm(account => this.updateChildren(account));
         this._confirmModal = new ConfirmDeleteModal(id => this._deleteChild(id));
@@ -29,26 +29,35 @@ export class AccountPageView {
                 this._openDeleteModal(event);
             else if (button.attr('id') === 'btn-clean-filter')
                 this._clearFilter();
+            //TODO maybe I should isolate filters into another class
+        });
+
+        this._container.change(event => {
+            if (event.target.id === 'iptDateFilter')
+                this.filterByDate();
         });
     }
 
     template(account) {
-        return `
-            <div class="d-flex justify-content-between">
-                <h2>${account.name}</h2><h2>${account.fullBalance}</h2>
-            </div>
-            ${this.addFilterBar()}
-            <div>${this.listTemplate(account.children)}</div>
-        `;
+        return this.listTemplate(account.children);
     }
 
     listTemplate(children) {
+        children = children.filter(child => child.filteredBy.length === 0);
+
         return children.map(child =>
             TransactionRowView.template(child)).join('');
     }
 
-    updateTemplate(home) {
-        this._main.html(this.template(home));
+    updateTemplate(account) {
+        AccountPageView._updateHeader(account);
+        this._list.html(this.template(account));
+    }
+
+    static _updateHeader(account) {
+        $("#account-name").text(account.name);
+        $("#account-full-balance").text(account.fullBalance);
+        $("#filtered-balance").text(account.filteredBalance);
     }
 
     _createChild() {
@@ -101,27 +110,13 @@ export class AccountPageView {
         return this.model.children.find(object => object.id === Number(id));
     }
 
-    addFilterBar() {
-        return `
-            <div class="filter-bar pb-2">
-                ${AccountPageView.addMonthFilter()}
-                <button class="btn-clean-filter btn btn-sm btn-secondary">clean filters</button>
-                <h3 class="filtered-balance">${this.model.balanceFiltered}</h3>
-            </div>
-        `;
-        // this.addTypeFilter();
-        // this.addCategoryFilter();
-    }
-
-    static addMonthFilter() {
-        return `
-            <div class="filter-date d-flex">
-                <label for="iptDateFilter" class="filter__label">Choose a month</label>
-                <input type="month" id="iptDateFilter" class="filter__input form-control form-control-sm">
-            </div>
-        `;
-        //TODO add min and max value based on the transactions's date in the account
-        // this.elements.iptDateFilter.addEventListener("change", () => this.filterByDate());
+    filterByDate() {
+        //the input type="month" returns the value in this format: YYYY-MM
+        //then it's converted to the format [YYYY, MM]
+        //the -1 is because of the way the month is calculated (0 to 11) instead of 1 to 12
+        const date = $("#iptDateFilter").val().split('-');
+        this.model.filterMonths(date[1] - 1, date[0]);
+        this.updateTemplate(this.model);
     }
 
     //
@@ -207,14 +202,6 @@ export class AccountPageView {
         // this.emit("clear filter", filter);
     }
 
-    //
-    // filterByDate() {
-    //     //the input type="month" returns the value in this format: YYYY-MM
-    //     //then it's converted to the format [YYYY, MM]
-    //     //the -1 is because of the way the month is calculated (0 to 11) instead of 1 to 12
-    //     const date = this.elements.iptDateFilter.value.split('-');
-    //     this.emit("filter by date", date[1] - 1, date[0]);
-    // }
     //
     // filterByType(type) {
     //     if (type)

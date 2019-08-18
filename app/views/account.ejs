@@ -1,7 +1,26 @@
 <%- include('header'); -%>
 
 <div data-account-id="<%= id %>" class="page container">
-    <main></main>
+    <main>
+        <div class="d-flex justify-content-between">
+            <h2 id="account-name"></h2>
+            <h2 id="account-full-balance"></h2>
+        </div>
+
+        <div class="filter-bar pb-2">
+            <div class="filter-date d-flex">
+                <!--        //TODO add min and max value based on the transactions's date in the account-->
+                <label for="iptDateFilter" class="filter__label">Choose a month</label>
+                <input type="month" id="iptDateFilter" class="filter__input form-control form-control-sm">
+            </div>
+            <!--            // this.addTypeFilter();-->
+            <!--            // this.addCategoryFilter();-->
+            <button class="btn-clean-filter btn btn-sm btn-secondary">clean filters</button>
+            <h3 class="filtered-balance"></h3>
+        </div>
+
+        <div id="list"></div>
+    </main>
 
     <footer>
         <button id="btn-create-child" class="footer-button btn btn-success">New transaction</button>
