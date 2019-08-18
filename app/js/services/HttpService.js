@@ -31,7 +31,7 @@ export class HttpService {
             body: JSON.stringify(data)
         })
             .then(res => HttpService._handleErrors(res))
-            .then(res => res.status);
+            .then(res => res.json());
     }
 
     static delete(url) {
