@@ -6,7 +6,7 @@ import {MyMoment} from "../../helpers/myMoment";
 import {Account} from "../../models/Account";
 import {AccountForm} from "./AccountForm";
 import {ConfirmDeleteModal} from "../../../shared/ConfirmDeleteModal";
-import {AccountRowView} from "./AccountRowView";
+import {TransactionRowView} from "../Transaction/TransactionRowView";
 
 export class AccountPageView {
 
@@ -57,9 +57,9 @@ export class AccountPageView {
     }
 
     listTemplate(children) {
-        // return children.map(child => {
-        //     return AccountRowView.template(child);
-        // }).join('');
+        return children.map(child => {
+            return TransactionRowView.template(child);
+        }).join('');
     }
 
     updateTemplate(home) {
