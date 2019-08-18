@@ -67,9 +67,9 @@ export class AccountPageView extends ModelPageView {
             this.model.addChild(child);
         else {
             if (child.sourceAccountId != this.model.id && child.destinationAccountId != this.model.id)
-                this.remoteChild(child);
+                this.model.removeChild(child);
             else
-                this.model.children[index] = child;
+                this.model.changeChild(index, child);
         }
         this.updateTemplate(this.model);
     }

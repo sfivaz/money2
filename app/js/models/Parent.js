@@ -24,4 +24,12 @@ export class Parent extends ORM {
             this.children.splice(index, 1);
         }
     }
+
+    changeChild(index, child) {
+        this.children[index] = child;
+    }
+
+    getChild(id) {
+        return this.children.find(child => child.id === Number(id));
+    }
 }

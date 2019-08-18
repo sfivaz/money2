@@ -66,24 +66,15 @@ export class ModelPageView {
         if (index === -1)
             this.model.addChild(child);
         else
-            this.model.children[index] = child;
+            this.model.changeChild(index, child);
         this.updateTemplate(this.model);
     }
 
     _deleteChild(id) {
-        const child = this.getChild(id);
+        const child = this.model.getChild(id);
         child.delete().then(() => {
-            this.remoteChild(child);
+            this.model.removeChild(child);
             this.updateTemplate(this.model);
         });
-    }
-
-    remoteChild(child) {
-        const index = this.model.children.findIndex(currentObject => currentObject.id === child.id);
-        this.model.children.splice(index, 1);
-    }
-
-    getChild(id) {
-        return this.model.children.find(object => object.id === Number(id));
     }
 }

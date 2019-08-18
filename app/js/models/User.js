@@ -1,3 +1,5 @@
+import {ORM} from "./ORM";
+
 class User extends ORM{
 
     constructor(...args) {
