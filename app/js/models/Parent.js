@@ -2,10 +2,6 @@ import {ORM} from "./ORM";
 
 export class Parent extends ORM {
 
-    constructor() {
-        super();
-    }
-
     get children() {
         throw "Error this method should be overridden by its extended class";
     }

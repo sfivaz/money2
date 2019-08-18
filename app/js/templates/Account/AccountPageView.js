@@ -1,5 +1,4 @@
 import {TransactionForm} from "../Transaction/TransactionForm";
-import {ConfirmDeleteModal} from "../../../shared/ConfirmDeleteModal";
 import {TransactionRowView} from "../Transaction/TransactionRowView";
 import {categoriesPromise} from "../../helpers/globalCategories";
 import {Category} from "../../models/Category";
