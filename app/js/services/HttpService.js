@@ -1,11 +1,10 @@
 export class HttpService {
 
     static _handleErrors(res) {
-        if (res.ok) {
+        if (res.ok)
             return res;
-        } else {
+        else
             throw new Error(res.statusText);
-        }
     }
 
     static get(url) {

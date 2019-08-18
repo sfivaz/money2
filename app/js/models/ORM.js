@@ -1,7 +1,6 @@
-import {EventEmitter} from "../services/EventEmitter";
 import {DataSync} from "../services/DataSync";
 
-export class ORM extends EventEmitter {
+export class ORM {
 
     getAPI() {
         return "";
