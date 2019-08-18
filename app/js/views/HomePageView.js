@@ -3,23 +3,29 @@ import {AccountRowView} from "./Account/AccountRowView";
 
 export class HomePageView {
 
-    constructor(model) {
+    constructor(home) {
         this.container = $("main");
-        this.model = model;
-        this.update(this.model);
+        this.home = home;
+        this.update(this.home);
     }
 
-    template(model) {
+    template(home) {
         return `
             <div class="d-flex justify-content-between">
-                <h2>Accounts</h2><h2>${model.totalFixed()}</h2>
+                <h2>Accounts</h2><h2>${home.totalFixed()}</h2>
             </div>
-            <div>${AccountRowView.template(model.accounts)}</div>
+            <div>${this.listTemplate(home.children)}</div>
         `;
     }
 
-    update(model) {
-        this.container.html(this.template(model));
+    listTemplate(accounts) {
+        return accounts.map(account => {
+            return AccountRowView.template(account);
+        }).join('');
+    }
+
+    update(home) {
+        this.container.html(this.template(home));
     }
 
     createChildTemplate() {
