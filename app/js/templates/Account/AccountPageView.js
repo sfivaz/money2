@@ -1,8 +1,4 @@
-import {$$} from "../../helpers/myJQuery";
-import {Category} from "../../models/Category";
 import {TransactionForm} from "../Transaction/TransactionForm";
-import {MyMoment} from "../../helpers/myMoment";
-import {Account} from "../../models/Account";
 import {ConfirmDeleteModal} from "../../../shared/ConfirmDeleteModal";
 import {TransactionRowView} from "../Transaction/TransactionRowView";
 
@@ -25,19 +21,14 @@ export class AccountPageView {
     _eventHandlers() {
         this._container.click(event => {
             const button = $(event.target).closest('button');
-            if (button.attr('id') === 'btn-create-child') {
-                this.createChildTemplate();
-            } else if (button.hasClass('row-btn-edit')) {
-                const accountRow = $(event.target).closest('.template-row');
-                const accountId = accountRow.data('id');
-                const account = this.getChild(accountId);
-                this.childForm.open(account);
-            } else if (button.hasClass('row-btn-del')) {
-                const accountRow = $(event.target).closest('.template-row');
-                const accountId = accountRow.data('id');
-                this._confirmModal._openConfirm('account', accountId);
-            } else if (button.attr('id') === 'btn-clean-filter')
-                this.clearFilter();
+            if (button.attr('id') === 'btn-create-child')
+                this._createChild();
+            else if (button.hasClass('row-btn-edit'))
+                this._editChild(event);
+            else if (button.hasClass('row-btn-del'))
+                this._openDeleteModal(event);
+            else if (button.attr('id') === 'btn-clean-filter')
+                this._clearFilter();
         });
     }
 
@@ -60,9 +51,24 @@ export class AccountPageView {
         this._main.html(this.template(home));
     }
 
-    createChildTemplate() {
-
+    _createChild() {
         this.childForm.open();
+    }
+
+    _editChild(event) {
+        const accountId = AccountPageView._getAccountId(event);
+        const account = this.getChild(accountId);
+        this.childForm.open(account);
+    }
+
+    _openDeleteModal(event) {
+        const accountId = AccountPageView._getAccountId(event);
+        this._confirmModal._openConfirm('account', accountId);
+    }
+
+    static _getAccountId(event) {
+        const accountRow = $(event.target).closest('.template-row');
+        return accountRow.data('id');
     }
 
     updateChildren(child) {
@@ -77,7 +83,6 @@ export class AccountPageView {
         }
         this.updateTemplate(this.model);
     }
-
 
     _deleteChild(id) {
         const child = this.getChild(id);
@@ -98,39 +103,27 @@ export class AccountPageView {
 
     addFilterBar() {
         return `
-            <div class="filter-bar">
+            <div class="filter-bar pb-2">
+                ${AccountPageView.addMonthFilter()}
                 <button class="btn-clean-filter btn btn-sm btn-secondary">clean filters</button>
                 <h3 class="filtered-balance">${this.model.balanceFiltered}</h3>
             </div>
         `;
-
-        // this.addMonthFilter();
         // this.addTypeFilter();
         // this.addCategoryFilter();
     }
 
-    //
-    // addMonthFilter() {
-    //     this.elements.dateFilter = $$("<div>");
-    //     this.elements.lblDateFilter = $$("<label>");
-    //     this.elements.iptDateFilter = $$("<input>");
-    //
-    //     this.elements.lblDateFilter.textContent = "Choose a month";
-    //     this.elements.lblDateFilter.for = "iptDateFilter";
-    //     this.elements.iptDateFilter.for = "iptDateFilter";
-    //     this.elements.iptDateFilter.type = "month";
-    //     //TODO add min and max value based on the transactions's date in the account
-    //
-    //     this.elements.dateFilter.className = "filter-date d-flex";
-    //     this.elements.lblDateFilter.className = "filter__label";
-    //     this.elements.iptDateFilter.className = "filter__input form-control form-control-sm";
-    //
-    //     this.elements.iptDateFilter.addEventListener("change", () => this.filterByDate());
-    //
-    //     this.elements.filterBar.appendChild(this.elements.dateFilter);
-    //     this.elements.dateFilter.appendChild(this.elements.lblDateFilter);
-    //     this.elements.dateFilter.appendChild(this.elements.iptDateFilter);
-    // }
+    static addMonthFilter() {
+        return `
+            <div class="filter-date d-flex">
+                <label for="iptDateFilter" class="filter__label">Choose a month</label>
+                <input type="month" id="iptDateFilter" class="filter__input form-control form-control-sm">
+            </div>
+        `;
+        //TODO add min and max value based on the transactions's date in the account
+        // this.elements.iptDateFilter.addEventListener("change", () => this.filterByDate());
+    }
+
     //
     // addTypeFilter() {
     //     this.elements.typeFilter = $$("<div>");
@@ -201,7 +194,7 @@ export class AccountPageView {
     //         });
     // }
     //
-    clearFilter(filter = null) {
+    _clearFilter(filter = null) {
         // if (filter === "type")
         //     this.elements.slcTypeFilter.options[0].selected = true;
         // else if (filter === "month")
@@ -227,14 +220,14 @@ export class AccountPageView {
     //     if (type)
     //         this.emit("filter by type", type);
     //     else
-    //         this.clearFilter("type");
+    //         this._clearFilter("type");
     // }
     //
     // filterByCategory(category_id, useBudget = false) {
     //     if (category_id)
     //         this.emit("filter by category", category_id, useBudget);
     //     else
-    //         this.clearFilter("category");
+    //         this._clearFilter("category");
     // }
     //
     // toggleBudget(value, category_id) {
@@ -244,7 +237,7 @@ export class AccountPageView {
     //         this.filterByCategory(category_id);
     // }
 
-    // createChildTemplate() {
+    // _createChild() {
     //
     //     let template = TransactionForm.template();
     //
