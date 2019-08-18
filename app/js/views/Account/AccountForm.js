@@ -27,7 +27,7 @@ export class AccountForm {
             <div class="my-modal">
                 <div class="d-flex align-items-center">
                     <h2 class="f-1">${action}</h2>
-                    <button class="btn btn-outline-dark">X</button>
+                    <button id="btn-close-modal" class="btn btn-outline-dark">X</button>
                 </div>
                 <form>
                     <div class="form-group">
