@@ -15,9 +15,10 @@ const devServerEnabled = true;
 if (devServerEnabled) {
     //reload=true:Enable auto reloading when changing JS files or content
     //timeout=1000:Time from disconnecting from server to reconnecting
-    config.entry.home.unshift('webpack-hot-middleware/client?reload=true&timeout=1000');
-    config.entry.account.unshift('webpack-hot-middleware/client?reload=true&timeout=1000');
-    config.entry.category.unshift('webpack-hot-middleware/client?reload=true&timeout=1000');
+    for (let bundler in config.entry) {
+        if (config.entry.hasOwnProperty(bundler))
+            config.entry[bundler].unshift('webpack-hot-middleware/client?reload=true&timeout=1000');
+    }
 
     //Add HMR plugin
     config.plugins.push(new webpack.HotModuleReplacementPlugin());
