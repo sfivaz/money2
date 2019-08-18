@@ -97,15 +97,14 @@ export class Account extends Parent {
     }
 
     filterMonths(month, year) {
-        const firstDay = moment(`${year}-${month}-01`, dateFormatEN);
-        const lastDay = firstDay.clone().endOf('month');
-        console.log(firstDay.format(dateFormatFR));
-        console.log(lastDay.format(dateFormatFR));
+        const date = moment().month(month).year(year);
+        const firstDay = date.clone().startOf('month');
+        const lastDay = date.clone().endOf('month');
 
         this._transactions.forEach(transaction => {
-            if (transaction.dateLong < firstDay || transaction.dateLong > lastDay)
+            if (moment(transaction.date) < firstDay || moment(transaction.date) > lastDay)
                 transaction.addFilter("month");
-            else if (transaction.filteredBy.includes("month"))
+            else
                 transaction.removeFilter("month");
         });
     }
