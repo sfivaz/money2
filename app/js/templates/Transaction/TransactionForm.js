@@ -27,15 +27,23 @@ export class TransactionForm {
                 TransactionForm.checkAccounts(event);
         });
 
-        this._container.submit(event => this._submitForm(event));
+        this._container.submit(event => {
+            this._submitForm(event);
+        });
     }
 
     static triggerDestinationAccount(event) {
-        const isNotTransfer = event.target.value !== 'transfer';
-        $("#transaction-destination-id").attr('disabled', isNotTransfer);
+        const isTransfer = event.target.value === 'transfer';
+        const slcDestination = $("#transaction-destination-id");
+        slcDestination.attr('disabled', !isTransfer);
+        slcDestination.attr('required', isTransfer);
     }
 
     static checkAccounts(event) {
+        this.checkAccountsAreEqual(event);
+    }
+
+    static checkAccountsAreEqual(event) {
         if ($('#transaction-source-id').val() === $('#transaction-destination-id').val()) {
             event.target.setCustomValidity("source and destination account can't be the same");
             $('#btn-submit').trigger('click');
@@ -75,7 +83,7 @@ export class TransactionForm {
                         </div>
                         <div class="col">
                             <label>value</label>
-                            <input id="transaction-value" class="form-control" value="${transaction.value || '222'}">
+                            <input id="transaction-value" class="form-control" value="${transaction.value || '222'}" required>
                         </div>
                     </div>
                     <div class="form-row form-group">
@@ -103,8 +111,8 @@ export class TransactionForm {
                         </div>
                         <div class="col">
                             <label>destination account</label>
-                            <select id="transaction-destination-id" class="form-control" 
-                                ${transaction.type && transaction.type === 'transfer' ? '' : 'disabled'}>
+                            <select id="transaction-destination-id" name="destination" class="form-control"
+                                ${transaction.type && transaction.type === 'transfer' ? 'required' : 'disabled'} >
                                 ${this.buildDestinations(transaction)}
                             </select>
                         </div>
@@ -119,19 +127,19 @@ export class TransactionForm {
     }
 
     buildDestinations(transaction) {
-        console.log(transaction);
-        let check = (account, index) => index === 0;
-
-        if (transaction.id)
-            check = (account) => transaction.destinationAccountId == account.id;
-
-        return ['select an option'].concat(this.accounts).map((account, index) => `<option ${check(account, index) ? 'selected' : ''} 
-            value="${account.id || ''}">${account.name || ''}</option>`).join('');
+        return [{id: '', name: 'select an option'}].concat(this.accounts).map(account =>
+            `<option ${transaction.destinationAccountId == account.id ? 'selected' : ''} 
+                value="${account.id}">${account.name}</option>`)
+            .join('');
     }
 
     open(object = {}) {
         this._container.html(this.template(object));
         $('body').css('overflow', 'hidden');
+        //TODO check it later
+        // $('form').validate({
+        //     destination:
+        // });
     }
 
     _close() {
@@ -141,8 +149,9 @@ export class TransactionForm {
 
     _submitForm(event) {
         event.preventDefault();
-        if ($(event.target).closest('form')[0].checkValidity())
+        if ($(event.target).closest('form')[0].checkValidity()) {
             this._submit();
+        }
     }
 
     _submit() {
