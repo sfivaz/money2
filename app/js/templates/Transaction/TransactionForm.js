@@ -2,6 +2,7 @@ import {accountsPromise} from "../../helpers/globalAccounts";
 import {categoriesPromise} from "../../helpers/globalCategories";
 import {MyMoment} from "../../helpers/myMoment";
 import {Transaction} from "../../models/Transaction";
+import {getCurrentAccount} from "../../helpers/accountHelper";
 
 export class TransactionForm {
 
@@ -104,9 +105,7 @@ export class TransactionForm {
                         <div class="col">
                             <label>source account</label>
                             <select id="transaction-source-id" class="form-control">
-                                ${this.accounts.map(account => 
-                                    `<option ${transaction.sourceAccountId == account.id ? 'selected' : ''} 
-                                        value="${account.id}">${account.name}</option>`).join('')}
+                                ${this.buildSources(transaction)}
                             </select>
                         </div>
                         <div class="col">
@@ -125,6 +124,20 @@ export class TransactionForm {
         `;
         //@formatter:on
     }
+
+    buildSources(transaction) {
+        const accountId = getCurrentAccount();
+        let check = (account) => account.id == accountId;
+
+        if (transaction.id)
+            check = account => transaction.sourceAccountId == account.id;
+
+        return this.accounts.map(account =>
+            `<option ${check(account) ? 'selected' : ''} 
+                value="${account.id}">${account.name}</option>`)
+            .join('');
+    }
+
 
     buildDestinations(transaction) {
         return [{id: '', name: 'select an option'}].concat(this.accounts).map(account =>
