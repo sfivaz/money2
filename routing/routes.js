@@ -10,4 +10,8 @@ module.exports = (app) => {
     app.get('/categories', function (req, res) {
         res.render('./categories.html');
     });
+
+    // /register
+    // /login
+    // /logout
 };
