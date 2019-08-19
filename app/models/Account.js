@@ -41,7 +41,7 @@ export class Account extends Parent {
     }
 
     set balance(value) {
-        this._balance = Number(value);
+        this._balance = Number(value || 0);
     }
 
     get budget() {
@@ -49,7 +49,7 @@ export class Account extends Parent {
     }
 
     set budget(value) {
-        this._budget = Number(value);
+        this._budget = Number(value || 0);
     }
 
     get children() {
