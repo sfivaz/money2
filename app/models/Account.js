@@ -146,7 +146,7 @@ export class Account extends Parent {
     }
 
     orderChildren() {
-        this.children.sort((a, b) => b.dateLong - a.dateLong);
+        this.children.sort((a, b) => b.date.toDate() - a.date.toDate());
     }
 
     addChild(child) {
@@ -156,5 +156,15 @@ export class Account extends Parent {
 
     getAPI() {
         return super.getAPI() + "accounts";
+    }
+
+    toJSON() {
+        return {
+            id: this.id,
+            name: this.name,
+            balance: this.balance,
+            userId: this.userId,
+            budget: this.budget
+        };
     }
 }

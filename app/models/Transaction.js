@@ -68,10 +68,6 @@ export class Transaction extends ORM {
         return this._date.format(dateFormatEN);
     }
 
-    get dateLong() {
-        return this._date.getTime();
-    }
-
     set date(value) {
         this._date = moment(value, dateFormatEN);
     }
@@ -121,6 +117,19 @@ export class Transaction extends ORM {
     }
 
     getAPI() {
-        return super.getAPI() + "transaction";
+        return super.getAPI() + "transactions";
+    }
+
+    toJSON() {
+        return {
+            id: this.id,
+            description: this.description,
+            type: this.type,
+            value: this.value,
+            categoryId: this.categoryId,
+            date: this.dateInEN,
+            sourceAccountId: this.sourceAccountId,
+            destinationAccountId: this.destinationAccountId
+        };
     }
 }

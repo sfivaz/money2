@@ -44,4 +44,13 @@ export class Category extends ORM {
     getAPI() {
         return super.getAPI() + "categories";
     }
+
+    toJSON() {
+        return {
+            id: this.id,
+            name: this.name,
+            budget: this.budget,
+            userId: this.userId
+        }
+    }
 }
