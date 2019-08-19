@@ -22,3 +22,12 @@ function login(email, password) {
                 $("#error-msg").show();
         });
 }
+
+/**
+ * User
+ * @param user
+ */
+function createSession(user) {
+    Cookies.set('email', user.email);
+    Cookies.set('password', user.password);
+}
