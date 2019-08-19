@@ -1,30 +1,39 @@
 import {ORM} from "./ORM";
+import {HttpService} from "../services/HttpService";
 
-class User extends ORM{
+export class User extends ORM {
 
-    constructor(...args) {
+    constructor(id, firstName, lastName, email, password) {
         super();
-        this._first_name = args[0];
-        this._last_name = args[1];
-        this._email = args[2];
-        this._password = args[3];
-        this._id = args[4];
+        this._id = id;
+        this._firstName = firstName;
+        this._lastName = lastName;
+        this._email = email;
+        this._password = password;
     }
 
-    get first_name() {
-        return this._first_name;
+    get id() {
+        return this._id;
     }
 
-    set first_name(value) {
-        this._first_name = value;
+    set id(value) {
+        this._id = value;
     }
 
-    get last_name() {
-        return this._last_name;
+    get firstName() {
+        return this._firstName;
     }
 
-    set last_name(value) {
-        this._last_name = value;
+    set firstName(value) {
+        this._firstName = value;
+    }
+
+    get lastName() {
+        return this._lastName;
+    }
+
+    set lastName(value) {
+        this._lastName = value;
     }
 
     get email() {
@@ -41,13 +50,5 @@ class User extends ORM{
 
     set password(value) {
         this._password = value;
-    }
-
-    get id() {
-        return this._id;
-    }
-
-    set id(value) {
-        this._id = value;
     }
 }
