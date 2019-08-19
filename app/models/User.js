@@ -51,4 +51,8 @@ export class User extends ORM {
     set password(value) {
         this._password = value;
     }
+
+    static login(email, password) {
+        return HttpService.post(new ORM().getAPI() + 'login', {email, password});
+    }
 }

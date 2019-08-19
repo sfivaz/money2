@@ -1,4 +1,4 @@
-import {HttpService} from "./services/HttpService";
+import {User} from "./models/User";
 
 $(() => {
     $("#error-msg").hide();
@@ -13,12 +13,12 @@ $(() => {
 });
 
 function login(email, password) {
-    HttpService.post("login", {email, password})
-        .then((result) => {
-            console.log(result);
-            // if (result === "success")
-            //     // window.location.href = "accounts";
-            // else
-            //     $("#error-msg").show();
+    User.login(email, password)
+        .then((user) => {
+            console.log(user);
+            if (user)
+                createSession(user);
+            else
+                $("#error-msg").show();
         });
 }
