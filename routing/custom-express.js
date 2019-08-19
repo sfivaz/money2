@@ -47,6 +47,10 @@ app.set('view engine', 'ejs');
 
 routes(app);
 
-app.use((req, res) => res.status(404).render('./404'));
+app.use((req, res) =>
+    res.status(404).render('./404'));
+
+app.use((err, req, res) =>
+    res.status(500).render('./500'));
 
 module.exports = app;
