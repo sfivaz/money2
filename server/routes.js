@@ -16,12 +16,6 @@ const isAuth = (req, res, next) => {
 
 module.exports = app => {
 
-    app.use((req, res, next) => {
-        const {userId} = req.session;
-        console.log(userId);
-        next();
-    });
-
     app.get('/', isGuest, Controller.home());
 
     app.get('/account/:id', isGuest, Controller.account());

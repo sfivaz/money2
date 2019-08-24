@@ -13,9 +13,11 @@ $(() => {
 });
 
 function login(email, password) {
-    HttpService.post('http://localhost:8080/login', {email, password})
-        .then((result) => {
-            console.log(result);
-            // $("#error-msg").show();
+    HttpService.post('/login', {email, password})
+        .then(response => {
+            if (response.code === 200)
+                window.location.href = '/';
+            else
+                $("#error-msg").show();
         });
 }

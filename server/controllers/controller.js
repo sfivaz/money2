@@ -30,12 +30,21 @@ class Controller {
 
     static execLogin() {
         return (req, res) => {
-            AuthHelper.login(req.body.email, req.body.password)
+            const {email, password} = req.body;
+            AuthHelper.login(email, password)
                 .then(user => {
                     req.session.userId = user.id;
-                    res.json(user);
+                    res.json({
+                        message: 'login sucessful',
+                        code: 200
+                    });
                 })
-                .catch(() => res.sendStatus(401));
+                .catch(() => {
+                    res.json({
+                        message: 'login failed',
+                        code: 401
+                    })
+                });
         }
     }
 
