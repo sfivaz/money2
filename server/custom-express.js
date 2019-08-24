@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors');
 const routes = require('./routes');
 const webpackDevServer = require('./webpack-dev-server');
+const viewConfig = require('./view-config');
 
 const NODE_ENV = 'development';
 
@@ -14,16 +15,7 @@ app.use(express.json());
 
 /*****************************************************************/
 
-const ejs = require('ejs').renderFile;
-const path = require('path');
-
-const root = path.resolve(__dirname, '../');
-
-app.use('/styles', express.static(root + '/app/styles'));
-
-app.set('views', path.join(root + '/app/views'));
-app.engine('html', ejs);
-app.set('view engine', 'ejs');
+viewConfig(app, express);
 
 /*****************************************************************/
 
