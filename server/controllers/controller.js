@@ -1,4 +1,4 @@
-const AuthHelper = require('../AuthHelper');
+const AuthHelper = require('../auth-helper');
 
 const SESS_NAME = 'sid';
 
@@ -35,7 +35,7 @@ class Controller {
                     req.session.userId = user.id;
                     res.json(user);
                 })
-                .catch(() => res.send(401));
+                .catch(() => res.sendStatus(401));
         }
     }
 

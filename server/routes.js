@@ -9,7 +9,7 @@ const isGuest = (req, res, next) => {
 
 const isAuth = (req, res, next) => {
     if (req.session.userId)
-        res.redirect('/home');
+        res.redirect('/');
     else
         next();
 };
