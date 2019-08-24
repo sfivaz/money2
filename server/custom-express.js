@@ -5,6 +5,7 @@ const cors = require('cors');
 const ejs = require('ejs').renderFile;
 const session = require('express-session');
 const routes = require('./routes');
+const AuthHelper = require('./AuthHelper');
 
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
@@ -56,6 +57,15 @@ app.use(function (req, res, next) {
     if (req.path !== '/login' && req.session)
         res.redirect('/login');
     next();
+});
+
+app.post('/login', (req, res) => {
+    AuthHelper.login(req.body.email, req.body.password)
+        .then(user => {
+            req.session = user.id;
+            res.json(user);
+        })
+        .catch(() => res.send(401));
 });
 
 routes(app);
