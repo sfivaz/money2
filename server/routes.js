@@ -1,3 +1,5 @@
+const AuthHelper = require('./AuthHelper');
+
 module.exports = (app) => {
     app.get('/', (req, res) =>
         res.render('./home'));
@@ -10,6 +12,10 @@ module.exports = (app) => {
 
     app.get('/login', (req, res) =>
         res.render('./login'));
+
+    app.post('/login', (req, res) => {
+        AuthHelper.processLogin(req.body.email, req.body.password, res);
+    });
 
     // /register
     // /login
