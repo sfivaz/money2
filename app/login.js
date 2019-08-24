@@ -1,4 +1,5 @@
 import {User} from "./models/User";
+import {HttpService} from "./services/HttpService";
 
 $(() => {
     $("#error-msg").hide();
@@ -13,13 +14,9 @@ $(() => {
 });
 
 function login(email, password) {
-    User.login(email, password)
-        .then((user) => {
-            console.log(user);
-            if (user){
-
-            }
-            else
-                $("#error-msg").show();
+    HttpService.post('http://localhost:8080/login', {email, password})
+        .then((result) => {
+            console.log(result);
+            // $("#error-msg").show();
         });
 }
