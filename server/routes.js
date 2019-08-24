@@ -9,6 +9,10 @@ module.exports = (app) => {
 
     app.get('/login', Controller.login());
 
+    app.use(Controller.page404());
+
+    app.use(Controller.page500());
+
     // /register
     // /logout
 };

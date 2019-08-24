@@ -3,7 +3,7 @@ const app = express();
 const cors = require('cors');
 const routes = require('./routes');
 const webpackDevServer = require('./webpack-dev-server');
-const viewConfig = require('./view-config');
+const viewsConfig = require('./views-config');
 
 const NODE_ENV = 'development';
 
@@ -13,9 +13,7 @@ if (NODE_ENV === 'development')
 app.use(cors());
 app.use(express.json());
 
-/*****************************************************************/
-
-viewConfig(app, express);
+viewsConfig(app, express);
 
 /*****************************************************************/
 
@@ -46,16 +44,5 @@ app.post('/login', (req, res) => {
 /*****************************************************************/
 
 routes(app);
-
-/*****************************************************************/
-
-app.use((req, res) =>
-    res.status(404).render('./404'));
-
-app.use((err, req, res) =>
-    res.status(500).render('./500'));
-
-
-/*****************************************************************/
 
 module.exports = app;
