@@ -34,10 +34,5 @@ module.exports = app => {
 
     app.post('/logout', Controller.execLogout());
 
-    app.use(Controller.page404());
-
-    app.use(Controller.page500());
-
     // /register
-    // /logout
 };

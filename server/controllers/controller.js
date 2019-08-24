@@ -30,11 +30,9 @@ class Controller {
 
     static execLogin() {
         return (req, res) => {
-            console.log(req.session);
             AuthHelper.login(req.body.email, req.body.password)
                 .then(user => {
                     req.session.userId = user.id;
-                    console.log(req.session);
                     res.json(user);
                 })
                 .catch(() => res.send(401));

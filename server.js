@@ -1,6 +1,5 @@
 const app = require('./server/custom-express');
 
-const port = 8080;
+const PORT = process.env.PORT || 8080;
 
-app.listen(port, () =>
-    console.log('Server running in the port ' + port));
+app.listen(PORT, () => console.log('Server running in the port ' + PORT));
