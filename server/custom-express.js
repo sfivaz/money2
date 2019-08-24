@@ -4,8 +4,15 @@ const cors = require('cors');
 const routes = require('./routes');
 const webpackDevServer = require('./webpack-dev-server');
 const viewsConfig = require('./views-config');
+const sessionConfig = require('./session-config');
+// const session = require('express-session');
 
-const NODE_ENV = 'development';
+// const {
+//     PORT = 3000,
+//     NODE_ENV = 'development',
+// } = process.env;
+
+const NODE_ENV = process.env.NODE_ENV || 'development';
 
 if (NODE_ENV === 'development')
     webpackDevServer(app);
@@ -15,33 +22,31 @@ app.use(express.json());
 
 viewsConfig(app, express);
 
-/*****************************************************************/
+// const TWO_HOURS = 1000 * 60 * 60 * 2;
 
-const session = require('express-session');
-const AuthHelper = require('./AuthHelper');
+// const {
+//     // PORT = 3001,
+//     // NODE_ENV = 'development',
+//     SESS_NAME = 'sid',
+//     SESS_SECRET = 'shiiii!! quited',
+//     SESS_LIFETIME = TWO_HOURS
+// } = process.env;
 
-app.set(session({
-    secret: 'money',
-    resave: false,
-    saveUninitialized: true
-}));
+// const IN_PROD = NODE_ENV === 'production';
 
-app.use(function (req, res, next) {
-    if (req.path !== '/login' && req.session)
-        res.redirect('/login');
-    next();
-});
+// app.use(session({
+//     name: SESS_NAME,
+//     resave: false,
+//     saveUninitialized: false,
+//     secret: SESS_SECRET,
+//     cookie: {
+//         maxAge: SESS_LIFETIME,
+//         sameSite: true,
+//         secure: IN_PROD
+//     }
+// }));
 
-app.post('/login', (req, res) => {
-    AuthHelper.login(req.body.email, req.body.password)
-        .then(user => {
-            req.session = user.id;
-            res.json(user);
-        })
-        .catch(() => res.send(401));
-});
-
-/*****************************************************************/
+sessionConfig(app);
 
 routes(app);
 

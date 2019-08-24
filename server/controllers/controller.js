@@ -1,3 +1,7 @@
+const AuthHelper = require('../AuthHelper');
+
+const SESS_NAME = 'sid';
+
 class Controller {
 
     static home() {
@@ -22,6 +26,31 @@ class Controller {
 
     static page500() {
         return (err, req, res) => res.status(500).render('./500');
+    }
+
+    static execLogin() {
+        return (req, res) => {
+            console.log(req.session);
+            AuthHelper.login(req.body.email, req.body.password)
+                .then(user => {
+                    req.session.userId = user.id;
+                    console.log(req.session);
+                    res.json(user);
+                })
+                .catch(() => res.send(401));
+        }
+    }
+
+    static execLogout() {
+        return (req, res) => {
+            req.session.destroy(err => {
+                if (err)
+                    return res.redirect('/');
+
+                res.clearCookie(SESS_NAME);
+                res.redirect('/login');
+            });
+        }
     }
 }
 

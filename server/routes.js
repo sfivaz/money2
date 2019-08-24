@@ -1,13 +1,38 @@
 const Controller = require('./controllers/controller');
 
-module.exports = (app) => {
-    app.get('/', Controller.home());
+const isGuest = (req, res, next) => {
+    if (!req.session.userId)
+        res.redirect('/login');
+    else
+        next();
+};
 
-    app.get('/account/:id', Controller.account());
+const isAuth = (req, res, next) => {
+    if (req.session.userId)
+        res.redirect('/home');
+    else
+        next();
+};
 
-    app.get('/categories', Controller.categories());
+module.exports = app => {
 
-    app.get('/login', Controller.login());
+    app.use((req, res, next) => {
+        const {userId} = req.session;
+        console.log(userId);
+        next();
+    });
+
+    app.get('/', isGuest, Controller.home());
+
+    app.get('/account/:id', isGuest, Controller.account());
+
+    app.get('/categories', isGuest, Controller.categories());
+
+    app.get('/login', isAuth, Controller.login());
+
+    app.post('/login', Controller.execLogin());
+
+    app.post('/logout', Controller.execLogout());
 
     app.use(Controller.page404());
 
