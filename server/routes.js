@@ -1,14 +1,14 @@
 const Controller = require('./controllers/controller');
 
 const isGuest = (req, res, next) => {
-    if (!req.session.userId)
+    if (!req.session.user)
         res.redirect('/login');
     else
         next();
 };
 
 const isAuth = (req, res, next) => {
-    if (req.session.userId)
+    if (req.session.user)
         res.redirect('/');
     else
         next();

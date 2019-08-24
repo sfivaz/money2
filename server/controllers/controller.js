@@ -33,10 +33,11 @@ class Controller {
             const {email, password} = req.body;
             AuthHelper.login(email, password)
                 .then(result => {
+                    console.log(result);
                     if (result.status && result.status === 401)
                         res.json(result);
                     else {
-                        req.session.userId = result.id;
+                        req.session.user = result;
                         res.json({
                             status: 200,
                             message: 'login sucessful'
