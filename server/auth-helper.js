@@ -1,12 +1,12 @@
 const axios = require('axios');
 
+const API = 'http://localhost:3000';
+
 class AuthHelper {
 
     static login(email, password) {
         return axios
-            .post('http://localhost:3000/login', {
-                email, password
-            })
+            .post(API + '/login', {email, password})
             .then(response => response.data);
     }
 }

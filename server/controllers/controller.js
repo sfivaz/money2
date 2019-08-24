@@ -32,18 +32,16 @@ class Controller {
         return (req, res) => {
             const {email, password} = req.body;
             AuthHelper.login(email, password)
-                .then(user => {
-                    req.session.userId = user.id;
-                    res.json({
-                        message: 'login sucessful',
-                        code: 200
-                    });
-                })
-                .catch(() => {
-                    res.json({
-                        message: 'login failed',
-                        code: 401
-                    })
+                .then(result => {
+                    if (result.status && result.status === 401)
+                        res.json(result);
+                    else {
+                        req.session.userId = result.id;
+                        res.json({
+                            status: 200,
+                            message: 'login sucessful'
+                        });
+                    }
                 });
         }
     }

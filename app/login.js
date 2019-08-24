@@ -1,8 +1,6 @@
 import {HttpService} from "./services/HttpService";
 
 $(() => {
-    $("#error-msg").hide();
-
     $("form").submit(event => {
             event.preventDefault();
             const email = $("#email").val();
@@ -15,9 +13,9 @@ $(() => {
 function login(email, password) {
     HttpService.post('/login', {email, password})
         .then(response => {
-            if (response.code === 200)
+            if (response.status === 200)
                 window.location.href = '/';
             else
-                $("#error-msg").show();
+                $("#error-msg").removeClass("d-none");
         });
 }
