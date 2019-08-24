@@ -16,18 +16,10 @@ function login(email, password) {
     User.login(email, password)
         .then((user) => {
             console.log(user);
-            if (user)
-                createSession(user);
+            if (user){
+
+            }
             else
                 $("#error-msg").show();
         });
-}
-
-/**
- * User
- * @param user
- */
-function createSession(user) {
-    Cookies.set('email', user.email);
-    Cookies.set('password', user.password);
 }
