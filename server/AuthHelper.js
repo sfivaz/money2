@@ -1,25 +1,15 @@
-const request = require('request');
+const axios = require('axios');
 
 class AuthHelper {
 
     static processLogin(email, password) {
-        const url = 'http://localhost:3000/login';
 
-        request.post(url, {
-            json: {email, password}
-        }, (err, res, body) => {
-            if (err)
-                console.log(err);
-            console.log(body);
-            if (res.statusCode != 401) {
-                console.log("login successful");
-            } else {
-                console.log("login failed");
-            }
-        });
+        axios.post('http://localhost:3000/login', {
+            email, password
+        })
+            .then(response => console.log(response.data))
+            .catch(error => console.log(error.response.status));
     }
-
-
 }
 
 module.exports = AuthHelper;
