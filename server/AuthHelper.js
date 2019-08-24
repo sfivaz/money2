@@ -1,22 +1,25 @@
+const request = require('request');
+
 class AuthHelper {
 
-    static processLogin(email, password, res) {
-        // fetch('http://localhost:3000/login', {
-        //     headers: {'Content-type': 'application/json'},
-        //     method: 'post',
-        //     body: JSON.stringify({email, password})
-        // })
-            .then(res => res.text())
-            .then(result => {
-                if (result != 401) {
-                    console.log("login failed");
-                    res.text("login failed");
-                } else {
-                    console.log("login successful");
-                    res.text("login successful");
-                }
-            });
+    static processLogin(email, password) {
+        const url = 'http://localhost:3000/login';
+
+        request.post(url, {
+            json: {email, password}
+        }, (err, res, body) => {
+            if (err)
+                console.log(err);
+            console.log(body);
+            if (res.statusCode != 401) {
+                console.log("login successful");
+            } else {
+                console.log("login failed");
+            }
+        });
     }
+
+
 }
 
 module.exports = AuthHelper;
