@@ -1,4 +1,5 @@
 import {User} from "./models/User";
+import {AuthHelper} from "./services/AuthHelper";
 
 $(() => {
     $("form").submit(event => {
@@ -17,8 +18,6 @@ $(() => {
 function register(user) {
     user = Object.assign(new User(), user);
     user.register()
-        .then(user => {
-            // window.location.href = '/login'
-        })
+        .then(response => AuthHelper.login(response.token))
         .catch(() => $("#error-msg").removeClass("d-none"));
 }

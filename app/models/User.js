@@ -74,8 +74,7 @@ export class User extends ORM {
                     if (response.status && response.status === 409)
                         reject(response);
                     else {
-                        const user = Object.assign(new this.constructor(), response);
-                        resolve(user);
+                        resolve(response);
                     }
                 });
         });
