@@ -1,5 +1,6 @@
 import {API} from "../helpers/API";
 import {HttpService} from "../services/HttpService";
+import {TokenService} from "../services/TokenService";
 
 export class ORM {
 
@@ -7,12 +8,8 @@ export class ORM {
         return API;
     }
 
-    static getToken() {
-        return window.localStorage.getItem('token');
-    }
-
     find(id) {
-        return HttpService.get(this.getAPI() + '/' + id, ORM.getToken())
+        return HttpService.get(this.getAPI() + '/' + id, TokenService.getToken())
             .then(object => {
                 console.log(object);
                 Object.assign(new this.constructor(), object)
@@ -22,7 +19,7 @@ export class ORM {
 
     findAll(parentId = null) {
         const url = this.getAPI() + (parentId ? '/' + parentId : '');
-        return HttpService.get(url, ORM.getToken())
+        return HttpService.get(url, TokenService.getToken())
             .then(objects => objects.map(object =>
                 Object.assign(new this.constructor(), object)))
             .catch(console.log);

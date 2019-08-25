@@ -1,4 +1,5 @@
 import {HttpService} from "./services/HttpService";
+import {TokenService} from "./services/TokenService";
 
 $(() => {
     $("form").submit(event => {
@@ -17,7 +18,7 @@ function login(email, password) {
             if (response.status)
                 $("#error-msg").removeClass("d-none");
             else {
-                window.localStorage.setItem('token', response.token);
+                TokenService.setToken(response.token);
                 window.location.href = '/';
             }
         });
