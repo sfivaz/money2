@@ -11,4 +11,9 @@ export class AuthHelper {
         TokenService.removeToken();
         window.location.href = '/login';
     }
+
+    static login(token){
+        TokenService.setToken(token);
+        window.location.href = '/';
+    }
 }

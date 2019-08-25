@@ -1,5 +1,5 @@
-import {TokenService} from "./services/TokenService";
 import {User} from "./models/User";
+import {AuthHelper} from "./services/AuthHelper";
 
 $(() => {
     $("form").submit(event => {
@@ -13,14 +13,7 @@ $(() => {
 
 function login(email, password) {
     User.login(email, password)
-        .then(response => {
-            console.log(response);
-            if (response.status)
-                $("#error-msg").removeClass("d-none");
-            else {
-                TokenService.setToken(response.token);
-                window.location.href = '/';
-            }
-        });
+        .then(response => AuthHelper.login(response.token))
+        .catch(() => $("#error-msg").removeClass("d-none"));
 }
 

@@ -55,7 +55,16 @@ export class User extends ORM {
     }
 
     static login(email, password) {
-        return HttpService.post(new ORM().getAPI() + 'login', {email, password});
+        return new Promise((resolve, reject) => {
+            HttpService.post(new ORM().getAPI() + 'login', {email, password})
+                .then(response => {
+                    console.log(response);
+                    if (response.status && response.status === 401)
+                        reject(response);
+                    else
+                        resolve(response);
+                });
+        });
     }
 
     register() {
