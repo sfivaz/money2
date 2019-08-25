@@ -1,5 +1,3 @@
-const AuthHelper = require('../auth-helper');
-
 class Controller {
 
     static home() {
@@ -28,23 +26,6 @@ class Controller {
 
     static page500() {
         return (err, req, res, next) => res.status(500).render('./500');
-    }
-
-    static execRegister() {
-        return (req, res) => {
-            AuthHelper.register(req.body)
-                .then(result => {
-                    console.log(result);
-                    if (result.status && result.status === 409)
-                        res.json(result);
-                    else {
-                        res.json({
-                            status: 200,
-                            message: 'user created'
-                        });
-                    }
-                });
-        }
     }
 }
 

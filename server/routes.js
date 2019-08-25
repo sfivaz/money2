@@ -11,6 +11,4 @@ module.exports = app => {
     app.get('/login', Controller.login());
 
     app.get('/register', Controller.register());
-
-    app.post('/register', Controller.execRegister());
 };

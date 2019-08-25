@@ -1,11 +1,12 @@
 import {ORM} from "./ORM";
 import {HttpService} from "../services/HttpService";
+import {TokenService} from "../services/TokenService";
 
 export class User extends ORM {
 
     constructor(id, firstName, lastName, email, password) {
         super();
-        this._id = id;
+        this._id = Number(id);
         this._firstName = firstName;
         this._lastName = lastName;
         this._email = email;
@@ -13,11 +14,12 @@ export class User extends ORM {
     }
 
     get id() {
-        return this._id;
+        if (this._id)
+            return this._id;
     }
 
     set id(value) {
-        this._id = value;
+        this._id = Number(value);
     }
 
     get firstName() {
@@ -54,5 +56,29 @@ export class User extends ORM {
 
     static login(email, password) {
         return HttpService.post(new ORM().getAPI() + 'login', {email, password});
+    }
+
+    register() {
+        return new Promise((resolve, reject) => {
+            HttpService.post(this.getAPI() + 'register', this, TokenService.getToken())
+                .then(response => {
+                    if (response.status && response.status === 409)
+                        reject(response);
+                    else {
+                        const user = Object.assign(new this.constructor(), response);
+                        resolve(user);
+                    }
+                });
+        });
+    }
+
+    toJSON() {
+        return {
+            id: this.id,
+            firstName: this.firstName,
+            lastName: this.lastName,
+            email: this.email,
+            password: this.password
+        };
     }
 }

@@ -1,4 +1,4 @@
-import {HttpService} from "./services/HttpService";
+import {User} from "./models/User";
 
 $(() => {
     $("form").submit(event => {
@@ -15,11 +15,10 @@ $(() => {
 });
 
 function register(user) {
-    HttpService.post('/register', user)
-        .then(response => {
-            if (response.status === 200)
-                window.location.href = '/';
-            else
-                $("#error-msg").removeClass("d-none");
-        });
+    user = Object.assign(new User(), user);
+    user.register()
+        .then(user => {
+            // window.location.href = '/login'
+        })
+        .catch(() => $("#error-msg").removeClass("d-none"));
 }
