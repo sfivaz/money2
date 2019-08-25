@@ -62,6 +62,24 @@ class Controller {
             });
         }
     }
+
+    static execRegister() {
+        return (req, res) => {
+            AuthHelper.register(req.body)
+                .then(result => {
+                    console.log(result);
+                    if (result.status && result.status === 409)
+                        res.json(result);
+                    else {
+                        req.session.user = result;
+                        res.json({
+                            status: 200,
+                            message: 'user created'
+                        });
+                    }
+                });
+        }
+    }
 }
 
 module.exports = Controller;

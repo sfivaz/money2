@@ -11,7 +11,8 @@ module.exports = {
         home: ['./app/home.js'],
         account: ['./app/account.js'],
         category: ['./app/category.js'],
-        login: ['./app/login.js']
+        login: ['./app/login.js'],
+        register: ['./app/register.js']
     },
     output: {
         path: path.join(__dirname, 'dist'),

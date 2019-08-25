@@ -9,6 +9,12 @@ class AuthHelper {
             .post(API + '/login', {email, password})
             .then(response => response.data);
     }
+
+    static register(user) {
+        return axios
+            .post(API + '/users', user)
+            .then(response => response.data);
+    }
 }
 
 module.exports = AuthHelper;

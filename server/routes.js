@@ -28,6 +28,8 @@ module.exports = app => {
 
     app.post('/login', Controller.execLogin());
 
+    app.post('/register', Controller.execRegister());
+
     app.post('/logout', Controller.execLogout());
 
     // /register
