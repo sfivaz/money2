@@ -13,13 +13,13 @@
                 <a class="nav-item nav-link" href="/categories">Categories</a>
             </div>
         </div>
-        <form class="form-inline my-2 my-lg-0" method="post" action="/logout">
+        <div class="form-inline my-2 my-lg-0">
             <% if(locals.user){ %>
                 <div class="px-3"><%= user.firstName + ' ' + user.lastName %></div>
             <% } %>
-            <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">
+            <button id="btn-logout" class="btn btn-outline-danger my-2 my-sm-0">
                 logout <i class="fa fa-sign-out" aria-hidden="true"></i>
             </button>
-        </form>
+        </div>
     </nav>
 </header>

@@ -1,11 +1,15 @@
 import {Home} from "./models/Home";
 import {HomePageView} from "./templates/HomePageView";
 import {Account} from "./models/Account"
+import {AuthHelper} from "./services/AuthHelper";
 
 new Account().findAll()
     .then(accounts => {
-        console.log(accounts);
         const home = new Home(accounts);
-        $(() => new HomePageView(home));
+        $(() => {
+            new HomePageView(home);
+
+            $('#btn-logout').click(() => AuthHelper.logout());
+        });
     });
 

@@ -52,18 +52,6 @@ class Controller {
         }
     }
 
-    static execLogout() {
-        return (req, res) => {
-            req.session.destroy(err => {
-                if (err)
-                    return res.redirect('/');
-
-                res.clearCookie(SESS_NAME);
-                res.redirect('/login');
-            });
-        }
-    }
-
     static execRegister() {
         return (req, res) => {
             AuthHelper.register(req.body)
