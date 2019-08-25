@@ -13,9 +13,12 @@ $(() => {
 function login(email, password) {
     HttpService.post('/login', {email, password})
         .then(response => {
-            if (response.status === 200)
-                window.location.href = '/';
-            else
+            console.log(response);
+            if (response.status)
                 $("#error-msg").removeClass("d-none");
+            else {
+                window.localStorage.setItem('token', response.token);
+                // window.location.href = '/';
+            }
         });
 }

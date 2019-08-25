@@ -7,9 +7,14 @@ export class HttpService {
             throw new Error(res.statusText);
     }
 
-    static get(url) {
-        return fetch(url)
-            .then(res => HttpService._handleErrors(res))
+    static get(url, token = null) {
+        const options = {};
+        if (token) {
+            options.headers = {
+                'Authorization': 'Bearer ' + token
+            };
+        }
+        return fetch(url, options)
             .then(res => res.json());
     }
 

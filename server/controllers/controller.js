@@ -42,10 +42,11 @@ class Controller {
                         res.json(result);
                     else {
                         req.session.user = result;
-                        res.json({
-                            status: 200,
-                            message: 'login sucessful'
-                        });
+                        res.json(result);
+                        // res.json({
+                        //     status: 200,
+                        //     message: 'login sucessful'
+                        // });
                     }
                 });
         }
