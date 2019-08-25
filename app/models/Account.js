@@ -1,5 +1,6 @@
 import {Parent} from "./Parent";
 import {Transaction} from "./Transaction";
+import {HttpService} from "../services/HttpService";
 
 export class Account extends Parent {
 
@@ -155,7 +156,7 @@ export class Account extends Parent {
     }
 
     getAPI() {
-        return super.getAPI() + "accounts";
+        return super.getAPI() + 'accounts';
     }
 
     toJSON() {
@@ -166,5 +167,11 @@ export class Account extends Parent {
             userId: this.userId,
             budget: this.budget
         };
+    }
+
+    find(id) {
+        return HttpService.get(super.getAPI() + 'account' + '/' + id)
+            .then(object => Object.assign(new this.constructor(), object))
+            .catch(console.log);
     }
 }
