@@ -13,26 +13,25 @@
   "author": "Stefane Fivaz",
   "license": "ISC",
   "devDependencies": {
-    "webpack": "^4.34.0",
-    "webpack-cli": "^3.3.4",
-    "webpack-dev-server": "^3.7.1",
-    "webpack-dev-middleware": "^3.7.0",
-    "webpack-hot-middleware": "^2.25.0",
-    "express": "^4.17.1",
-    "multer": "^1.4.1",
+    "nodemon": "^1.19.1"
+  },
+  "dependencies": {
     "babel-watch": "^7.0.0",
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
     "babel-loader": "^8.0.6",
     "core-js": "^3.1.4",
-    "cross-env": "^5.0.1"
-  },
-  "dependencies": {
+    "cross-env": "^5.0.1",
+    "multer": "^1.4.1",
+    "webpack": "^4.34.0",
+    "webpack-cli": "^3.3.4",
+    "webpack-dev-middleware": "^3.7.0",
+    "webpack-dev-server": "^3.7.1",
+    "webpack-hot-middleware": "^2.25.0",
     "bootstrap": "^4.3.1",
     "cors": "^2.8.5",
     "ejs": "^2.6.2",
     "express": "^4.17.1",
-    "jquery": "^1.9.1",
-    "nodemon": "^1.19.1"
+    "jquery": "^1.9.1"
   }
 }
