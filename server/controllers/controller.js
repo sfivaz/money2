@@ -5,15 +5,15 @@ const SESS_NAME = 'sid';
 class Controller {
 
     static home() {
-        return (req, res) => res.render('./home');
+        return (req, res) => res.render('./home', {user: req.session.user});
     }
 
     static account() {
-        return (req, res) => res.render('./account', {id: req.params.id});
+        return (req, res) => res.render('./account', {id: req.params.id, user: req.session.user});
     }
 
     static categories() {
-        return (req, res) => res.render('./categories');
+        return (req, res) => res.render('./categories', {user: req.session.user});
     }
 
     static login() {
@@ -25,7 +25,7 @@ class Controller {
     }
 
     static page500() {
-        return (err, req, res) => res.status(500).render('./500');
+        return (err, req, res, next) => res.status(500).render('./500');
     }
 
     static execLogin() {

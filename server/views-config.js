@@ -10,5 +10,4 @@ module.exports = (app, express) => {
     app.set('views', path.join(root + '/app/views'));
     app.engine('html', ejs);
     app.set('view engine', 'ejs');
-
 };
