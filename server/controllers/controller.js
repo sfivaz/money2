@@ -1,19 +1,17 @@
 const AuthHelper = require('../auth-helper');
 
-const SESS_NAME = 'sid';
-
 class Controller {
 
     static home() {
-        return (req, res) => res.render('./home', {user: req.session.user});
+        return (req, res) => res.render('./home');
     }
 
     static account() {
-        return (req, res) => res.render('./account', {id: req.params.id, user: req.session.user});
+        return (req, res) => res.render('./account', {id: req.params.id});
     }
 
     static categories() {
-        return (req, res) => res.render('./categories', {user: req.session.user});
+        return (req, res) => res.render('./categories');
     }
 
     static login() {
@@ -32,22 +30,6 @@ class Controller {
         return (err, req, res, next) => res.status(500).render('./500');
     }
 
-    static execLogin() {
-        return (req, res) => {
-            const {email, password} = req.body;
-            AuthHelper.login(email, password)
-                .then(result => {
-                    console.log(result);
-                    if (result.status && result.status === 401)
-                        res.json(result);
-                    else {
-                        req.session.user = result;
-                        res.json(result);
-                    }
-                });
-        }
-    }
-
     static execRegister() {
         return (req, res) => {
             AuthHelper.register(req.body)
@@ -56,7 +38,6 @@ class Controller {
                     if (result.status && result.status === 409)
                         res.json(result);
                     else {
-                        req.session.user = result;
                         res.json({
                             status: 200,
                             message: 'user created'

@@ -1,5 +1,5 @@
-import {HttpService} from "./services/HttpService";
 import {TokenService} from "./services/TokenService";
+import {User} from "./models/User";
 
 $(() => {
     $("form").submit(event => {
@@ -12,7 +12,7 @@ $(() => {
 });
 
 function login(email, password) {
-    HttpService.post('/login', {email, password})
+    User.login(email, password)
         .then(response => {
             console.log(response);
             if (response.status)

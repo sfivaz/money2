@@ -4,7 +4,6 @@ const cors = require('cors');
 const routes = require('./routes');
 const webpackDevServer = require('./webpack-dev-server');
 const viewsConfig = require('./views-config');
-const sessionConfig = require('./session-config');
 const Controller = require('./controllers/controller');
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
@@ -17,12 +16,10 @@ app.use(express.json());
 
 viewsConfig(app, express);
 
-sessionConfig(app);
-
 routes(app);
 
 app.use(Controller.page404());
 
-app.use(Controller.page500());
+// app.use(Controller.page500());
 
 module.exports = app;
