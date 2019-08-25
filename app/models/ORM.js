@@ -23,12 +23,8 @@ export class ORM {
     findAll(parentId = null) {
         const url = this.getAPI() + (parentId ? '/' + parentId : '');
         return HttpService.get(url, ORM.getToken())
-            .then(objects => {
-                console.log("objects");
-                console.log(objects);
-                objects.map(object =>
-                    Object.assign(new this.constructor(), object))
-            })
+            .then(objects => objects.map(object =>
+                Object.assign(new this.constructor(), object)))
             .catch(console.log);
     }
 

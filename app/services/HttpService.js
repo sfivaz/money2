@@ -7,20 +7,21 @@ export class HttpService {
             throw new Error(res.statusText);
     }
 
-    static get(url, token = null) {
-        const options = {};
-        if (token) {
-            options.headers = {
+    static get(url, token = '') {
+        return fetch(url, {
+            headers: {
                 'Authorization': 'Bearer ' + token
-            };
-        }
-        return fetch(url, options)
+            }
+        })
             .then(res => res.json());
     }
 
-    static post(url, data) {
+    static post(url, data, token = '') {
         return fetch(url, {
-            headers: {'Content-type': 'application/json'},
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
             method: 'post',
             body: JSON.stringify(data)
         })
@@ -28,9 +29,12 @@ export class HttpService {
             .then(res => res.json());
     }
 
-    static put(url, data) {
+    static put(url, data, token = '') {
         return fetch(url, {
-            headers: {'Content-type': 'application/json'},
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
             method: 'put',
             body: JSON.stringify(data)
         })
@@ -38,9 +42,12 @@ export class HttpService {
             .then(res => res.json());
     }
 
-    static delete(url) {
+    static delete(url, token = '') {
         return fetch(url, {
-            headers: {'Content-type': 'application/json'},
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
             method: 'delete'
         })
             .then(res => HttpService._handleErrors(res))

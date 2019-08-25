@@ -18,7 +18,7 @@ function login(email, password) {
                 $("#error-msg").removeClass("d-none");
             else {
                 window.localStorage.setItem('token', response.token);
-                // window.location.href = '/';
+                window.location.href = '/';
             }
         });
 }

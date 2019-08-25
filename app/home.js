@@ -1,8 +1,6 @@
 import {Home} from "./models/Home";
 import {HomePageView} from "./templates/HomePageView";
-import {Account} from "./models/Account";
-
-// const userId = $(".page").data('userId');
+import {Account} from "./models/Account"
 
 new Account().findAll()
     .then(accounts => {
