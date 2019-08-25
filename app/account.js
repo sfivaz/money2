@@ -4,6 +4,8 @@ import {AuthHelper} from "./services/AuthHelper";
 
 const accountId = $(".page").data('accountId');
 
+AuthHelper.isAuth();
+
 new Account().find(accountId)
     .then(account =>
         $(() => {
