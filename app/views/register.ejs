@@ -1,0 +1,38 @@
+<%- include('header'); -%>
+
+<main class="container login-container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 login-form-2">
+            <h3>Register to Money</h3>
+            <form>
+                <div class="form-group">
+                    <input id="first-name" class="form-control" placeholder="Your first name">
+                </div>
+                <div class="form-group">
+                    <input id="last-name" class="form-control" placeholder="Your last name">
+                </div>
+                <div class="form-group">
+                    <input id="email" type="email" class="form-control" placeholder="Your email">
+                </div>
+                <div class="form-group">
+                    <input id="password" type="password" class="form-control" placeholder="Your password">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btnSubmit">Register</button>
+                </div>
+                <div class="form-group">
+                    <a href="/login" class="ForgetPwd">Do have an account? Login</a>
+                </div>
+                <div id="error-msg" class="d-none p-3 bg-danger text-white">
+                    Your email is already being used.
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+<%- include('imports'); -%>
+
+<script src="/bundles/register.js"></script>
+
+<%- include('footer'); -%>

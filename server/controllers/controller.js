@@ -20,6 +20,10 @@ class Controller {
         return (req, res) => res.render('./login');
     }
 
+    static register() {
+        return (req, res) => res.render('./register');
+    }
+
     static page404() {
         return (req, res) => res.status(404).render('./404');
     }
