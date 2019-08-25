@@ -9,6 +9,7 @@ export class ORM {
     }
 
     find(id) {
+
         return HttpService.get(this.getAPI() + '/' + id, TokenService.getToken())
             .then(object => {
                 console.log(object);
@@ -18,6 +19,7 @@ export class ORM {
     }
 
     findAll(parentId = null) {
+        console.log(TokenService.hasToken());
         const url = this.getAPI() + (parentId ? '/' + parentId : '');
         return HttpService.get(url, TokenService.getToken())
             .then(objects => objects.map(object =>
@@ -26,18 +28,20 @@ export class ORM {
     }
 
     save() {
-        return HttpService.put(this.getAPI() + '/' + this.id, this)
+        const url = this.getAPI() + '/' + this.id;
+        return HttpService.put(url, this, TokenService.getToken())
             .then(object => Object.assign(new this.constructor(), object))
             .catch(console.log);
     }
 
     create() {
-        return HttpService.post(this.getAPI(), this)
+        return HttpService.post(this.getAPI(), this, TokenService.getToken())
             .then(object => Object.assign(new this.constructor(), object))
             .catch(console.log);
     }
 
     delete() {
-        return HttpService.delete(this.getAPI() + '/' + this.id)
+        const url = this.getAPI() + '/' + this.id;
+        return HttpService.delete(url, TokenService.getToken())
     }
 }
