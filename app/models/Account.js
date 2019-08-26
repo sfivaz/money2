@@ -1,6 +1,7 @@
 import {Parent} from "./Parent";
 import {Transaction} from "./Transaction";
 import {HttpService} from "../services/HttpService";
+import {TokenService} from "../services/TokenService";
 
 export class Account extends Parent {
 
@@ -170,7 +171,7 @@ export class Account extends Parent {
     }
 
     find(id) {
-        return HttpService.get(super.getAPI() + 'account' + '/' + id)
+        return HttpService.get(super.getAPI() + 'account' + '/' + id, TokenService.getToken())
             .then(object => Object.assign(new this.constructor(), object))
             .catch(console.log);
     }

@@ -9,17 +9,13 @@ export class ORM {
     }
 
     find(id) {
-
         return HttpService.get(this.getAPI() + '/' + id, TokenService.getToken())
-            .then(object => {
-                console.log(object);
-                Object.assign(new this.constructor(), object)
-            })
+            .then(object =>
+                Object.assign(new this.constructor(), object))
             .catch(console.log);
     }
 
     findAll(parentId = null) {
-        console.log(TokenService.hasToken());
         const url = this.getAPI() + (parentId ? '/' + parentId : '');
         return HttpService.get(url, TokenService.getToken())
             .then(objects => objects.map(object =>
