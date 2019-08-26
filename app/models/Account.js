@@ -169,10 +169,4 @@ export class Account extends Parent {
             budget: this.budget
         };
     }
-
-    find(id) {
-        return HttpService.get(super.getAPI() + 'account' + '/' + id, TokenService.getToken())
-            .then(object => Object.assign(new this.constructor(), object))
-            .catch(console.log);
-    }
 }
