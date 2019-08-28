@@ -82,7 +82,7 @@ export class TransactionForm extends ModelForm {
                         </div>
                         <div class="col">
                             <label>value</label>
-                            <input id="transaction-value" class="form-control" value="${transaction.value || '222'}" required>
+                            <input id="transaction-value" class="form-control" value="${transaction.value || ''}" required>
                         </div>
                     </div>
                     <div class="form-row form-group">
