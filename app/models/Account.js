@@ -31,11 +31,11 @@ export class Account extends Parent {
     }
 
     get userId() {
-        return this._user_id;
+        return this._userId;
     }
 
     set userId(value) {
-        this._user_id = Number(value);
+        this._userId = Number(value);
     }
 
     get balance() {

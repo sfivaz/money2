@@ -19,7 +19,7 @@ export class AccountForm extends ModelForm {
                     <div class="form-group">
                         <label>name</label>
                         <input id="account-name" class="form-control" placeholder="name" value="${account.name || ''}" 
-                            required>
+                            required autofocus>
                     </div>
                     <div>
                         <button id="btn-submit" type="submit" class="btn-lg btn-block btn-success d-block m-auto">${action}</button>
