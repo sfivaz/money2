@@ -2,3 +2,86 @@
     background-color: #28a745;
 }
 
+.filter-bar {
+    display: grid;
+    grid-template-areas: "filter-date filter-type filter-category btn-clean-filter filtered-balance";
+    grid-template-columns: 1fr 1fr 1fr auto auto;
+    grid-template-rows: 1fr;
+    align-items: end;
+    grid-gap: 1rem;
+}
+
+.filter-date {
+    grid-area: filter-date;
+}
+
+.filter-type {
+    grid-area: filter-type;
+}
+
+.filter-category {
+    grid-area: filter-category;
+}
+
+.btn-clean-filter {
+    grid-area: btn-clean-filter;
+}
+
+.filtered-balance {
+    grid-area: filtered-balance;
+    margin: 0;
+}
+
+.filter__label {
+    margin: 0 10px 0 0;
+}
+
+.filter__input {
+    margin: 0;
+    width: 180px;
+}
+
+.filter__select {
+    margin: 0;
+    width: 180px;
+}
+
+.filter-bar > * {
+    flex-direction: column;
+    align-items: start;
+}
+
+@media (max-width: 992px) {
+
+    .filter-bar {
+        grid-template-areas: "filter-date filter-type filter-category" "btn-clean-filter . filtered-balance";
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto auto;
+        justify-items: center;
+    }
+
+    .filter-bar > * {
+        flex-direction: column;
+        align-items: start;
+    }
+
+}
+
+@media (max-width: 770px) {
+
+    .filter-bar {
+        grid-template-areas: "filter-date filter-date filter-type filter-type" "filter-category filter-category btn-clean-filter filtered-balance";
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto auto;
+    }
+}
+
+
+@media (max-width: 430px) {
+
+    .filter-bar {
+        grid-template-areas: "filter-date filter-date" "filter-type filter-type" "filter-category filter-category" "btn-clean-filter filtered-balance";
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto auto auto;
+    }
+}
